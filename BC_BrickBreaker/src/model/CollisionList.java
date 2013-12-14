@@ -16,9 +16,9 @@ public class CollisionList {
 	private static final int EAST=1,SOUTH=2;
 	private static final int SOUTH_EAST=3;
 	private static final int CENTER=0;
-	
 	private CollisionList subLists[];
-	private ArrayList<Collidable> list;
+	private ArrayList<Collidable> stationary;
+	private ArrayList<Movable> movable;
 	
 	
 	private int minX,minY,maxX,maxY;
@@ -45,7 +45,10 @@ public class CollisionList {
 		this.maxContained=maxContained;
 		isTop=true;
 		isBottom=true;
-		list=new ArrayList<Collidable>();
+
+		
+		stationary=new ArrayList<Collidable>();
+		movable=new ArrayList<Movable>();
 	}
 	/**
 	 * this method is only to be used internally for instantiation of subLists;
@@ -58,7 +61,8 @@ public class CollisionList {
 		this.maxContained=maxContained;
 		isTop=false;
 		isBottom=true;
-		list=new ArrayList<Collidable>();
+		stationary=new ArrayList<Collidable>();
+		movable=new ArrayList<Movable>();
 	}
 	
 	private void toSublists(){
@@ -76,17 +80,24 @@ public class CollisionList {
 		this.subLists[EAST]=new CollisionList(minX+newWidth,maxX,minY,minY+newHeight,maxContained, this);
 		this.subLists[SOUTH_EAST]=new CollisionList(minX+newWidth,maxX,minY+newHeight,maxY,maxContained, this);
 		isBottom=false;
-		for(Collidable c: list){
+		for(Collidable c: this.stationary){
 			add(c);
 		}
-		list=null;
+		for(Movable m: this.movable){
+			add(m);
+		}
+		this.movable=null;
 	}
 	
 	
 	public void add(Collidable c){
 		if(isBottom){
-			list.add(c);
-			if(list.size()>this.maxContained) toSublists();
+			if(c instanceof Movable){
+				this.movable.add((Movable)c);
+			}else{
+				this.stationary.add(c);
+			}
+			if(movable.size()+stationary.size()/10>this.maxContained) toSublists();
 		}else{
 			
 			
@@ -138,32 +149,36 @@ public class CollisionList {
 			}
 		}
 	}
+	private void collideIfPossible(Collidable a, Collidable b){
+		boolean canA,canB;
+		canA=a.canCollideWith(b);
+		canB=b.canCollideWith(a);
+		if((canA||canB)&&a.checkBoundingCollision(b)){
+			if(canA&&canB){
+				if(a.getCollisionPrecedence()>=b.getCollisionPrecedence()){
+					a.collide(b);
+				}else{
+					b.collide(a);
+				}
+			}else if(canA){
+				a.collide(b);
+			}else if(canB){
+				b.collide(a);
+			}
+		}
+		
+	}
+	
+	
 	public void checkCollisions(){
 		if(isBottom){
-			int length=list.size();
-			Collidable a,b;
-			boolean canA,canB;
+			int length=movable.size();
 			for(int i=0;i<length;i++){
 				for(int j=i+1;j<length;j++){
-					
-					a=list.get(i);
-					b=list.get(j);
-					canA=a.canCollideWith(b);
-					canB=b.canCollideWith(a);
-					if((canA||canB)&&a.checkBoundingCollision(b)){
-						if(canA&&canB){
-							if(a.getCollisionPrecedence()>=b.getCollisionPrecedence()){
-								a.collide(b);
-							}else{
-								b.collide(a);
-							}
-						}else if(canA){
-							a.collide(b);
-						}else if(canB){
-							b.collide(a);
-						}
-					}
-					
+					this.collideIfPossible(movable.get(i),movable.get(j));
+				}
+				for(Collidable c: stationary){
+					this.collideIfPossible(c, movable.get(i));
 				}
 			}
 		}else{
@@ -173,27 +188,17 @@ public class CollisionList {
 		}
 	}
 
-	public String toString(){
-		if(isBottom){
-			String ret=list.toString();
-			ret=ret.replace('<', '[');
-			ret=ret.replace('>', ']');
-			return list.toString();
-		}else{
-			String ret=
-				"<list"+this.hashCode()+">";
-			for(CollisionList c:subLists){
-				ret+=c;
-			}
-			return ret+"</list"+this.hashCode()+">";
-		}
-	}
+
 	public Collidable selectAtPoint(int x, int y) {
 		if(isBottom){
 			Collidable ret=null;
-			for(Collidable c: list){
+			for(Collidable c: stationary){
 				if(c.pointInBoundingBox(x, y))ret=c;
 			}
+			for(Movable m: movable){
+				if(m.pointInBoundingBox(x, y))ret=m;
+			}
+			
 			return ret;
 		}else{
 			if(x>this.midX){

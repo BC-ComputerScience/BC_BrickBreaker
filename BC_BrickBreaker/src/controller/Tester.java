@@ -22,7 +22,7 @@ public class Tester {
 	public void lineCollisionTest(){
 		
 		/**/
-		this.addRandomCircles(200);
+		this.addRandomCircles(10);
 		//sim.addGameObject(new Line(200,100,500,405));
 		//sim.addGameObject(new Line(500,405,100,200));
 		//sim.addGameObject(new Line(100,100,200,100));

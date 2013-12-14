@@ -61,10 +61,11 @@ public class Collision_Controller implements ActionListener, MouseListener, Mous
 		view.addMouseMotionListener(this);
 		view.addActionListener(this);
 		view.addKeyListener(this);
-		
+		tester.testCase();
 		
 		timer=new Timer();
-		tester.testCase();
+		
+		
 		gameloop=getLoopTask();
 		startTimer();
 		

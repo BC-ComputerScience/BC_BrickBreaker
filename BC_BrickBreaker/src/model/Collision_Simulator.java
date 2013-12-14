@@ -140,10 +140,7 @@ public class Collision_Simulator {
 			current.advance(seconds);
 			collisionList.add(current);
 		}
-		for(Collidable m:collidable){
-			
-			
-		}
+
 		collisionList.checkCollisions();
 		wallCollision();
 		//wallCollision();
