@@ -31,7 +31,7 @@ public class Paddle extends Collidable implements Renderable{
 		this.x = (int) Math.min(x1, x2);
 		this.y = (int) Math.min(y1, y2);
 		this.width = (int) Math.max(x1, x2) - x+1;
-		System.out.println(width);
+		//System.out.println(width);
 		height = (int) Math.max(y1, y2) - y+1;
 		image = new BufferedImage(width + 1, height + 1,
 				BufferedImage.TYPE_INT_ARGB);
@@ -80,7 +80,6 @@ public class Paddle extends Collidable implements Renderable{
 			Sphere s = (Sphere) c;
 
 			Matrix toBase = Matrix.createOrthonormal(normal);
-			System.out.println(toBase);
 			
 			double height = toBase.apply(s.getCenter().subtract(this.p1))
 					.getElement(0);
