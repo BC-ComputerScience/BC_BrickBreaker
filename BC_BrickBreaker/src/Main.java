@@ -1,11 +1,16 @@
-
+ /**
+ * A starting point
+ * 
+ * this class should contain no logic, it should instantiate whatever object controls 
+ * the application
+ * 
+ * @author Anthony Klobas
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		System.out.println("hello world!");
-		System.out.println("test 1!");
+		new controller.Collision_Controller(800,600);
 	}
 
 }
