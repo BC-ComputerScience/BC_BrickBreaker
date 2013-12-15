@@ -124,4 +124,16 @@ public class Box extends Collidable implements Renderable{
 		return true;
 	}
 
+
+
+	@Override
+	public double collideTime(Collidable C) {
+		double time = 400000000;
+		for(Line l: lines){
+			double tempTime=l.collideTime(C);
+			if(tempTime<time)time=tempTime;
+		}
+		return time;
+	}
+
 }

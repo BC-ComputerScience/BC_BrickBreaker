@@ -22,15 +22,16 @@ public class Tester {
 	public void lineCollisionTest(){
 		
 		/**/
-		this.addRandomCircles(10);
-		//sim.addGameObject(new Line(200,100,500,405));
+		//this.addRandomCircles(10);
+		/*/sim.addGameObject(new Line(200,100,500,405));
+		//sim.addGameObject(new Sphere(435.0,451.0, new Vector(94.0, -79.0),88.0));
 		//sim.addGameObject(new Line(500,405,100,200));
 		//sim.addGameObject(new Line(100,100,200,100));
 		//sim.addGameObject(new Sphere(20,300, new Vector(200,0),100));
 		//sim.addGameObject(new Sphere(780,300, new Vector(-200,0),100));
 		//this.addRandomCircles(200);
-		sim.addGameObject(new Line(200,100,600,500));
-		sim.addGameObject(new Line(200,500,600,100));
+		//sim.addGameObject(new Line(200,100,600,500));
+		//sim.addGameObject(new Line(200,500,600,100));
 		
 		
 		//sim.addGameObject(new Sphere(206.0, 108.0, new Vector(253,57).subtract(new Vector(206,108)).negate(),100));
@@ -39,12 +40,23 @@ public class Tester {
 		//sphere.advance(.2);
 		//sim.addGameObject(sphere);
 		//sim.addGameObject(new Sphere(34.0,234.0, new Vector(132.0, -83.0),84.0));
-		/*int width=50, height=20;
-		for(int i=width;i<800-width;i+=width){
-			for(int j=height;j<400;j+=height){
-				sim.addGameObject(new Brick(i,j,width,height));
+		/*/
+		int offset=100;
+		//sim.addGameObject(new Sphere(291.0,94.0+offset, new Vector(9.0, -48.0),82.0));
+		int width=50, height=20;
+		/*for(int i=width*5;i<800-width*9;i+=width){
+			for(int j=height;j<=height;j+=height){
+				sim.addGameObject(new Brick(i,j+offset,width,height));
 			}
-		}*/
+		}/**/
+		//sim.addGameObject(new Sphere(776.0,453.0, new Vector(-71.0, -83.0),64.0));
+		//sim.addGameObject(new Sphere(797.0,375.0, new Vector(-167.0, -1.0),63.0));
+		sim.addGameObject(new Sphere(42.0,96.0, new Vector(37.0, 98.0),76.0));
+		for(int i=width;i<800-width;i+=width){
+			for(int j=height;j<=600;j+=height){
+				sim.addGameObject(new Brick(i,j+offset,width,height));
+			}
+		}
 		
 		
 		
@@ -72,7 +84,7 @@ public class Tester {
 		sim.addGameObject(s);
 	}
 	public void placeSphere(int x, int y, int xvel, int yvel,boolean isImmovable){
-		Sphere s=new Sphere(x,y,new Vector(xvel,yvel),rand.nextInt(50)+500);
+		Sphere s=new Sphere(x,y,new Vector(xvel,yvel),rand.nextInt(50)+50);
 		s.setImmovable(isImmovable);
 		sim.addGameObject(s);
 	}

@@ -125,5 +125,13 @@ int temp=0;
 	public boolean stillExists() {
 		return true;
 	}
+	public double collideTime(Collidable C) {
+		double time = 1;
+		for(Line l: this.sides){
+			double tempTime=l.collideTime(C);
+			if(tempTime<time)time=tempTime;
+		}
+		return time;
+	}
 
 }

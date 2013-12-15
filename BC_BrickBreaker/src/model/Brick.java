@@ -65,6 +65,7 @@ public class Brick extends Collidable implements Renderable{
 		g.fillRect(0, 0, width, height);
 		//if(hitPoints<5){
 		g.setColor(Color.magenta);
+		g.drawString(this.x%100+","+(this.y%100), 2, 12);
 		g.drawRect(0, 0, width, height);
 		//}
 		return image;
@@ -92,14 +93,34 @@ public class Brick extends Collidable implements Renderable{
 	}
 
 	@Override
-	public boolean collide(Collidable C, boolean ignorePosition) {
+	public boolean collide(Collidable c, boolean ignorePosition) {
+		double time = -1000;
+		Line temp=null;
 		for(Line l: lines){
-			if(l.collide(C)){
-				this.hitPoints--;
-				return true;
+			
+			double tempTime=l.collideTime(c);
+			if(tempTime>time){
+				time=tempTime;
+				temp=l;
 			}
 		}
+		if(time>-1000){
+			temp.collide(c);
+			if(temp==lines[0])System.out.println("line 0");
+			if(temp==lines[1])System.out.println("line 1");
+			if(temp==lines[2])System.out.println("line 2");
+			if(temp==lines[3])System.out.println("line 3");
+			if(temp!=lines[2]||true){
+				
+			System.out.println(temp);
+			System.out.println(this+"collides with"+c+" at "+time);
+			}
+			this.hitPoints--;
+			return true;
+		}
 		return false;
+		
+		
 		
 	}
 
@@ -133,6 +154,18 @@ public class Brick extends Collidable implements Renderable{
 	}
 	public boolean stillExists() {
 		return hitPoints>0;
+	}
+
+
+
+	@Override
+	public double collideTime(Collidable C) {
+		double time = -4000;
+		for(Line l: lines){
+			double tempTime=l.collideTime(C);
+			if(tempTime>time)time=tempTime;
+		}
+		return time;
 	}
 
 }

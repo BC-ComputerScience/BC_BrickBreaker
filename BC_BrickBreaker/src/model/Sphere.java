@@ -197,6 +197,12 @@ public class Sphere extends Movable implements Renderable{
 	public boolean stillExists() {
 		return true;
 	}
+	@Override
+	public double collideTime(Collidable C) {
+		// TODO Auto-generated method stub
+		Sphere other=(Sphere)C;
+		return -(this.radius+other.radius-getCenter().distance(other.getCenter()))/this.getTrajectory().distance(other.getTrajectory());
+	}
 	
 	
 
