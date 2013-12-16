@@ -182,5 +182,18 @@ public class Paddle extends Collidable implements Renderable{
 	public boolean stillExists() {
 		return true;
 	}
+	public double collideTime(Collidable c) {
+		if (c instanceof Sphere) {
+			Sphere s = (Sphere) c;
 
+			Matrix toBase = Matrix.createOrthonormal(normal);
+			double height = toBase.apply(s.getCenter().subtract(this.p1))
+					.getElement(0);
+			double traj = toBase.apply(s.getTrajectory()).getElement(0);
+			double x = toBase.apply(s.getCenter().subtract(this.p1))
+					.getElement(1);
+			return -Math.min(Math.abs((s.getRadius() - height) / traj),Math.abs((-1 * s.getRadius() - height) / traj) );
+		}
+		return 1;
+	}
 }

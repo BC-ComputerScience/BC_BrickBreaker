@@ -55,8 +55,9 @@ public abstract class Movable extends Collidable{
 	public void reflect(Vector vector) {
 		Matrix toBase= Matrix.createOrthonormal(vector);
 		Matrix fromBase=toBase.invert();
+		
 		Vector temp =toBase.apply(trajectory);
-		temp= new Vector(-Math.abs(temp.getElement(0))*COR,temp.getElement(1));
+		temp= new Vector(Math.abs(temp.getElement(0))*COR,temp.getElement(1));
 		this.setTrajectory(fromBase.apply(temp));
 	}
 	/**

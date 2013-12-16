@@ -123,6 +123,13 @@ public class Vector {
 		}
 		return null;
 	}
+	public Vector getPerpendicular(){
+		if(this.getDimension()!=2){
+			//only know how to do this for 2d vectors
+			throw new UnsupportedOperationException();
+		}
+		return new Vector(-vector[1],vector[0]); 
+	}
 	
 	
 	

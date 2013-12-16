@@ -86,19 +86,19 @@ public class Collision_Simulator {
 		double time;
 		if(x<0){
 			time=x/m.getVelX(); 
-			m.reflect(new Vector(-1,0),time);
+			m.reflect(new Vector(1,0),time);
 		}else if(x+width>this.width){
 			time=(x+width-this.width)/m.getVelX();
-			m.reflect(new Vector(1,0),time);
+			m.reflect(new Vector(-1,0),time);
 		}
 		if(y<0){
 			time= y/m.getVelY();
-			m.reflect(new Vector(0,-1),time);
+			m.reflect(new Vector(0,1),time);
 			
 		}else if(y+height>this.height){
 			time=(y+height-this.height)/m.getVelY();
 			
-			m.reflect(new Vector(0,1),time);
+			m.reflect(new Vector(0,-1),time);
 			//m.addForce(new Vector(0,Math.abs(m.getTotalForce().getElement(1))));
 		}
 	}
@@ -143,7 +143,7 @@ public class Collision_Simulator {
 
 		collisionList.checkCollisions();
 		wallCollision();
-		//wallCollision();
+		wallCollision();
 		
 		
 		/*///depricated

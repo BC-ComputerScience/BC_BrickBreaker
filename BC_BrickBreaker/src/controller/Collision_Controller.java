@@ -21,7 +21,7 @@ public class Collision_Controller implements ActionListener, MouseListener, Mous
 	
 	//A time set to proc every 20 millis
 	private Timer timer;
-	private int millisPerProc=20;
+	private int millisPerProc=50;
 	private double timeDialation=1;
 	//timers can be inconsistent, so keep track of time
 	private long lastTime=0;
@@ -53,7 +53,7 @@ public class Collision_Controller implements ActionListener, MouseListener, Mous
 		model = new Collision_Simulator(width,height,view);
 		
 		p = new Paddle(width/2,height-20,150);
-		model.addGameObject(p);
+		//model.addGameObject(p);
 		tester=new Tester(model);
 		
 		//make events in the view update this controller
@@ -107,7 +107,9 @@ public class Collision_Controller implements ActionListener, MouseListener, Mous
 			if(!isPaused){
 				model.advance(timeDialation*(/**/20/*/Math.min(thisTime-lastTime,100)/**/)/1000.0);
 			}
-			
+			/*for(int i=0;i<100;i++){
+				model.advance(0);
+			}*/
 			model.updateView();
 			lastTime=thisTime;
 		}
@@ -130,6 +132,7 @@ public class Collision_Controller implements ActionListener, MouseListener, Mous
 					System.out.println(new mathematics.Vector(mouse.getX(),mouse.getY()));
 				}else{
 					System.out.println("selected: "+model.selectAtPoint(endx, endy));
+					System.out.println(endx+","+endy);
 				}
 				
 				

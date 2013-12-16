@@ -33,11 +33,13 @@ public class Collision_View {
 		this.width=width;
 		this.height=height;
 		controller=c;
+		
 		SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 createAndShowGUI(); 
             }
         });
+		
 		while(!isMade){
 			try {
 				Thread.sleep(1);

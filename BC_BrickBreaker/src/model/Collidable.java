@@ -18,6 +18,8 @@ public abstract class Collidable {
 	public abstract boolean canCollideWith(Collidable C);
 	public abstract boolean collide(Collidable C);
 	public abstract boolean collide(Collidable C, boolean ignorePosition);
+	public abstract double collideTime(Collidable C);
+	
 	public abstract int getCollisionPrecedence();
 	public abstract boolean stillExists();
 	public abstract void advance(double seconds);

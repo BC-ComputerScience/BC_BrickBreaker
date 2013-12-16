@@ -1,8 +1,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import mathematics.Vector;
 /**
@@ -99,11 +102,6 @@ public class CollisionList {
 			}
 			if(movable.size()+stationary.size()/10>this.maxContained) toSublists();
 		}else{
-			
-			
-			
-			
-			
 			if(c.getX()>midX){//add to east/southeast
 				
 				if(c.getY()>midY){
@@ -144,41 +142,82 @@ public class CollisionList {
 						}
 					}
 				}
-				/**/
 				
 			}
 		}
 	}
-	private void collideIfPossible(Collidable a, Collidable b){
+	private void collideIfPossible(Collidable a, Collidable b, HashMap<Collision, Double> previousCollisions){
+		
 		boolean canA,canB;
 		canA=a.canCollideWith(b);
 		canB=b.canCollideWith(a);
 		if((canA||canB)&&a.checkBoundingCollision(b)){
-			if(canA&&canB){
-				if(a.getCollisionPrecedence()>=b.getCollisionPrecedence()){
-					a.collide(b);
+			
+			
+			Collision collision=new Collision(a,b);
+			
+			if(!previousCollisions.containsKey(collision)){
+				double time;
+				
+				
+				if(canA&&canB){
+					if(a.getCollisionPrecedence()>=b.getCollisionPrecedence()){
+						time=a.collideTime(b);
+					}else{
+						time=b.collideTime(a);
+					}
+				}else if(canA){
+					time=a.collideTime(b);
 				}else{
-					b.collide(a);
+					time=b.collideTime(a);
 				}
-			}else if(canA){
-				a.collide(b);
-			}else if(canB){
-				b.collide(a);
+					if(time<=0){
+						previousCollisions.put(collision, time);
+						collision.setTime(time);
+					}
+				
+			}
+		}
+		
+	}
+	
+	public void checkCollisions(){
+		HashMap<Collision, Double> collisions= new HashMap<Collision, Double>();
+		checkCollisions(collisions);
+		
+		HashSet <Collidable> finished=new HashSet <Collidable>();
+		
+		Collision cols[]=new Collision[collisions.size()];
+		if(!collisions.isEmpty())System.out.println(collisions);
+		int i=0;
+		for(Collision c: collisions.keySet()){
+			cols[i++]=c;
+		}
+		Arrays.sort(cols);
+		for(Collision c: cols){
+			
+			
+			if((!finished.contains(c.a)||!finished.contains(c.b))){
+				
+				if(c.a instanceof Movable)finished.add(c.a);
+				if(c.b instanceof Movable)finished.add(c.b);
+				c.doCollision();
 			}
 		}
 		
 	}
 	
 	
-	public void checkCollisions(){
+	public void checkCollisions(HashMap<Collision, Double> collisions){
+		
 		if(isBottom){
 			int length=movable.size();
 			for(int i=0;i<length;i++){
 				for(int j=i+1;j<length;j++){
-					this.collideIfPossible(movable.get(i),movable.get(j));
+					this.collideIfPossible(movable.get(i),movable.get(j),collisions);
 				}
 				for(Collidable c: stationary){
-					this.collideIfPossible(c, movable.get(i));
+					this.collideIfPossible(c, movable.get(i),collisions);
 				}
 			}
 		}else{
@@ -221,6 +260,51 @@ public class CollisionList {
 		return new ArrayList<Collidable>();
 	}
 	
+	private class Collision implements Comparable<Collision>{
+		
+		private double time=1;
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + getOuterType().hashCode();
+			result = prime * result + ((a == null) ? 0 : a.hashCode());
+			result = prime * result + ((b == null) ? 0 : b.hashCode());
+			return result;
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if(obj instanceof Collision){
+				return ((Collision)obj).a==a&&((Collision)obj).b==b;
+			}
+			return false;
+		}
+		private Collidable a,b;
+		public Collision(Collidable a, Collidable b){
+			this.a=a;
+			this.b=b;
+		}
+		public void setTime(double time){this.time=time;}
+		public double getTime(){return time;}
+		public void doCollision(){
+			a.collide(b);
+		}
+		private CollisionList getOuterType() {
+			return CollisionList.this;
+		}
+		public String toString(){
+			return a+","+b;
+		}
+		@Override
+		public int compareTo(Collision o) {
+
+				double ret=time-o.time;
+				if(ret>0)return 1;
+				return -1;
+
+		}
+		
+	}/**/
 
 	
 	
