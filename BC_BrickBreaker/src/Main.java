@@ -1,7 +1,5 @@
 import java.util.Random;
 
-import controller.LevelLoader;
-
  /**
  * A starting point
  * 
