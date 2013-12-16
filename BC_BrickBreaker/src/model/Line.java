@@ -104,11 +104,11 @@ public class Line extends Collidable implements Renderable {
 				return true;
 			} else if (p2.distance(s.getCenter()) < s.getRadius()) {
 				// if at end of line, line acts like a point
-				s.bounceOffPoint(p2);
-				return true;
+				//s.bounceOffPoint(p2);
+				//return true;
 			} else if (p1.distance(s.getCenter()) < s.getRadius()) {
-				s.bounceOffPoint(p1);
-				return true;
+				//s.bounceOffPoint(p1);
+				//return true;
 			}
 			
 

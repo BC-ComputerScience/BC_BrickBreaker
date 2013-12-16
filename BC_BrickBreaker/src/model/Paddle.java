@@ -104,7 +104,7 @@ public class Paddle extends Collidable implements Renderable{
 					s.advance(-time);
 					//Vector n=new Vector(x+(width/2),s.getY()).subtract(s.getCenter());
 					
-					Vector n=normal;// =new Vector((this.x+(length/2.)-s.getX())/length,0).negate().add(normal);
+					Vector n =new Vector((this.x+(length/2.)-s.getCenter().getElement(0))/length,0).negate().add(normal);
 					
 					//System.out.println(this.x+(length/2.));
 					//System.out.println(s.getX());
@@ -121,11 +121,11 @@ public class Paddle extends Collidable implements Renderable{
 				return true;
 			} else if (p2.distance(s.getCenter()) < s.getRadius()) {
 				// if at end of line, line acts like a point
-				s.bounceOffPoint(p2);
-				return true;
+				//s.bounceOffPoint(p2);
+				//return true;
 			} else if (p1.distance(s.getCenter()) < s.getRadius()) {
-				s.bounceOffPoint(p1);
-				return true;
+				//s.bounceOffPoint(p1);
+				//return true;
 			}
 			
 

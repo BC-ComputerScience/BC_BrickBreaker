@@ -60,7 +60,6 @@
 				<height>16</height>
 			</sprite>
 		</spriteSheet>
-	
 		<spriteSheet name="greyBrick2">
 			<sprite time="1" source="sheet2">
 				<y>111</y>
@@ -69,7 +68,6 @@
 				<height>16</height>
 			</sprite>
 		</spriteSheet>
-		
 		<spriteSheet name="greyBrick3">	
 			<sprite time="1" source="sheet2">
 				<y>128</y>
@@ -78,7 +76,6 @@
 				<height>16</height>
 			</sprite>
 		</spriteSheet>
-		
 		<spriteSheet name="greyBrick4">
 			<sprite time="1" source="sheet2">
 				<y>145</y>
@@ -95,7 +92,6 @@
 				<height>16</height>
 			</sprite>
 		</spriteSheet>
-		
 		<spriteSheet name="greyBrick3">	
 			<sprite time="1" source="sheet2">
 				<y>128</y>
@@ -104,7 +100,6 @@
 				<height>16</height>
 			</sprite>
 		</spriteSheet>
-		
 		<spriteSheet name="greyBrick4">
 			<sprite time="1" source="sheet2">
 				<y>145</y>
@@ -121,7 +116,6 @@
 				<height>16</height>
 			</sprite>
 		</spriteSheet>
-		
 		<spriteSheet name="greyBrick6">	
 			<sprite time="1" source="sheet2">
 				<y>128</y>
@@ -130,7 +124,6 @@
 				<height>16</height>
 			</sprite>
 		</spriteSheet>
-		
 		<spriteSheet name="greyBrick7">
 			<sprite time="1" source="sheet2">
 				<y>145</y>
@@ -147,7 +140,6 @@
 				<height>16</height>
 			</sprite>
 		</spriteSheet>
-		
 		<spriteSheet name="greyBrick9">	
 			<sprite time="1" source="sheet2">
 				<y>128</y>
@@ -156,7 +148,6 @@
 				<height>16</height>
 			</sprite>
 		</spriteSheet>
-		
 		<spriteSheet name="greyBrick10">
 			<sprite time="1" source="sheet2">
 				<y>145</y>
@@ -165,33 +156,122 @@
 				<height>16</height>
 			</sprite>
 		</spriteSheet>
-		
-		
-		
-		
-		
-		<spriteSheet name="tealBrick">
-			<sprite time="0" source="sheet2">
+		<spriteSheet name="brownBrick1">
+			<sprite time="1" source="sheet2">
 				<y>111</y>
-				<x>264</x>
+				<x>232</x>
 				<width>32</width>
 				<height>16</height>
 			</sprite>
-			<sprite time="20" source="sheet2">
+		</spriteSheet>
+		<spriteSheet name="brownBrick2">	
+			<sprite time="1" source="sheet2">
 				<y>128</y>
-				<x>264</x>
+				<x>232</x>
 				<width>32</width>
 				<height>16</height>
 			</sprite>
-			<sprite time="40" source="sheet2">
+		</spriteSheet>
+		<spriteSheet name="brownBrick3">
+			<sprite time="1" source="sheet2">
 				<y>145</y>
-				<x>264</x>
+				<x>232</x>
 				<width>32</width>
 				<height>16</height>
 			</sprite>
-			<sprite time="60" source="sheet2">
+		</spriteSheet>
+		<spriteSheet name="tealBrick1">
+			<sprite time="1" source="sheet2">
+				<y>111</y>
+				<x>265</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="tealBrick2">	
+			<sprite time="1" source="sheet2">
 				<y>128</y>
-				<x>264</x>
+				<x>265</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="tealBrick3">
+			<sprite time="1" source="sheet2">
+				<y>145</y>
+				<x>265</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="greenBrick1">
+			<sprite time="1" source="sheet2">
+				<y>111</y>
+				<x>298</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="greenBrick2">	
+			<sprite time="1" source="sheet2">
+				<y>128</y>
+				<x>298</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="greenBrick3">
+			<sprite time="1" source="sheet2">
+				<y>145</y>
+				<x>298</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="blueBrick1">
+			<sprite time="1" source="sheet2">
+				<y>111</y>
+				<x>331</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="blueBrick2">	
+			<sprite time="1" source="sheet2">
+				<y>128</y>
+				<x>331</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="blueBrick3">
+			<sprite time="1" source="sheet2">
+				<y>145</y>
+				<x>331</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="purpleBrick1">
+			<sprite time="1" source="sheet2">
+				<y>111</y>
+				<x>364</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="purpleBrick2">	
+			<sprite time="1" source="sheet2">
+				<y>128</y>
+				<x>364</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="purpleBrick3">
+			<sprite time="1" source="sheet2">
+				<y>145</y>
+				<x>364</x>
 				<width>32</width>
 				<height>16</height>
 			</sprite>
@@ -199,6 +279,343 @@
 	</spriteSheets>
 	
 	<objects>
+		<!--<Sphere>
+			<spriteset health="0">
+				Ball
+			</spriteset>
+			<radius>30</radius>
+			<y>500</y>
+			<x>200</x>
+			<yVel>0</yVel>
+			<xVel>0</xVel>
+		</Sphere>-->
+		<Sphere>
+			<spriteset health="0">
+				Ball
+			</spriteset>
+			<radius>30</radius>
+			<y>500</y>
+			<x>500</x>
+			<yVel>450</yVel>
+			<xVel>-300</xVel>
+		</Sphere>
+		
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>50</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>66</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>82</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>98</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick2</spriteset><health>1</health><y>114</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>130</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>146</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>162</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>178</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>194</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>210</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>226</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>242</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>258</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>274</y><x>50</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>50</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>66</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>82</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>98</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>114</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>130</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>146</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>162</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>178</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>194</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>210</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>226</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>242</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick2</spriteset><health>1</health><y>258</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>274</y><x>82</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>50</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>66</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>82</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>98</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>114</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>130</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>146</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>162</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>178</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>194</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>210</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>226</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>242</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick7</spriteset><health>1</health><y>258</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>274</y><x>114</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>50</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>66</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>82</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>98</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>114</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>130</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>146</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>162</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>178</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>194</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>210</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>226</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>242</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>258</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>274</y><x>146</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>50</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>66</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>82</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>98</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>114</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>130</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>146</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>162</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>178</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>194</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>210</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>226</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>242</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>258</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>274</y><x>178</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>50</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>66</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>82</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>98</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>114</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>130</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>146</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>162</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>178</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick2</spriteset><health>1</health><y>194</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>210</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>226</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>242</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick7</spriteset><health>1</health><y>258</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>274</y><x>210</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>50</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>66</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>82</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>98</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>114</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>130</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>146</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>162</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>178</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick2</spriteset><health>1</health><y>194</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>210</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>226</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>242</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>258</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>274</y><x>242</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick7</spriteset><health>1</health><y>50</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>66</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>82</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>98</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>114</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>130</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>146</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>162</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>178</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>194</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>210</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>226</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>242</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>258</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>274</y><x>274</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>50</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>66</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>82</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>98</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>114</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick2</spriteset><health>1</health><y>130</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>146</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>162</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>178</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>194</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>210</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>226</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>242</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>258</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>274</y><x>306</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>50</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>66</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>82</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>98</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>114</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>130</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>146</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>162</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>178</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>194</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>210</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>226</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>242</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>258</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>274</y><x>338</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick2</spriteset><health>1</health><y>50</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>66</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>82</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>98</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>114</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>130</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>146</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>162</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>178</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>194</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>210</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>226</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>242</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>258</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>274</y><x>370</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>50</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>66</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>82</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>98</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>114</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>130</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>146</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>162</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>178</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>194</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick2</spriteset><health>1</health><y>210</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>226</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick2</spriteset><health>1</health><y>242</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>258</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>274</y><x>402</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>50</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick2</spriteset><health>1</health><y>66</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>82</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>98</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>114</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>130</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick7</spriteset><health>1</health><y>146</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>162</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>178</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>194</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>210</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>226</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>242</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>258</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>274</y><x>434</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>50</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>66</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick2</spriteset><health>1</health><y>82</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick7</spriteset><health>1</health><y>98</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>114</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>130</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>146</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>162</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>178</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>194</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>210</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>226</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>242</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>258</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>274</y><x>466</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>50</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>66</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>82</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick2</spriteset><health>1</health><y>98</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>114</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>130</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick2</spriteset><health>1</health><y>146</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>162</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>178</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>194</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>210</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>226</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>242</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>258</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>274</y><x>498</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>50</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>66</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>82</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>98</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>114</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>130</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>146</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>162</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick2</spriteset><health>1</health><y>178</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>194</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>210</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>226</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>242</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>258</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>274</y><x>530</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick7</spriteset><health>1</health><y>50</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>66</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>82</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>98</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>114</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>130</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick2</spriteset><health>1</health><y>146</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick7</spriteset><health>1</health><y>162</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>178</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>194</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>210</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick7</spriteset><health>1</health><y>226</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick2</spriteset><health>1</health><y>242</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>258</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>274</y><x>562</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>50</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>66</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>82</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>98</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>114</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>130</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick7</spriteset><health>1</health><y>146</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>162</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>178</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>194</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>210</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>226</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>242</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>258</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>274</y><x>594</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>50</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>66</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>82</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick9</spriteset><health>1</health><y>98</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>114</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick2</spriteset><health>1</health><y>130</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>146</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>162</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick6</spriteset><health>1</health><y>178</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>194</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>210</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>226</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>242</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick7</spriteset><health>1</health><y>258</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick8</spriteset><health>1</health><y>274</y><x>626</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick2</spriteset><health>1</health><y>50</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>66</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>82</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick2</spriteset><health>1</health><y>98</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>114</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>130</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>146</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>162</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>178</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick3</spriteset><health>1</health><y>194</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>210</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick2</spriteset><health>1</health><y>226</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick2</spriteset><health>1</health><y>242</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>258</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick2</spriteset><health>1</health><y>274</y><x>658</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">brownBrick3</spriteset><health>1</health><y>50</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick3</spriteset><health>1</health><y>66</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>82</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>98</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick2</spriteset><health>1</health><y>114</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick1</spriteset><health>1</health><y>130</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>146</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick5</spriteset><health>1</health><y>162</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">tealBrick2</spriteset><health>1</health><y>178</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick3</spriteset><health>1</health><y>194</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>210</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greenBrick3</spriteset><health>1</health><y>226</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">greyBrick4</spriteset><health>1</health><y>242</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">purpleBrick3</spriteset><health>1</health><y>258</y><x>690</x><width>32</width><height>16</height></Brick>
+<Brick> <spriteset health="0">blueBrick2</spriteset><health>1</health><y>274</y><x>690</x><width>32</width><height>16</height></Brick>
+		<!-- 
 		<Brick>
 			<spriteset health="0">
 				greyBrick1
@@ -229,8 +646,6 @@
 			<width>32</width>
 			<height>16</height>
 		</Brick>
-		
-		
 		<Brick>
 			<spriteset health="0">
 				greyBrick4
@@ -261,7 +676,6 @@
 			<width>32</width>
 			<height>16</height>
 		</Brick>
-		
 		<Brick>
 			<spriteset health="0">
 				greyBrick7
@@ -294,7 +708,7 @@
 		</Brick>
 		<Brick>
 			<spriteset health="0">
-				greyBrick10
+				brownBrick1
 			</spriteset>
 			<health>1</health>
 			<y>50</y>
@@ -302,16 +716,147 @@
 			<width>32</width>
 			<height>16</height>
 		</Brick>
-		<Sphere>
+
+		<Brick>
 			<spriteset health="0">
-				Ball
+				brownBrick2
 			</spriteset>
-			<radius>30</radius>
-			<y>500</y>
-			<x>200</x>
-			<yVel>0</yVel>
-			<xVel>0</xVel>
-		
-		</Sphere>
+			<health>1</health>
+			<y>66</y>
+			<x>146</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				brownBrick3
+			</spriteset>
+			<health>1</health>
+			<y>82</y>
+			<x>146</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				tealBrick1
+			</spriteset>
+			<health>1</health>
+			<y>50</y>
+			<x>178</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				tealBrick2
+			</spriteset>
+			<health>1</health>
+			<y>66</y>
+			<x>178</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				tealBrick3
+			</spriteset>
+			<health>1</health>
+			<y>82</y>
+			<x>178</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				greenBrick1
+			</spriteset>
+			<health>1</health>
+			<y>50</y>
+			<x>210</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				greenBrick2
+			</spriteset>
+			<health>1</health>
+			<y>66</y>
+			<x>210</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				greenBrick3
+			</spriteset>
+			<health>1</health>
+			<y>82</y>
+			<x>210</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				blueBrick1
+			</spriteset>
+			<health>1</health>
+			<y>50</y>
+			<x>242</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				blueBrick2
+			</spriteset>
+			<health>1</health>
+			<y>66</y>
+			<x>242</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				blueBrick3
+			</spriteset>
+			<health>1</health>
+			<y>82</y>
+			<x>242</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				purpleBrick1
+			</spriteset>
+			<health>1</health>
+			<y>50</y>
+			<x>274</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				purpleBrick2
+			</spriteset>
+			<health>1</health>
+			<y>66</y>
+			<x>274</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				purpleBrick3
+			</spriteset>
+			<health>1</health>
+			<y>82</y>
+			<x>274</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		-->
 		</objects>
 </level>

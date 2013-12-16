@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+
 import java.util.Random;
 
 import mathematics.Vector;
@@ -14,23 +15,32 @@ import model.Sphere;
  * 
  */
 public class Tester {
+	Collision_Simulator sim;
+	Random rand=new Random();
+	
+	
+	
+	public Tester(Collision_Simulator sim){
+		this.sim=sim;
+	}
 	
 	public void testCase(){
-		lineCollisionTest();
+		new LevelLoader("TestLevel/", sim);
+		//lineCollisionTest();
 	}
 	
 	public void lineCollisionTest(){
 		
 		/**/
-		this.addRandomCircles(10);
+		//this.addRandomCircles(10);
 		//sim.addGameObject(new Line(200,100,500,405));
 		//sim.addGameObject(new Line(500,405,100,200));
 		//sim.addGameObject(new Line(100,100,200,100));
 		//sim.addGameObject(new Sphere(20,300, new Vector(200,0),100));
 		//sim.addGameObject(new Sphere(780,300, new Vector(-200,0),100));
 		//this.addRandomCircles(200);
-		sim.addGameObject(new Line(200,100,600,500));
-		sim.addGameObject(new Line(200,500,600,100));
+		//sim.addGameObject(new Line(200,100,600,500));
+		//sim.addGameObject(new Line(200,500,600,100));
 		
 		
 		//sim.addGameObject(new Sphere(206.0, 108.0, new Vector(253,57).subtract(new Vector(206,108)).negate(),100));
@@ -58,14 +68,7 @@ public class Tester {
 	
 	
 	
-	Collision_Simulator sim;
-	Random rand=new Random();
 	
-	
-	
-	public Tester(Collision_Simulator sim){
-		this.sim=sim;
-	}
 	public void placeSphere(int x, int y,boolean isImmovable){
 		Sphere s=new Sphere(x,y,new Vector(0,0),rand.nextInt(50)+50);
 		s.setImmovable(isImmovable);

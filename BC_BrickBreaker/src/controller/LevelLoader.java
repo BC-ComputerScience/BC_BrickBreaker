@@ -51,6 +51,9 @@ public class LevelLoader {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			//make sure that memory is cleared
+			resources=null;
 		}
 		
 	}
@@ -216,7 +219,7 @@ public class LevelLoader {
 	}
 	
 	private Resource loadResource(String name, String type){
-		System.out.println("loading: "+name+"  type: "+type);
+		System.out.println("Loading: "+name+"  type: "+type);
 		try{
 			return new Resource(name, type);
 		}catch(IOException e){
