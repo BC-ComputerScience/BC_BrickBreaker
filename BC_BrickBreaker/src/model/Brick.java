@@ -34,7 +34,7 @@ public class Brick extends Collidable implements Renderable{
 
 
 	public Brick(double x, double y, int width, int height, int health) {
-		System.out.println("x:"+x+"y:"+y+"width:"+width+"height:"+height+"health:"+health);
+		//System.out.println("x:"+x+"y:"+y+"width:"+width+"height:"+height+"health:"+health);
 		this.x=(int)x;
 		this.y=(int)y;
 		this.width=width;

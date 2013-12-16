@@ -69,7 +69,6 @@ public class LevelLoader {
 	
 
 	private Brick makeBrick(Node node) {
-		System.out.println("creating a brick");
 		NodeList attributes=node.getChildNodes();
 		SpriteSheet sheet=null;
 		int health=0,y=0,x=0,width=0,height=0;
