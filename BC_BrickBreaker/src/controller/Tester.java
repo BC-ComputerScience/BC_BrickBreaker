@@ -33,9 +33,10 @@ public class Tester {
 		
 		/**/
 		//this.addRandomCircles(10);
-		//sim.addGameObject(new Line(200,100,500,405));
+
 		/*/sim.addGameObject(new Line(200,100,500,405));
 		//sim.addGameObject(new Sphere(435.0,451.0, new Vector(94.0, -79.0),88.0));
+>>>>>>> refs/heads/CollisionListFix
 		//sim.addGameObject(new Line(500,405,100,200));
 		//sim.addGameObject(new Line(100,100,200,100));
 		//sim.addGameObject(new Sphere(20,300, new Vector(200,0),100));
