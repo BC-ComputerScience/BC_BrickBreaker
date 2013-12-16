@@ -179,18 +179,18 @@ public class Sphere extends Movable implements Renderable{
 		return 1;
 	}
 	public void bounceOffPoint(Vector p2) {
-		double time=(this.radius-getCenter().distance(p2))/this.getTrajectory().distance(new Vector(0,0));		
-		if(time>3600)return;//if you need to backup more than an hour, I have some bad news for you
+		//double time=(this.radius-getCenter().distance(p2))/this.getTrajectory().distance(new Vector(0,0));		
+		//if(time>3600)return;//if you need to backup more than an hour, I have some bad news for you
 
 		//move time to just before collision
-		this.advance(-time);
+		//this.advance(-time);
 		
 		Vector normal=this.getCenter().subtract(p2);
 		
 		this.reflect(normal.negate());
 		
 		//move time to its previous location
-		this.advance(time);
+		//this.advance(time);
 		
 	}
 	@Override

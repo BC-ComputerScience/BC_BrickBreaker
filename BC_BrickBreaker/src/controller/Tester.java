@@ -51,14 +51,15 @@ public class Tester {
 		}/**/
 		//sim.addGameObject(new Sphere(776.0,453.0, new Vector(-71.0, -83.0),64.0));
 		//sim.addGameObject(new Sphere(797.0,375.0, new Vector(-167.0, -1.0),63.0));
-		sim.addGameObject(new Sphere(42.0,96.0, new Vector(37.0, 98.0),76.0));
+		
 		for(int i=width;i<800-width;i+=width){
-			for(int j=height;j<=600;j+=height){
-				sim.addGameObject(new Brick(i,j+offset,width,height));
+			for(int j=height*5;j<=400;j+=height){
+				sim.addGameObject(new Brick(i,j,width,height));
 			}
 		}
-		
-		
+		//sim.addGameObject(new Sphere(42.0,96.0, new Vector(37.0, 98.0),76.0));
+		//sim.addGameObject(new Sphere(32.0,441.0, new Vector(106.0, -94.0),79.0));
+		//sim.addGameObject(new Sphere(754.0,64.0, new Vector(-15.0, 148.0),98.0));
 		
 		/**/
 	}

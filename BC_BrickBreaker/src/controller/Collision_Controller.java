@@ -21,7 +21,7 @@ public class Collision_Controller implements ActionListener, MouseListener, Mous
 	
 	//A time set to proc every 20 millis
 	private Timer timer;
-	private int millisPerProc=250;
+	private int millisPerProc=50;
 	private double timeDialation=1;
 	//timers can be inconsistent, so keep track of time
 	private long lastTime=0;
@@ -130,6 +130,7 @@ public class Collision_Controller implements ActionListener, MouseListener, Mous
 					System.out.println(new mathematics.Vector(mouse.getX(),mouse.getY()));
 				}else{
 					System.out.println("selected: "+model.selectAtPoint(endx, endy));
+					System.out.println(endx+","+endy);
 				}
 				
 				

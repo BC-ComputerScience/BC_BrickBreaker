@@ -112,8 +112,6 @@ public class Brick extends Collidable implements Renderable{
 			if(temp==lines[3])System.out.println("line 3");
 			if(temp!=lines[2]||true){
 				
-			System.out.println(temp);
-			System.out.println(this+"collides with"+c+" at "+time);
 			}
 			this.hitPoints--;
 			return true;

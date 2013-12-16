@@ -80,9 +80,38 @@ public class Line extends Collidable implements Renderable {
 					.getElement(0);
 			double traj = toBase.apply(s.getTrajectory()).getElement(0);
 			double linetime=kp(-(Math.min(Math.abs((s.getRadius() - height) / traj),Math.abs(( s.getRadius() - height) / traj) )));
-			double p1time=kp((s.getRadius()-s.getCenter().distance(p1))/s.getTrajectory().distance(new Vector(0,0)));
+			double p1time=-1,p2time=-1;
+			Matrix pointBasis = Matrix.createOrthonormal(s.getTrajectory().getPerpendicular());
 			
-			double p2time=kp((s.getRadius()-s.getCenter().distance(p2))/s.getTrajectory().distance(new Vector(0,0)));
+			double p1height = pointBasis.apply(s.getCenter().subtract(this.p1))
+					.getElement(0);
+			double p2height = pointBasis.apply(s.getCenter().subtract(this.p2))
+					.getElement(0);
+			double radius=s.getRadius();
+			if(Math.abs(p1height) < s.getRadius()){
+				double h=(pointBasis.apply(s.getCenter().subtract(this.p1))
+						.getElement(1));
+				double y=0;
+				double k=pointBasis.apply(s.getCenter().subtract(this.p1))
+						.getElement(0);
+				double r=radius;
+				double det=Math.sqrt(r*r-(y-k)*(y-k));
+				p1time=-Math.abs(((det<0?det:-det)+h)/s.getTrajectory().getLength());
+				if(p1time>0)p1time=-1;
+				
+			}
+			if(Math.abs(p2height) < s.getRadius()){
+				double h=(pointBasis.apply(s.getCenter().subtract(this.p2))
+						.getElement(1));
+				double y=0;
+				double k=pointBasis.apply(s.getCenter().subtract(this.p2))
+						.getElement(0);
+				double r=radius;
+				double det=Math.sqrt(r*r-(y-k)*(y-k));
+				
+				p2time=-Math.abs(((det<0?det:-det)+h)/s.getTrajectory().getLength());
+				if(p2time>0)p1time=-1;
+			}
 			//double time =0;
 			//System.out.println(""+linetime+","+p1time+","+p2time);
 			
@@ -113,12 +142,50 @@ public class Line extends Collidable implements Renderable {
 					.getElement(1);
 			
 			if (Math.abs(height) <= s.getRadius()){
-				//System.out.println();
-				//System.out.println(this +" collides with "+c);
 				double linetime=kp(-(Math.min(Math.abs((s.getRadius() - height) / traj),Math.abs(( s.getRadius() - height) / traj) )));
-				double p1time=kp((s.getRadius()-s.getCenter().distance(p1))/s.getTrajectory().distance(new Vector(0,0)));
 				
-				double p2time=kp((s.getRadius()-s.getCenter().distance(p2))/s.getTrajectory().distance(new Vector(0,0)));
+				Matrix pointBasis = Matrix.createOrthonormal(s.getTrajectory().getPerpendicular());
+				
+				double p1height = pointBasis.apply(s.getCenter().subtract(this.p1))
+						.getElement(0);
+				double p2height = pointBasis.apply(s.getCenter().subtract(this.p2))
+						.getElement(0);
+				double p1time=-1;//kp((s.getRadius()-s.getCenter().distance(p1))/s.getTrajectory().distance(new Vector(0,0)));
+				
+				double p2time=-1;//kp((s.getRadius()-s.getCenter().distance(p2))/s.getTrajectory().distance(new Vector(0,0)));
+//				
+//				System.out.println("------------------");
+//				System.out.println(pointBasis.apply(s.getCenter().subtract(this.p1))+"radius:"+s.getRadius());
+				double radius=s.getRadius();
+				if(Math.abs(p1height) < s.getRadius()){
+					double h=(pointBasis.apply(s.getCenter().subtract(this.p1))
+							.getElement(1));
+					double y=0;
+					double k=pointBasis.apply(s.getCenter().subtract(this.p1))
+							.getElement(0);
+					double r=radius;
+					double det=Math.sqrt(r*r-(y-k)*(y-k));
+					p1time=-Math.abs(((det<0?det:-det)+h)/s.getTrajectory().getLength());
+					if(p1time>0)p1time=-1;
+					
+				}
+				if(Math.abs(p2height) < s.getRadius()){
+					double h=(pointBasis.apply(s.getCenter().subtract(this.p2))
+							.getElement(1));
+					double y=0;
+					double k=pointBasis.apply(s.getCenter().subtract(this.p2))
+							.getElement(0);
+					double r=radius;
+					double det=Math.sqrt(r*r-(y-k)*(y-k));
+					
+					p2time=-Math.abs(((det<0?det:-det)+h)/s.getTrajectory().getLength());
+					if(p2time>0)p1time=-1;
+				}
+//				System.out.println("------------------");
+				
+				//double p1time=-1;//kp((s.getRadius()-s.getCenter().distance(p1))/s.getTrajectory().distance(new Vector(0,0)));
+				
+				//double p2time=-1;//kp((s.getRadius()-s.getCenter().distance(p2))/s.getTrajectory().distance(new Vector(0,0)));
 				
 				//System.out.println();System.out.println();System.out.println();
 				//System.out.println("x:"+x+" y:"+height+" radius"+s.getRadius());
@@ -129,17 +196,17 @@ public class Line extends Collidable implements Renderable {
 				//linetime<
 				
 				//double Time= Math.min( (s.getRadius()-s.getCenter().distance(p1))/s.getTrajectory().distance(new Vector(0,0)));
-				Double time=-Math.max(Math.max((p1time), (p2time)), (linetime));
-				s.advance(-time);
-				//s.setTrajectory(new Vector(0,0));
-				//if(true)return true;
-				height = toBase.apply(s.getCenter().subtract(this.p1))
-						.getElement(0);
-				traj = toBase.apply(s.getTrajectory()).getElement(0);
-				x = toBase.apply(s.getCenter().subtract(this.p1))
-						.getElement(1);
+				double time=-Math.max(Math.max((p1time), (p2time)), (linetime));
+//				System.out.println("times :"+linetime+","+p1time+","+p2time);
+//				System.out.println(time);
 				
+
+				System.out.println("------------------------------");
+				System.out.println(time+ "times :"+linetime+","+p1time+","+p2time);
+				System.out.println("------------------------------");
 				if(x <= 0 && -length <= x) {
+					time=-linetime;
+					s.advance(-time);
 					/*
 					 * using traj means even if the center of the ball passes the
 					 * line it will stop the ball from passing through line if you
@@ -148,39 +215,71 @@ public class Line extends Collidable implements Renderable {
 					// TODO see where ball is at time of collision
 					//System.out.println(""+linetime+","+p1time+","+p2time);
 					//System.out.println("pre:"+s.getTrajectory());
-					if(time<1){
-						if (traj < 0) {
+					System.out.println(s.getTrajectory());
+					if(time<.1){
+						if (traj > 0) {
 							s.reflect(normal.negate());
 						} else {
-							if(!isOneWay)s.reflect(normal);
+							s.reflect(normal);
 						}
 					}
+					System.out.println(s.getTrajectory());
+					
 					//System.out.println("post:"+s.getTrajectory());
 					//System.out.println("------------------------------");
-					System.out.println("line");
+					System.out.println("line!");
 				}else if (-p2time==time) {
+					s.advance(-time);
 					// if at end of line, line acts like a point
 					//System.out.println("collision p2 at:"+time);
 					System.out.println("point 2");
-					System.out.println("x:"+x+"y:"+height +"line length"+length);
-					System.out.println("times :"+linetime+","+p1time+","+p2time);
-					s.bounceOffPoint(p2);
-				} else if (-p1time==time) {
+//					//System.out.println("x:"+x+"y:"+height +"line length"+length);
+//					
+//					System.out.println(s.getTrajectory().getUnitVector().negate());
+//					System.out.println(s.getCenter().subtract(p1).getUnitVector());
+					System.out.println(s.getTrajectory().getUnitVector());
+					System.out.println("-_-_-_-_-_");
+					System.out.println(p2);
+					System.out.println(p1);
+					System.out.println(s.getCenter());
+					System.out.println(s.getCenter().subtract(p2).getUnitVector());
+					System.out.println(s.getImageX()+","+s.getImageY());
+					System.out.println("-_-_-_-_-_");
+					s.reflect(s.getCenter().subtract(p2));
+					//s.bounceOffPoint(p2);
+				}else if (-p1time==time) {
+					s.advance(-time);
 					System.out.println("point 1");
+					System.out.println(s.getTrajectory().getUnitVector());
+					System.out.println("-_-_-_-_-_");
+					System.out.println(p2);
+					System.out.println(p1);
+					System.out.println(s.getCenter());
+					System.out.println(s.getCenter().subtract(p1));
+					System.out.println("-_-_-_-_-_");
 					//System.out.println("collision p1 at:"+time);
 					//System.out.println();System.out.println();System.out.println();
 					
 					
 					//System.out.println();System.out.println();System.out.println();
-					
-					s.bounceOffPoint(p1);
-				}else{
-					System.out.println("times :"+linetime+","+p1time+","+p2time);
+					s.reflect(s.getCenter().subtract(p1));
+					//s.bounceOffPoint(p1);
+				}else {
+					System.out.println("########nohit########");
+					System.out.println(time+ "times :"+linetime+","+p1time+","+p2time);
+					System.out.println("x:"+x+"length"+length);
+					System.out.println("#######################");
+					return false;
 					//System.out.println("collision not p1:"+p1.distance(s.getCenter())+"    p2:"+p2.distance(s.getCenter()));
 				}
-				
+				if(true){
+					//s.setTrajectory(new Vector(0,0));
+					//return true;
+					
+				}
 				
 				s.advance(time);
+				
 				return true;
 			}
 			System.out.println("did not collide");
