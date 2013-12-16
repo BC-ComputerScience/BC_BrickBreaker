@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level>
+	<links>
+		<file name="sheet1" type="png">testSprites.png</file>
+		<file name="sheet2" type="png">simpleSprites.png</file>
+	</links>
+	
+	<spriteSheets>
+		<spriteSheet name="greyBrick1">
+			<sprite time="1" source="sheet2">
+				<y>145</y>
+				<x>100</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+	
+		<spriteSheet name="greyBrick2">
+			<sprite time="1" source="sheet2">
+				<y>111</y>
+				<x>133</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		
+		<spriteSheet name="greyBrick3">	
+			<sprite time="1" source="sheet2">
+				<y>128</y>
+				<x>133</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		
+		<spriteSheet name="greyBrick4">
+			<sprite time="1" source="sheet2">
+				<y>145</y>
+				<x>133</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="greyBrick2">
+			<sprite time="1" source="sheet2">
+				<y>111</y>
+				<x>133</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		
+		<spriteSheet name="greyBrick3">	
+			<sprite time="1" source="sheet2">
+				<y>128</y>
+				<x>133</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		
+		<spriteSheet name="greyBrick4">
+			<sprite time="1" source="sheet2">
+				<y>145</y>
+				<x>133</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="greyBrick5">
+			<sprite time="1" source="sheet2">
+				<y>111</y>
+				<x>166</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		
+		<spriteSheet name="greyBrick6">	
+			<sprite time="1" source="sheet2">
+				<y>128</y>
+				<x>166</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		
+		<spriteSheet name="greyBrick7">
+			<sprite time="1" source="sheet2">
+				<y>145</y>
+				<x>166</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		<spriteSheet name="greyBrick8">
+			<sprite time="1" source="sheet2">
+				<y>111</y>
+				<x>199</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		
+		<spriteSheet name="greyBrick9">	
+			<sprite time="1" source="sheet2">
+				<y>128</y>
+				<x>199</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		
+		<spriteSheet name="greyBrick10">
+			<sprite time="1" source="sheet2">
+				<y>145</y>
+				<x>199</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+		
+		
+		
+		
+		
+		<spriteSheet name="tealBrick">
+			<sprite time="0" source="sheet2">
+				<y>111</y>
+				<x>264</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+			<sprite time="20" source="sheet2">
+				<y>128</y>
+				<x>264</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+			<sprite time="40" source="sheet2">
+				<y>145</y>
+				<x>264</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+			<sprite time="60" source="sheet2">
+				<y>128</y>
+				<x>264</x>
+				<width>32</width>
+				<height>16</height>
+			</sprite>
+		</spriteSheet>
+	</spriteSheets>
+	
+	<objects>
+		<Brick>
+			<spriteset health="0">
+				greyBrick1
+			</spriteset>
+			<health>1</health>
+			<y>50</y>
+			<x>50</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				greyBrick2
+			</spriteset>
+			<health>1</health>
+			<y>66</y>
+			<x>50</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				greyBrick3
+			</spriteset>
+			<health>1</health>
+			<y>82</y>
+			<x>50</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		
+		
+		<Brick>
+			<spriteset health="0">
+				greyBrick4
+			</spriteset>
+			<health>1</health>
+			<y>50</y>
+			<x>82</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				greyBrick5
+			</spriteset>
+			<health>1</health>
+			<y>66</y>
+			<x>82</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				greyBrick6
+			</spriteset>
+			<health>1</health>
+			<y>82</y>
+			<x>82</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		
+		<Brick>
+			<spriteset health="0">
+				greyBrick7
+			</spriteset>
+			<health>1</health>
+			<y>50</y>
+			<x>114</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				greyBrick8
+			</spriteset>
+			<health>1</health>
+			<y>82</y>
+			<x>114</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				greyBrick9
+			</spriteset>
+			<health>1</health>
+			<y>66</y>
+			<x>114</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		<Brick>
+			<spriteset health="0">
+				greyBrick10
+			</spriteset>
+			<health>1</health>
+			<y>50</y>
+			<x>146</x>
+			<width>32</width>
+			<height>16</height>
+		</Brick>
+		
+	</objects>
+</level>

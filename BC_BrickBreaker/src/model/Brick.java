@@ -5,14 +5,16 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
+import controller.SpriteSheet;
 import view.Renderable;
 
 public class Brick extends Collidable implements Renderable{
 	private int width,height;
 	private Line[] lines=new Line[4];
 	private BufferedImage image;
-	int hitPoints=5;
+	int hitPoints;
 	int x, y;
+	SpriteSheet s;
 	/**
 	 * creates a box
 	 * @param x top left x
@@ -21,17 +23,28 @@ public class Brick extends Collidable implements Renderable{
 	 * @param height height of box
 	 */
 	public Brick(double x, double y, int width,int height) {
+		this(x,y,width,height,1);
+		
+	}
+
+	public Brick(double x, double y, int width, int height, int health, SpriteSheet sheet) {
+		this(x,y,width,height,health);
+		s=sheet;
+	}
+
+
+	public Brick(double x, double y, int width, int height, int health) {
+		System.out.println("x:"+x+"y:"+y+"width:"+width+"height:"+height+"health:"+health);
 		this.x=(int)x;
 		this.y=(int)y;
 		this.width=width;
 		this.height=height;
 		lines[0]=new Line(x,y,x,y+height,true);
 		lines[1]=new Line(x,y+height,x+width,y+height,true);
-		
 		lines[2]=new Line(x+width,y+height,x+width,y,true);
 		lines[3]=new Line(x+width,y,x,y,true);
 		image = new BufferedImage(width+1,height+1,BufferedImage.TYPE_INT_ARGB);
-		
+		this.hitPoints=health;
 	}
 
 
@@ -50,6 +63,10 @@ public class Brick extends Collidable implements Renderable{
 
 	@Override
 	public Image getImage() {
+		
+		if(s!=null){
+			return s.currentSprite();
+		}
 		Graphics2D g= image.createGraphics();
 		switch(this.hitPoints){
 		default://g.setColor(Color.WHITE);break;
