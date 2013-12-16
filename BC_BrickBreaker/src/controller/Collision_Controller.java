@@ -53,7 +53,7 @@ public class Collision_Controller implements ActionListener, MouseListener, Mous
 		model = new Collision_Simulator(width,height,view);
 		
 		p = new Paddle(width/2,height-20,150);
-		//model.addGameObject(p);
+		model.addGameObject(p);
 		tester=new Tester(model);
 		
 		//make events in the view update this controller

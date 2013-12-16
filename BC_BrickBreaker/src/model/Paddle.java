@@ -112,7 +112,7 @@ public class Paddle extends Collidable implements Renderable{
 					//System.out.println(n);
 					//System.out.println(normal);
 					if (traj < 0) {
-						s.reflect(n.negate());
+						s.reflect(n);
 					} else {
 						if(!isOneWay)s.reflect(normal);
 					}
