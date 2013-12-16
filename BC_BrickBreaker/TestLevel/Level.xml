@@ -3,9 +3,55 @@
 	<links>
 		<file name="sheet1" type="png">testSprites.png</file>
 		<file name="sheet2" type="png">simpleSprites.png</file>
+		<file name="ballSheet" type="png">ui_ball.png</file>
 	</links>
 	
 	<spriteSheets>
+		<spriteSheet name="Ball">
+			<sprite time="10" source="ballSheet">
+				<y>0</y>
+				<x>0</x>
+				<width>64</width>
+				<height>64</height>
+			</sprite>
+			<sprite time="10" source="ballSheet">
+				<y>0</y>
+				<x>64</x>
+				<width>64</width>
+				<height>64</height>
+			</sprite>
+			<sprite time="10" source="ballSheet">
+				<y>64</y>
+				<x>0</x>
+				<width>64</width>
+				<height>64</height>
+			</sprite>
+			<sprite time="10" source="ballSheet">
+				<y>64</y>
+				<x>64</x>
+				<width>64</width>
+				<height>64</height>
+			</sprite>
+			<sprite time="10" source="ballSheet">
+				<y>128</y>
+				<x>0</x>
+				<width>64</width>
+				<height>64</height>
+			</sprite>
+			<sprite time="10" source="ballSheet">
+				<y>128</y>
+				<x>64</x>
+				<width>64</width>
+				<height>64</height>
+			</sprite>
+			<sprite time="10" source="ballSheet">
+				<y>192</y>
+				<x>0</x>
+				<width>64</width>
+				<height>64</height>
+			</sprite>
+		</spriteSheet>
+	
 		<spriteSheet name="greyBrick1">
 			<sprite time="1" source="sheet2">
 				<y>145</y>
@@ -256,6 +302,16 @@
 			<width>32</width>
 			<height>16</height>
 		</Brick>
+		<Sphere>
+			<spriteset health="0">
+				Ball
+			</spriteset>
+			<radius>30</radius>
+			<y>500</y>
+			<x>200</x>
+			<yVel>0</yVel>
+			<xVel>0</xVel>
 		
-	</objects>
+		</Sphere>
+		</objects>
 </level>

@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+import controller.SpriteHolder;
+import controller.SpriteSheet;
 import view.Renderable;
 import mathematics.Matrix;
 import mathematics.Vector;
@@ -16,6 +18,7 @@ public class Sphere extends Movable implements Renderable{
 	private int thisnum;
 	int dimention;
 	int color;
+	SpriteSheet s=null;
 	
 	
 	public Sphere(double x, double y, Vector trajectory,double mass){
@@ -31,7 +34,16 @@ public class Sphere extends Movable implements Renderable{
 		image = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 		
 	}
+	public Sphere(int x, int y, Vector vel, int mass, SpriteSheet sheet) {
+		this(x,y,vel,mass);
+		s=sheet;
+		
+	}
 	public Image getImage() {
+		if(s!=null){
+			s.advance();
+			return s.currentSprite();
+		}
 		Graphics2D g= image.createGraphics();
 		g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC));
 		g.setColor(new Color(255,255,255,0));
