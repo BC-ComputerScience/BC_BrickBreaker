@@ -1,4 +1,11 @@
+import java.util.ArrayList;
 import java.util.Random;
+
+import view.Renderable;
+import mathematics.Vector;
+import model.Brick;
+import model.Line;
+import model.Sphere;
 
  /**
  * A starting point
@@ -42,6 +49,51 @@ public class Main {
 	public static void main(String[] args) {
 		new controller.Collision_Controller(800,600);
 		//GenerateMap();
+		//test();
+		
+		
+	}
+	public static void test(){
+		view.Collision_View view =new view.Collision_View(800, 600, null);
+		Sphere s=new Sphere(400,570,new Vector(0,-100),30*30);
+		//s.advance(-0.7085421901205575);
+		//Line l=new Line(400,300,400,400);
+		Brick l=new Brick(350,250,100,100,5);
+		Brick b=new Brick(0,0,800,600);
+		s=new Sphere(200,570,new Vector(100,-100),30*30);
+		
+		ArrayList<Renderable>torender= new ArrayList<Renderable>();
+		torender.add(b);
+		
+		torender.add(l);
+		torender.add(s);
+		view.updateScreen(torender);
+		boolean hasCollided=false;
+		while(true){
+			wait(50);
+			
+			s.advance(.04);
+			double d=l.collideTime(s);
+			if(d<0){
+				if(!hasCollided){
+					hasCollided=l.collide(s);
+				}else{
+					l.collide(s);
+			}
+			}
+			view.updateScreen(torender);
+		//break;
+		}
+	}
+	
+	
+	public static void wait(int millis){
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public static void GenerateMap(){
 		Random rand=new Random();

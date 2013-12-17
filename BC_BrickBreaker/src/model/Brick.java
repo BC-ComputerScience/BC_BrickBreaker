@@ -109,30 +109,46 @@ public class Brick extends Collidable implements Renderable{
 		return collide(C, false);
 		
 	}
+	@Override
+	public double collideTime(Collidable C) {
+		double time = Integer.MAX_VALUE;
+		
+		for(Line l: lines){
+			//if(l==lines[1]){
+			double tempTime=l.collideTime(C);
+			if(tempTime<time)time=tempTime;
+			//}
+		}
+		return time;
+	}
 
 	@Override
 	public boolean collide(Collidable c, boolean ignorePosition) {
-		double time = -1000;
+		double time = Integer.MAX_VALUE;
 		Line temp=null;
 		for(Line l: lines){
-			
 			double tempTime=l.collideTime(c);
-			if(tempTime>time){
-				time=tempTime;
-				temp=l;
-			}
+			//if(l==lines[1]||l==lines[0]||l==lines[2]){
+				if(tempTime<=time){
+					time=tempTime;
+					temp=l;
+				}
+			//}
 		}
-		if(time>-1000){
-			temp.collide(c);
-			if(temp==lines[0])System.out.println("line 0");
-			if(temp==lines[1])System.out.println("line 1");
-			if(temp==lines[2])System.out.println("line 2");
-			if(temp==lines[3])System.out.println("line 3");
-			if(temp!=lines[2]||true){
+		if(time<=0){
+//			if(temp==lines[0])System.err.println("left");
+//			if(temp==lines[1])System.err.println("bottom");
+//			if(temp==lines[2])System.err.println("right");
+//			if(temp==lines[3])System.err.println("top");
+//			
+			if(temp.collide(c)){
+//				System.err.println(time);
 				
+				this.hitPoints--;
+				return true;
 			}
-			this.hitPoints--;
-			return true;
+			
+			
 		}
 		return false;
 		
@@ -174,14 +190,7 @@ public class Brick extends Collidable implements Renderable{
 
 
 
-	@Override
-	public double collideTime(Collidable C) {
-		double time = -4000;
-		for(Line l: lines){
-			double tempTime=l.collideTime(C);
-			if(tempTime>time)time=tempTime;
-		}
-		return time;
-	}
+	
+
 
 }

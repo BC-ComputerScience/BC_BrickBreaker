@@ -118,17 +118,20 @@ public class Collision_Simulator {
 	}
 	public void advance(double seconds){
 		/**/
+		
 		collisionList=new CollisionList(width,height,10);
 		
+		
 		for(Collidable m:collidable){
-			
 			if(m instanceof Movable)((Movable)m).addForce(gravity.scale(((Movable)m).getMass()));
 		}
 		
+		
 		Iterator<Collidable> itr=collidable.iterator();
+		
 		while(itr.hasNext()){
-			Collidable current= itr.next();
 			
+			Collidable current= itr.next();
 			if(!current.stillExists()){
 				itr.remove();
 				if(current instanceof Renderable){
@@ -136,6 +139,7 @@ public class Collision_Simulator {
 				}
 				
 			}
+			
 			
 			current.advance(seconds);
 			collisionList.add(current);

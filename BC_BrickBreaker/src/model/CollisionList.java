@@ -171,7 +171,9 @@ public class CollisionList {
 				}else{
 					time=b.collideTime(a);
 				}
+				
 					if(time<=0){
+						//System.out.println(time);
 						previousCollisions.put(collision, time);
 						collision.setTime(time);
 					}
@@ -188,20 +190,26 @@ public class CollisionList {
 		HashSet <Collidable> finished=new HashSet <Collidable>();
 		
 		Collision cols[]=new Collision[collisions.size()];
-		if(!collisions.isEmpty())System.out.println(collisions);
+		//if(!collisions.isEmpty())System.out.println(collisions);
 		int i=0;
 		for(Collision c: collisions.keySet()){
 			cols[i++]=c;
 		}
 		Arrays.sort(cols);
+		
 		for(Collision c: cols){
 			
 			
-			if((!finished.contains(c.a)||!finished.contains(c.b))){
+			if((!finished.contains(c.a)&&!finished.contains(c.b))){
+				if(c.doCollision()){
+				if(c.a instanceof Movable)
+					finished.add(c.a);
+				if(c.b instanceof Movable)
+					finished.add(c.b);
+				}
 				
-				if(c.a instanceof Movable)finished.add(c.a);
-				if(c.b instanceof Movable)finished.add(c.b);
-				c.doCollision();
+			}else{
+
 			}
 		}
 		
@@ -286,8 +294,8 @@ public class CollisionList {
 		}
 		public void setTime(double time){this.time=time;}
 		public double getTime(){return time;}
-		public void doCollision(){
-			a.collide(b);
+		public boolean doCollision(){
+			return a.collide(b);
 		}
 		private CollisionList getOuterType() {
 			return CollisionList.this;

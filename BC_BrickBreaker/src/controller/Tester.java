@@ -5,6 +5,7 @@ import model.*;
 import java.util.Random;
 
 import mathematics.Vector;
+import model.Brick;
 import model.Collision_Simulator;
 import model.Sphere;
 /**
@@ -27,17 +28,27 @@ public class Tester {
 	public void testCase(){
 		new LevelLoader("TestLevel/", sim);
 		//lineCollisionTest();
+		//boxCollisionTest();
+		
 	}
 	
+	public void boxCollisionTest(){
+		Sphere s=new Sphere(200,570,new Vector(100,-100),30*30);
+		//s.advance(-0.7085421901205575);
+		//Line l=new Line(400,300,400,400);
+		Brick l=new Brick(350,250,100,100,5);
+		sim.addGameObject(s);
+		sim.addGameObject(l);
+	}
 	public void lineCollisionTest(){
-		
+		sim.addGameObject(new Line(500,405,100,200,true));
 		/**/
 		//this.addRandomCircles(10);
 
 		/*/sim.addGameObject(new Line(200,100,500,405));
 		//sim.addGameObject(new Sphere(435.0,451.0, new Vector(94.0, -79.0),88.0));
 >>>>>>> refs/heads/CollisionListFix
-		//sim.addGameObject(new Line(500,405,100,200));
+		sim.addGameObject(new Line(500,405,100,200));
 		//sim.addGameObject(new Line(100,100,200,100));
 		//sim.addGameObject(new Sphere(20,300, new Vector(200,0),100));
 		//sim.addGameObject(new Sphere(780,300, new Vector(-200,0),100));
@@ -64,7 +75,7 @@ public class Tester {
 		//sim.addGameObject(new Sphere(776.0,453.0, new Vector(-71.0, -83.0),64.0));
 		//sim.addGameObject(new Sphere(797.0,375.0, new Vector(-167.0, -1.0),63.0));
 		
-		for(int i=width;i<800-width;i+=width){
+		/*for(int i=width;i<800-width;i+=width){
 			for(int j=height*5;j<=400;j+=height){
 				sim.addGameObject(new Brick(i,j,width,height));
 			}
