@@ -73,10 +73,6 @@ public class Paddle extends Collidable implements Renderable{
 
 	}
 
-	
-
-
-
 	@Override
 	public double getX() {
 		return x;
