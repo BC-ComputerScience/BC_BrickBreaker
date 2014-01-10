@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import controller.SpriteSet;
 
 public class SpriteHolder {
 	//ArrayList<Double>times;
@@ -30,26 +31,15 @@ public class SpriteHolder {
 		return images[0]!=null;
 	}
 	
-	public SpriteSet getSpriteSheet(){
-		return new SpriteSet();
-		
+	public BufferedImage getAtIndex(int i){
+		return images[i];
+	}
+	public int length(){
+		return images.length;
+	}
+	public int getFrameCount(int index){
+		return this.frameCounts[index];
 	}
 	
-	private class SpriteSet implements SpriteSheet{
-		int current=0;
-		int count=0;
-		public BufferedImage currentSprite(){
-			
-			return images[(current)%totalFrames];
-		}
-		@Override
-		public void advance() {
-			if(count++>frameCounts[current%totalFrames]){
-				count=0;
-				current++;
-			}
-			
-		}
-		
-	}
+	
 }
