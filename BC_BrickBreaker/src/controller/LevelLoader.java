@@ -21,6 +21,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class LevelLoader {
+	//XXX hackish
+	public static Brick lastBrick;
 	private HashMap<String, Resource> resources = new HashMap<String, Resource>();
 	private HashMap<String, SpriteHolder> SpriteSheets = new HashMap<String, SpriteHolder>();
 	
@@ -102,8 +104,10 @@ public class LevelLoader {
 			}
 		}
 		if(sheet!=null){
+			lastBrick=new Brick(x,y,width,height,health,sheet.getSpriteSheet());
 			return new Brick(x,y,width,height,health,sheet.getSpriteSheet());
 		}
+		
 		return new Brick(x,y,width,height,health);
 		
 	}

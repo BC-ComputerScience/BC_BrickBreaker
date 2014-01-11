@@ -6,21 +6,23 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 import mathematics.Vector;
 import view.Collision_View;
 import view.Renderable;
-import controller.Collision_Controller;
+import trigger.Trigger;
 
-public class Collision_Simulator {
+public class Collision_Simulator implements Model{
 	int pixelsPerMeter=10;
 	private Vector gravity=new Vector(0,0);
 	Collision_View view;
 	int width,height;
 	ArrayList<view.Renderable> rendered;
 	ArrayList<Collidable> collidable;
+	LinkedList<Trigger> triggers;
 	Random rand=new Random();
 	CollisionList collisionList;
 	double COR=1;
@@ -62,6 +64,7 @@ public class Collision_Simulator {
 	public void reset(){
 		rendered = new ArrayList<view.Renderable>();
 		collidable = new ArrayList<Collidable>();
+		triggers= new LinkedList<Trigger>();
 		//setCOR(1);
 		//setGravity(0);
 		rendered.add(new view.Renderable(){
@@ -139,15 +142,26 @@ public class Collision_Simulator {
 				}
 				
 			}
-			
-			
 			current.advance(seconds);
 			collisionList.add(current);
 		}
-
+		
+		
 		collisionList.checkCollisions();
 		wallCollision();
 		wallCollision();
+		
+		Iterator<Trigger> triggeritr=this.triggers.iterator();
+		while(triggeritr.hasNext()){
+			Trigger trigger=triggeritr.next();
+			if(trigger.checkConditions()){
+				trigger.proc();
+			}
+			if(!trigger.stillExists()){
+				triggeritr.remove();
+			}
+		}
+		
 		
 		
 		/*///depricated
@@ -181,6 +195,45 @@ public class Collision_Simulator {
 	}
 	public int getHeight() {
 		return this.height;
+	}
+	@Override
+	public List<Collidable> selectInRadius(int x, int y, int radius) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Collidable> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void addTrigger(Trigger t) {
+		this.triggers.add(t);
+		
+	}
+	@Override
+	public void removeTrigger(Trigger t) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public int getScore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getLives() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getBallCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getBlockCount() {
+		return collidable.size();
 	}
 	
 	

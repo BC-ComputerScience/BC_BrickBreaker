@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+import trigger.*;
 
 import java.util.Random;
 
@@ -26,7 +27,13 @@ public class Tester {
 	}
 	
 	public void testCase(){
-		new LevelLoader("TestLevel/", sim);
+		LevelLoader ll=new LevelLoader("TestLevel/", sim);
+		
+		
+		GeneralTrigger t= new GeneralTrigger();
+		t.addCondition(new trigger.conditions.BlocksRemaining(sim,310,Relation.LESS));
+		t.addAction(new trigger.actions.SpawnBox(sim, ll.lastBrick));
+		sim.addTrigger(t);
 		//lineCollisionTest();
 		//boxCollisionTest();
 		
