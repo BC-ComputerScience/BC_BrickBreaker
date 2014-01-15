@@ -165,7 +165,7 @@ public class Brick extends Collidable implements Renderable{
 
 	@Override
 	public void advance(double seconds) {
-		// TODO Auto-generated method stub
+		s.advance();
 		
 	}
 
