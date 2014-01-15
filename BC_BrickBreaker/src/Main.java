@@ -47,7 +47,9 @@ public class Main {
 		};
 
 	public static void main(String[] args) {
-		new controller.Collision_Controller(800,600);
+		//new controller.Collision_Controller(800,600);
+		
+		new resources.LevelReader("/Users/prog/git/BC_BrickBreakerRepo/BC_BrickBreaker/level/");
 		//GenerateMap();
 		//test();
 		

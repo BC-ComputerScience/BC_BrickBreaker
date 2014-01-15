@@ -5,8 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-import controller.SpriteHolder;
-import controller.SpriteSheet;
+import resources.SpriteHolder;
+import resources.SpriteSheet;
 import view.Renderable;
 
 public class Brick extends Collidable implements Renderable{

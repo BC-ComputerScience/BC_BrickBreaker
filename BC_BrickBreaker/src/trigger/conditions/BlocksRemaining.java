@@ -19,17 +19,17 @@ public class BlocksRemaining implements Condition {
 	public boolean isMet() {
 		switch (rel){
 		case GREATER:
-			return model.getBlockCount()>count;
+			return model.getBrickCount()>count;
 		case LESS:
-			return model.getBlockCount()<count;
+			return model.getBrickCount()<count;
 		case EQUAL:
-			return model.getBlockCount()==count;
+			return model.getBrickCount()==count;
 		case NOT_EQUAL:
-			return model.getBlockCount()!=count;
+			return model.getBrickCount()!=count;
 		case GREATER_EQUAL:
-			return model.getBlockCount()>=count;
+			return model.getBrickCount()>=count;
 		case LESS_EQUAL:
-			return model.getBlockCount()<=count;
+			return model.getBrickCount()<=count;
 		}
 		return false;
 	}

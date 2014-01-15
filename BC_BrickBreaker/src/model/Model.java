@@ -17,6 +17,6 @@ public interface Model {
 	public int getScore();
 	public int getLives();
 	public int getBallCount();
-	public int getBlockCount();
+	public int getBrickCount();
 
 }

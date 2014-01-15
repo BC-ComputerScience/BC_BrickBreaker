@@ -1,4 +1,4 @@
-package controller;
+package resources;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

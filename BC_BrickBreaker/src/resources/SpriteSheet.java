@@ -1,9 +1,9 @@
-package controller;
+package resources;
 
 import java.awt.image.BufferedImage;
 
 public interface SpriteSheet {
-	public BufferedImage currentSprite();
+	public Sprite currentSprite();
 	public void advance();
 
 }

@@ -1,4 +1,4 @@
-package controller;
+package resources;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -27,6 +27,9 @@ public class LevelLoader {
 	private HashMap<String, SpriteHolder> SpriteSheets = new HashMap<String, SpriteHolder>();
 	
 	public LevelLoader(String dir, Collision_Simulator model){
+		if(dir.charAt(dir.length())-1!='/'){
+			dir+='/';
+		}
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder;
 		
@@ -51,7 +54,7 @@ public class LevelLoader {
 			System.err.println("xml document was inavlid");
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.err.println("IO failure, probably file location or permissions");
 			e.printStackTrace();
 		}finally{
 			//make sure that memory is cleared
@@ -155,6 +158,7 @@ public class LevelLoader {
 					System.out.println("Creating SpriteSheet: "+nameNode.getTextContent());
 					SpriteHolder sheet= new SpriteHolder(item.getChildNodes().getLength()/2);
 					this.fillSheet(sheet, item.getChildNodes());
+					
 					if(sheet.isUsable()){
 						this.SpriteSheets.put(nameNode.getTextContent().trim(), sheet);
 					}else{

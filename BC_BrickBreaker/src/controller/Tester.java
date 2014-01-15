@@ -1,8 +1,15 @@
 package controller;
+import java.io.File;
+import java.lang.reflect.Constructor;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 
 import model.*;
+import resources.LevelLoader;
 import trigger.*;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import mathematics.Vector;
@@ -27,6 +34,32 @@ public class Tester {
 	}
 	
 	public void testCase(){
+		URL url;
+		try {
+			url = new File("/Users/prog/git/classes.jar").toURI().toURL();
+		// url= new URL("file://Users/prog/git/jar-file.jar");
+			URL[] locations=new URL[]{url};
+			URLClassLoader loader = new URLClassLoader(locations);
+			//loader.
+			//System.out.println(Arrays.toString(loader.getURLs()));
+			Class cls =loader.loadClass("extensions.Sphere3");
+			Constructor[] con=cls.getConstructors();
+			Object o=con[0].newInstance(10,10,new Vector(10,10),100);
+			
+			System.out.println(Arrays.toString(cls.getConstructors()));
+			Movable toAdd=(Movable)o;
+			sim.addGameObject(toAdd);/**/
+			//cl.lo
+			//Class cls=cl.loadClass();
+		}catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Sphere s=new Sphere(200,570,new Vector(100,-100),30*30);
+		sim.addGameObject(s);
+		
+	}
+	public void loadTestLevel(){
 		LevelLoader ll=new LevelLoader("TestLevel/", sim);
 		
 		
@@ -38,6 +71,7 @@ public class Tester {
 		//boxCollisionTest();
 		
 	}
+	
 	
 	public void boxCollisionTest(){
 		Sphere s=new Sphere(200,570,new Vector(100,-100),30*30);

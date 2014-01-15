@@ -4,8 +4,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-import controller.SpriteHolder;
-import controller.SpriteSheet;
+import resources.SpriteHolder;
+import resources.SpriteSheet;
 import view.Renderable;
 import mathematics.Matrix;
 import mathematics.Vector;
@@ -58,9 +58,9 @@ public class Sphere extends Movable implements Renderable{
 			g.setColor(new Color(0,momenta&255,(momenta*255/4500+150)&255));
 		}*/
 		g.setColor(new Color((color|0x888888)&0x00bF0FbF/**/));
-		if(this.immovable){
+		//if(this.immovable){
 			g.setColor(Color.BLUE);
-		}
+		//}
 		g.fillOval(0, 0, dimention, dimention);
 		g.setColor(Color.CYAN);
 		g.drawString(""+((int)(this.getTrajectory().getLength())), 00,(int)radius+5);

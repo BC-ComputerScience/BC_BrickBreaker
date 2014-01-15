@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,12 +21,16 @@ public class Collision_Simulator implements Model{
 	private Vector gravity=new Vector(0,0);
 	Collision_View view;
 	int width,height;
+	
 	ArrayList<view.Renderable> rendered;
+	
 	ArrayList<Collidable> collidable;
 	LinkedList<Trigger> triggers;
+	
 	Random rand=new Random();
 	CollisionList collisionList;
 	double COR=1;
+	HashMap<Class<?>,Integer> added= new HashMap<Class<?>,Integer>();
 	
 	public Collision_Simulator(int width, int height, Collision_View view) {
 		this.width=width;
@@ -38,7 +43,17 @@ public class Collision_Simulator implements Model{
 	}
 	
 	public void addGameObject(Collidable m){
-		if(m instanceof Movable)((Movable)m).setCOR(COR);
+		
+		if(m instanceof Movable){
+			((Movable)m).setCOR(COR);
+		}
+		
+		if(added.containsKey(m.getClass())){
+			added.put(m.getClass(), added.get(m.getClass())+1);
+		}else{
+			added.put(m.getClass(), 1);
+		}
+		
 		this.collidable.add(m);
 		if(m instanceof view.Renderable){
 			this.rendered.add((view.Renderable)m);
@@ -46,6 +61,11 @@ public class Collision_Simulator implements Model{
 		
 	}
 	public void removeGameObject(Collidable m){
+		if(added.containsKey(m.getClass())){
+			added.put(m.getClass(), added.get(m.getClass())-1);
+		}else{
+			added.put(m.getClass(), 0);
+		}
 		this.collidable.remove(m);
 		if(m instanceof view.Renderable){
 			this.rendered.remove((view.Renderable)m);
@@ -136,7 +156,14 @@ public class Collision_Simulator implements Model{
 			
 			Collidable current= itr.next();
 			if(!current.stillExists()){
+				if(added.containsKey(current.getClass())){
+					added.put(current.getClass(), added.get(current.getClass())-1);
+					System.out.println(current.getClass().getName()+": "+added.get(current.getClass()));
+				}else{
+					added.put(current.getClass(), 0);
+				}
 				itr.remove();
+				
 				if(current instanceof Renderable){
 					rendered.remove((Renderable)current);
 				}
@@ -228,12 +255,12 @@ public class Collision_Simulator implements Model{
 	}
 	@Override
 	public int getBallCount() {
-		// TODO Auto-generated method stub
+		//return this.ballCount;
 		return 0;
 	}
 	@Override
-	public int getBlockCount() {
-		return collidable.size();
+	public int getBrickCount() {
+		return added.get(model.Brick.class);
 	}
 	
 	
