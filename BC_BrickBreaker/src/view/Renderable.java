@@ -3,8 +3,13 @@ package view;
 import java.awt.Color;
 import java.awt.Image;
 
-public interface Renderable {
+import resources.SpriteSet;
+
+public interface Renderable extends model.GameObject{
 	int getImageX();
 	int getImageY();
-	Image getImage();
+	int getImageWidth();
+	int getImageHeight();
+	Sprite getImage();
+	void addSpriteSet(SpriteSet set);
 }

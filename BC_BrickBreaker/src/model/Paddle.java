@@ -5,7 +5,9 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
+import resources.SpriteSet;
 import view.Renderable;
+import view.Sprite;
 import mathematics.Matrix;
 import mathematics.Vector;
 
@@ -13,7 +15,7 @@ public class Paddle extends Collidable implements Renderable{
 	private double x1, y1, x2, y2;
 	protected Vector normal, p1, p2;
 	private int x, y, width, height;
-	private BufferedImage image;
+	private SpriteSet spriteSet=new SpriteSet();
 	protected double length;
 	private boolean isOneWay=true;
 
@@ -33,8 +35,6 @@ public class Paddle extends Collidable implements Renderable{
 		this.width = (int) Math.max(x1, x2) - x+1;
 		//System.out.println(width);
 		height = (int) Math.max(y1, y2) - y+1;
-		image = new BufferedImage(width + 1, height + 1,
-				BufferedImage.TYPE_INT_ARGB);
 		this.normal = new Vector(y1 - y2, -1 * (x1 - x2)).getUnitVector();
 		}
 	}
@@ -95,16 +95,8 @@ public class Paddle extends Collidable implements Renderable{
 	}
 
 	@Override
-	public Image getImage() {
-		Graphics2D g = image.createGraphics();
-		// g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC));
-		// g.setColor(new Color(255,0,255,0));
-		g.setColor(Color.RED);
-		// g.fillRect(0, 0, width, height);
-		g.setColor(Color.RED);
-		 //System.out.println(x1+","+y1+","+x2+","+y2);
-		g.drawLine((int) x1 - x, (int) y1 - y, (int) x2 - x, (int) y2 - y);
-		return image;
+	public Sprite getImage() {
+		return spriteSet.currentSprite();
 	}
 
 	@Override
@@ -336,6 +328,20 @@ public class Paddle extends Collidable implements Renderable{
 		//System.out.println(s.getCenter().subtract(p));
 		s.reflect(s.getCenter().subtract(p));
 		s.advance(-time);
+		
+	}
+	@Override
+	public int getImageWidth() {
+		// TODO Auto-generated method stub
+		return width;
+	}
+	@Override
+	public int getImageHeight() {
+		// TODO Auto-generated method stub
+		return height;
+	}
+	public void addSpriteSet(SpriteSet set) {
+		this.spriteSet=set;
 		
 	}
 }

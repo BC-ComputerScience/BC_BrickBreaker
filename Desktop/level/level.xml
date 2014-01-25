@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bc:levelSet xmlns:bc="http://www.example.org/level" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/level level.xsd ">
+  <bc:links>
+  	<bc:link id="1" name="bricksheet" type="image">simpleSprites.png</bc:link>
+  	<bc:link name="Sphere3" type="jar">bc:link</bc:link>
+  	<bc:link name="ball" type="image">ui_ball.png</bc:link>
+  	<bc:link name="brick_explode" type="image">Brick_Explode.png</bc:link>
+  </bc:links>
+  <bc:spriteSheets>
+  	<bc:spritesheet id="2" name="ballSheet">
+  		<bc:sprite resource_name="ball">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>64</bc:width>
+  			<bc:height>64</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="ball">
+  			<bc:x>64</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>64</bc:width>
+  			<bc:height>64</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="ball">
+  			<bc:x>0</bc:x>
+  			<bc:y>64</bc:y>
+  			<bc:width>64</bc:width>
+  			<bc:height>64</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="ball">
+  			<bc:x>64</bc:x>
+  			<bc:y>64</bc:y>
+  			<bc:width>64</bc:width>
+  			<bc:height>64</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="ball">
+  			<bc:x>0</bc:x>
+  			<bc:y>128</bc:y>
+  			<bc:width>64</bc:width>
+  			<bc:height>64</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="ball">
+  			<bc:x>64</bc:x>
+  			<bc:y>128</bc:y>
+  			<bc:width>64</bc:width>
+  			<bc:height>64</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="ball">
+  			<bc:x>0</bc:x>
+  			<bc:y>192</bc:y>
+  			<bc:width>64</bc:width>
+  			<bc:height>64</bc:height>
+  		</bc:sprite>
+	
+  	</bc:spritesheet>
+ 	<bc:spritesheet id="2" name="brick_explode">
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>39</bc:x>
+  			<bc:y>16</bc:y>
+  			<bc:width>49</bc:width>
+  			<bc:height>49</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>39</bc:x>
+  			<bc:y>16</bc:y>
+  			<bc:width>49</bc:width>
+  			<bc:height>49</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>39</bc:x>
+  			<bc:y>16</bc:y>
+  			<bc:width>49</bc:width>
+  			<bc:height>49</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>39</bc:x>
+  			<bc:y>16</bc:y>
+  			<bc:width>49</bc:width>
+  			<bc:height>49</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>39</bc:x>
+  			<bc:y>16</bc:y>
+  			<bc:width>49</bc:width>
+  			<bc:height>49</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>39</bc:x>
+  			<bc:y>16</bc:y>
+  			<bc:width>49</bc:width>
+  			<bc:height>49</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>39</bc:x>
+  			<bc:y>16</bc:y>
+  			<bc:width>49</bc:width>
+  			<bc:height>49</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>112</bc:x>
+  			<bc:y>13</bc:y>
+  			<bc:width>54</bc:width>
+  			<bc:height>54</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>180</bc:x>
+  			<bc:y>8</bc:y>
+  			<bc:width>72</bc:width>
+  			<bc:height>63</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>33</bc:x>
+  			<bc:y>97</bc:y>
+  			<bc:width>74</bc:width>
+  			<bc:height>77</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>134</bc:x>
+  			<bc:y>90</bc:y>
+  			<bc:width>106</bc:width>
+  			<bc:height>96</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>23</bc:x>
+  			<bc:y>193</bc:y>
+  			<bc:width>109</bc:width>
+  			<bc:height>121</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>169</bc:x>
+  			<bc:y>212</bc:y>
+  			<bc:width>131</bc:width>
+  			<bc:height>109</bc:height>
+  		</bc:sprite>
+  		<!-- HERE -->
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:width>1</bc:width>
+  			<bc:height>1</bc:height>
+  		</bc:sprite>
+  		
+  		
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>169</bc:x>
+  			<bc:y>212</bc:y>
+  			<bc:width>131</bc:width>
+  			<bc:height>109</bc:height>
+  		</bc:sprite>
+<bc:sprite resource_name="brick_explode">
+  			<bc:x>23</bc:x>
+  			<bc:y>193</bc:y>
+  			<bc:width>109</bc:width>
+  			<bc:height>121</bc:height>
+  		</bc:sprite>
+<bc:sprite resource_name="brick_explode">
+  			<bc:x>134</bc:x>
+  			<bc:y>90</bc:y>
+  			<bc:width>106</bc:width>
+  			<bc:height>96</bc:height>
+  		</bc:sprite>
+<bc:sprite resource_name="brick_explode">
+  			<bc:x>33</bc:x>
+  			<bc:y>97</bc:y>
+  			<bc:width>74</bc:width>
+  			<bc:height>77</bc:height>
+  		</bc:sprite>
+<bc:sprite resource_name="brick_explode">
+  			<bc:x>180</bc:x>
+  			<bc:y>8</bc:y>
+  			<bc:width>72</bc:width>
+  			<bc:height>63</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>112</bc:x>
+  			<bc:y>13</bc:y>
+  			<bc:width>54</bc:width>
+  			<bc:height>54</bc:height>
+  		</bc:sprite>
+  		<bc:sprite resource_name="brick_explode">
+  			<bc:x>39</bc:x>
+  			<bc:y>16</bc:y>
+  			<bc:width>49</bc:width>
+  			<bc:height>49</bc:height>
+  		</bc:sprite>
+  		
+  	</bc:spritesheet>
+  	</bc:spriteSheets>
+  	
+  	<bc:levels>
+  	<bc:meta>bc:meta</bc:meta>
+  	<bc:specialDefs>
+  		<bc:objectDef>
+  			<bc:className>dissapearingBrick</bc:className>
+  			<bc:numArgs>3</bc:numArgs>
+  			<bc:x>0</bc:x>
+  			<bc:y>0</bc:y>
+  			<bc:argument type="int">
+  				<bc:data>50</bc:data>
+  			</bc:argument>
+  			<bc:argument type="">
+  				<bc:data>bc:data</bc:data>
+  			</bc:argument>
+  		</bc:objectDef>
+  	</bc:specialDefs>
+  	<bc:objects>
+  		<bc:object class="Sphere" spritesheet_id="2">
+  			<bc:x>0</bc:x>
+  			<bc:y>0
+  				0
+  			</bc:y>
+  			<bc:genericArgument type="int" bc:name="radius">
+  				<bc:data>10</bc:data>
+  			</bc:genericArgument>
+  			<bc:genericArgument type="int" bc:name="mass">
+  				<bc:data>100</bc:data>
+  			</bc:genericArgument>
+  		</bc:object>
+  	</bc:objects>
+  	<bc:triggers />
+</bc:levels>
+</bc:levelSet>

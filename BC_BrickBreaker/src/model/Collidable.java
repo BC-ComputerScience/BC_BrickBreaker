@@ -3,7 +3,7 @@ package model;
 import mathematics.Vector;
 
 
-public abstract class Collidable {
+public abstract class Collidable implements GameObject{
 	
 	public abstract int getBoundingWidth(); 
 	public abstract int getBoundingHeight();

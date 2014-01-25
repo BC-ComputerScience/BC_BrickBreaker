@@ -8,8 +8,8 @@ public interface Model {
 	public List<Collidable> selectInRadius(int x, int y, int radius);
 	public List<Collidable> selectAll();
 	
-	public void addGameObject(Collidable m);
-	public void removeGameObject(Collidable m);
+	public void addGameObject(GameObject m);
+	public void removeGameObject(GameObject m);
 	
 	public void addTrigger(trigger.Trigger t);
 	public void removeTrigger(trigger.Trigger t);
@@ -18,5 +18,8 @@ public interface Model {
 	public int getLives();
 	public int getBallCount();
 	public int getBrickCount();
+	
+	public void advance(double time);
+	public void updateView();
 
 }

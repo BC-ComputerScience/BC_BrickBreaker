@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/level" elementFormDefault="qualified" xmlns:bc="http://www.example.org/level">
+	<element name="level" type="bc:level"></element>
+	
+	<element name="x" type="int" />
+	<element name="y" type="int" />
+
+	
+	
+	
+	
+	
+	<complexType name="object" abstract="true">
+		<sequence>
+			<element ref="bc:x" />
+			<element ref="bc:y" />
+			<any minOccurs="0" maxOccurs="unbounded" namespace="##any"></any>
+		</sequence>
+		<attribute name="spritesheet_name" type="string" use="optional"></attribute>
+		<attribute name="class" type="string"></attribute>
+	</complexType>
+	
+
+	
+    
+
+    <complexType name="objectList">
+    	<sequence>
+    		<element name="object" type="bc:object" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+
+
+    <group name="spriteSets">
+    	<sequence>
+    		<element name="derp" type="bc:object"></element>
+    	</sequence>
+    </group>
+
+    
+    
+
+
+
+
+    
+
+    <complexType name="level">
+    	<sequence>
+    		<element name="meta" type="string">
+    			<annotation>
+    				<documentation>This will contain meta information about level, which paddle, what gravity, which background ect</documentation>
+    			</annotation></element>
+    		<element name="specialDefs" type="bc:objectDefs"></element>
+    		<element name="objects" type="bc:objectList"></element>
+    		<element name="triggers" type="bc:triggerList"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="link">
+    	<simpleContent>
+    		<extension base="string">
+    			<attribute name="name" type="string" use="required"></attribute>
+    			<attribute name="type" type="string" use="prohibited"></attribute>
+    		</extension>
+    	</simpleContent>
+    </complexType>
+
+    <complexType name="spritesheet">
+    	<sequence>
+    		<element name="sprite" type="bc:sprite"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    	</sequence>
+    	<attribute name="id" type="string"></attribute>
+    	<attribute name="name" type="string"></attribute>
+    </complexType>
+
+
+    <complexType name="sprite">
+    	<sequence>
+    		<element name="x" type="int"></element>
+    		<element name="y" type="int"></element>
+    		<element name="width" type="int"></element>
+    		<element name="height" type="int"></element>
+    	</sequence>
+    	<attribute name="resource_name" type="string" use="required"></attribute>
+    </complexType>
+
+    <complexType name="linkList">
+    	<sequence>
+    		<element name="link" type="bc:link" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="spriteSheetList">
+    	<sequence>
+    		<element name="spritesheet" type="bc:spritesheet" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+
+
+
+    
+    <attribute name="NewAttribute" type="string"></attribute>
+
+
+    <element name="levelSet" type="bc:levelSet"></element>
+    
+    <complexType name="levelSet">
+    	<sequence>
+    		<element name="links" type="bc:linkList" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="spriteSheets" type="bc:spriteSheetList"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="specialDefs" type="bc:objectDefs" maxOccurs="1" minOccurs="0"></element>
+    		<element name="levels" type="bc:level" maxOccurs="unbounded"
+    			minOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="objectDefs">
+    	<sequence>
+    		<element name="objectDef" type="bc:objectDef"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="triggerList"></complexType>
+
+    <complexType name="objectDef">
+    	<sequence>
+    		<element name="className" type="string"></element>
+    		<element name="numArgs" type="int"></element>
+    		<element name="x" type="int"></element>
+    		<element name="y" type="int"></element>
+    		<element name="argument" type="bc:argument" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+    	<attribute name="resource_id" use="optional">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="String"></enumeration>
+    				<enumeration value="int"></enumeration>
+    				<enumeration value="double"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    </complexType>
+
+
+
+    <complexType name="argument">
+    	<sequence>
+    		<element name="data" type="string"></element>
+    	</sequence>
+    	<attribute name="type" type="string" use="required"></attribute>
+    	<attribute name="name" type="string" form="qualified" use="optional"></attribute>
+    </complexType>
+    
+    <element name="genericArgument" type="bc:argument"></element>
+</schema>

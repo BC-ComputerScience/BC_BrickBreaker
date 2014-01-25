@@ -5,8 +5,10 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import resources.SpriteHolder;
+import resources.SpriteSet;
 import resources.SpriteSheet;
 import view.Renderable;
+import view.Sprite;
 import mathematics.Matrix;
 import mathematics.Vector;
 
@@ -18,7 +20,8 @@ public class Sphere extends Movable implements Renderable{
 	private int thisnum;
 	int dimention;
 	int color;
-	SpriteSheet s=null;
+	private SpriteSet spriteSet=new SpriteSet();
+	
 	
 	
 	public Sphere(double x, double y, Vector trajectory,double mass){
@@ -34,37 +37,8 @@ public class Sphere extends Movable implements Renderable{
 		image = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 		
 	}
-	public Sphere(int x, int y, Vector vel, int mass, SpriteSheet sheet) {
-		this(x,y,vel,mass);
-		s=sheet;
-		
-	}
-	public Image getImage() {
-		if(s!=null){
-			s.advance();
-			return s.currentSprite();
-		}
-		Graphics2D g= image.createGraphics();
-		g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC));
-		g.setColor(new Color(255,255,255,0));
-		g.fillRect(0, 0, width, height);
-		/*if(thisnum==number-1){
-			g.setColor(Color.RED);
-		}else{
-			// (int)this.getMomentum()%255,1,1
-			int momenta=(int)this.getMomentum().getLength();
-			momenta/=8;
-			
-			g.setColor(new Color(0,momenta&255,(momenta*255/4500+150)&255));
-		}*/
-		g.setColor(new Color((color|0x888888)&0x00bF0FbF/**/));
-		//if(this.immovable){
-			g.setColor(Color.BLUE);
-		//}
-		g.fillOval(0, 0, dimention, dimention);
-		g.setColor(Color.CYAN);
-		g.drawString(""+((int)(this.getTrajectory().getLength())), 00,(int)radius+5);
-		return image;
+	public Sprite getImage() {
+		return spriteSet.currentSprite();
 	}
 	@Override
 	public int getBoundingHeight() {
@@ -182,6 +156,12 @@ public class Sphere extends Movable implements Renderable{
 		other.advance(time);
 		
 	}
+	public void advance(double time){
+		super.advance(time);
+		//this.spriteSet.advance(2*time*this.getTrajectory().getLength());
+		this.spriteSet.advance(time*100);
+		// 50 200
+	}
 	
 	
 	
@@ -215,7 +195,20 @@ public class Sphere extends Movable implements Renderable{
 		Sphere other=(Sphere)C;
 		return -(this.radius+other.radius-getCenter().distance(other.getCenter()))/this.getTrajectory().distance(other.getTrajectory());
 	}
-	
+	@Override
+	public int getImageWidth() {
+		// TODO Auto-generated method stub
+		return this.dimention;
+	}
+	@Override
+	public int getImageHeight() {
+		// TODO Auto-generated method stub
+		return this.dimention;
+	}
+	public void addSpriteSet(SpriteSet set) {
+		this.spriteSet=set;
+		
+	}
 	
 
 }

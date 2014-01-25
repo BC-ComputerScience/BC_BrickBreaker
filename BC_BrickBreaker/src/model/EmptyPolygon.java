@@ -7,7 +7,9 @@ import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import resources.SpriteSet;
 import view.Renderable;
+import view.Sprite;
 
 public class EmptyPolygon extends Collidable implements Renderable{
 	int x[];
@@ -15,7 +17,7 @@ public class EmptyPolygon extends Collidable implements Renderable{
 	int vertecies;
 	Line[] sides;
 	Polygon shape;
-	private BufferedImage image;
+	private SpriteSet spriteSet=new SpriteSet();
 	int boundingX, boundingY, boundingHeight, boundingWidth;
 	
 	public EmptyPolygon(int[] x,int[] y){
@@ -28,7 +30,6 @@ public class EmptyPolygon extends Collidable implements Renderable{
 		}
 		shape=new Polygon(x,y,vertecies);
 		Rectangle rect=shape.getBounds();
-		image = new BufferedImage(rect.width,rect.height,BufferedImage.TYPE_INT_ARGB);
 		boundingX=rect.x;
 		boundingY=rect.y;
 		boundingWidth=rect.width;
@@ -111,16 +112,8 @@ int temp=0;
 	}
 
 	@Override
-	public Image getImage() {
-		Graphics2D g= image.createGraphics();
-		//g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC));
-		//g.setColor(new Color(255,0,255,0));
-		g.setColor(Color.RED);
-		//g.fillRect(0, 0, width, height);
-		g.setColor(Color.RED);
-//		System.out.println(x1+","+y1+","+x2+","+y2);
-		g.fillPolygon(this.shape);
-		return image;
+	public Sprite getImage() {
+		return spriteSet.currentSprite();
 	}
 	public boolean stillExists() {
 		return true;
@@ -132,6 +125,22 @@ int temp=0;
 			if(tempTime<time)time=tempTime;
 		}
 		return time;
+	}
+
+	@Override
+	public int getImageWidth() {
+		// TODO Auto-generated method stub
+		return this.boundingWidth;
+	}
+
+	@Override
+	public int getImageHeight() {
+		// TODO Auto-generated method stub
+		return this.boundingHeight;
+	}
+	public void addSpriteSet(SpriteSet set) {
+		this.spriteSet=set;
+		
 	}
 
 }

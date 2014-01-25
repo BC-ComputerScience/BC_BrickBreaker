@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -12,6 +13,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import mathematics.Vector;
 import model.Sphere;
 
 import org.w3c.dom.Document;
@@ -19,12 +21,15 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import view.Sprite;
+
 public class LevelReader {
 	private HashMap<String, Resource> resources = new HashMap<String, Resource>();
-	private HashMap<String, SpriteHolder> SpriteSheets = new HashMap<String, SpriteHolder>();
+	private HashMap<String, SpriteSheet> SpriteSheets = new HashMap<String, SpriteSheet>();
+	private ResourceLoader rl;
 	String dir;
 	
-	public LevelReader(String dir){
+	public LevelReader(String dir, ResourceLoader rl){
 		
 		if(dir.charAt(dir.length()-1)!='/'){
 			dir+='/';
@@ -37,6 +42,7 @@ public class LevelReader {
 			File file= new File(dir+"level.xml");
 			System.out.println ("Loading File: "+file.getAbsolutePath());
 			System.out.println();
+			this.rl=rl;
 			builder = factory.newDocumentBuilder();
 			Document doc = builder.parse(file);
 			
@@ -81,16 +87,21 @@ public class LevelReader {
 			}
 		}
 	}
+	
+	
 	private void parseLink(Node node){
-		String file=node.getTextContent();
+		String file=node.getTextContent().trim();
 		String type=node.getAttributes().getNamedItem("type").getTextContent();
 		String name=node.getAttributes().getNamedItem("name").getTextContent();
 		if(type.equals("image")){
 			try {
-				this.resources.put(name, new Resource(dir,file,type));
+				Resource res=rl.loadResource(type, dir+file);
+				this.resources.put(name, res);
 			} catch (IOException e) {
 				System.err.println("could not load resource:"+dir+file+"("+type+")");
+				e.printStackTrace();
 			}
+			
 		}else if(type.equals("jar")){
 			URL url;
 			try {
@@ -99,7 +110,7 @@ public class LevelReader {
 				URLClassLoader loader = new URLClassLoader(new URL[]{url});
 				Class<?> cls =loader.loadClass("extensions."+name);
 				
-				this.resources.put(name, new Resource(cls,name));
+				//this.resources.put(name, new Resource(cls,name));
 				
 			} catch (MalformedURLException e) {
 				System.err.println("could not load resource:"+dir+file+"("+type+")");
@@ -122,19 +133,40 @@ public class LevelReader {
 	}
 	
 	private void parseSpriteSheet(Node spriteSheet){
-		
+		ArrayList<Sprite> spritea=new ArrayList<Sprite>();
 		NodeList sprites=spriteSheet.getChildNodes();
 		for(int i=0;i<sprites.getLength();i++){
-			if(sprites.item(i).getNodeName()!="#text"){
-				parseSprite(sprites.item(i));
+			if(sprites.item(i).getNodeName().equals("bc:sprite")){
+				spritea.add(parseSprite(sprites.item(i)));
 			}
 		}
-		
-		System.out.println(spriteSheet.getNodeName());
-		this.printLevel(spriteSheet);
+		SpriteSheet sheet=new SpriteSheet(spritea);
+		this.SpriteSheets.put(spriteSheet.getAttributes().getNamedItem("name").getTextContent().trim(),sheet);
 	}
 	private Sprite parseSprite(Node sprite){
-		return null;
+		String name=sprite.getAttributes().getNamedItem("resource_name").getTextContent().trim();
+		NodeList children=sprite.getChildNodes();
+		int x=0,y=0,width=0,height=0;
+		for(int i=0;i<children.getLength();i++){
+			if(children.item(i).getNodeName().equals("bc:x")){
+				x=Integer.parseInt(children.item(i).getTextContent());
+			}else if(children.item(i).getNodeName().equals("bc:y")){
+				y=Integer.parseInt(children.item(i).getTextContent());
+			}else if(children.item(i).getNodeName().equals("bc:width")){
+				width=Integer.parseInt(children.item(i).getTextContent());
+			}else if(children.item(i).getNodeName().equals("bc:height")){
+				height=Integer.parseInt(children.item(i).getTextContent());
+			}
+		}
+		Resource res=this.resources.get(name);
+		
+		if(res instanceof ImageResource){
+			System.out.println("getting image at: "+x+","+y+","+width+","+height);
+			return ((ImageResource)res).createSprite(x, y, width, height);
+		}
+		
+		System.err.println((res)+""+res.getClass());
+		throw new IllegalArgumentException(name+" is not an image resource!");
 		
 	}
 		
@@ -142,11 +174,11 @@ public class LevelReader {
 	
 	//this will probably never be needed
 	private void parseSpecialDefs(NodeList defs){
-		throw new UnsupportedOperationException("files do not yet support added class defs");
+		//throw new UnsupportedOperationException("files do not yet support added class defs");
 	}
 	
 	private void parseLevels(NodeList defs){
-		throw new UnsupportedOperationException("files do not yet support loading levels(odd as thats the main point of this class)");
+		//throw new UnsupportedOperationException("files do not yet support loading levels(odd as thats the main point of this class)");
 		
 	}
 	
@@ -175,6 +207,21 @@ public class LevelReader {
 		}else{
 			System.out.println("~");
 		}
+	}
+	private void printres(){
+		for(String d:this.resources.keySet()){
+			System.out.println(d+"->"+resources.get(d));
+		}
+	}
+
+	public Sphere createball(int x, int y) {
+		
+		Sphere s=new Sphere(x,y,new Vector(0,0),32*32);
+		s.addSpriteSet(this.SpriteSheets.get("brick_explode").getSpriteSheet());
+		return s;
+	
+		// TODO Auto-generated method stub
+		
 	}
 
 }

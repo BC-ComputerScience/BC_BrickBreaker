@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="MacRoman" standalone="no"?>
+<jardesc>
+    <jar path="Applet/Test/App.jar"/>
+    <options buildIfNeeded="true" compress="false" descriptionLocation="/Applet/test.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=Desktop/src&lt;resources"/>
+        <javaElement handleIdentifier="=BC_BrickBreaker/src&lt;model"/>
+        <javaElement handleIdentifier="=BC_BrickBreaker/src&lt;controller"/>
+        <javaElement handleIdentifier="=BC_BrickBreaker/src&lt;view"/>
+        <javaElement handleIdentifier="=BC_BrickBreaker/src&lt;resources"/>
+        <javaElement handleIdentifier="=Desktop/src&lt;view"/>
+        <javaElement handleIdentifier="=Applet/src"/>
+        <file path="/BC_BrickBreaker/src/.DS_Store"/>
+        <javaElement handleIdentifier="=BC_BrickBreaker/src&lt;trigger"/>
+        <javaElement handleIdentifier="=Desktop/src&lt;controller"/>
+        <javaElement handleIdentifier="=BC_BrickBreaker/src&lt;mathematics"/>
+        <javaElement handleIdentifier="=BC_BrickBreaker/src&lt;trigger.actions"/>
+        <file path="/BC_BrickBreaker/src/XML_example"/>
+        <javaElement handleIdentifier="=BC_BrickBreaker/src&lt;trigger.conditions"/>
+    </selectedElements>
+</jardesc>

@@ -12,14 +12,13 @@ import java.util.List;
 import java.util.Random;
 
 import mathematics.Vector;
-import view.Collision_View;
 import view.Renderable;
+import view.View;
 import trigger.Trigger;
 
 public class Collision_Simulator implements Model{
-	int pixelsPerMeter=10;
 	private Vector gravity=new Vector(0,0);
-	Collision_View view;
+	View view;
 	int width,height;
 	
 	ArrayList<view.Renderable> rendered;
@@ -29,44 +28,41 @@ public class Collision_Simulator implements Model{
 	
 	Random rand=new Random();
 	CollisionList collisionList;
-	double COR=1;
+	
 	HashMap<Class<?>,Integer> added= new HashMap<Class<?>,Integer>();
 	
-	public Collision_Simulator(int width, int height, Collision_View view) {
+	public Collision_Simulator(int width, int height, View view) {
 		this.width=width;
 		this.height=height;
 		this.view=view;
 		this.reset();
 	}
-	public void setGravity(double n){
-		gravity=new Vector(0,pixelsPerMeter*n);
-	}
 	
-	public void addGameObject(Collidable m){
-		
-		if(m instanceof Movable){
-			((Movable)m).setCOR(COR);
-		}
-		
+	
+	public void addGameObject(GameObject m){
 		if(added.containsKey(m.getClass())){
 			added.put(m.getClass(), added.get(m.getClass())+1);
 		}else{
 			added.put(m.getClass(), 1);
 		}
 		
-		this.collidable.add(m);
+		if(m instanceof Collidable){
+			this.collidable.add((Collidable) m);
+		}
 		if(m instanceof view.Renderable){
 			this.rendered.add((view.Renderable)m);
 		}
 		
 	}
-	public void removeGameObject(Collidable m){
+	public void removeGameObject(GameObject m){
 		if(added.containsKey(m.getClass())){
 			added.put(m.getClass(), added.get(m.getClass())-1);
 		}else{
 			added.put(m.getClass(), 0);
 		}
-		this.collidable.remove(m);
+		if(m instanceof view.Renderable){
+			this.collidable.remove(m);
+		}
 		if(m instanceof view.Renderable){
 			this.rendered.remove((view.Renderable)m);
 		}
@@ -87,20 +83,7 @@ public class Collision_Simulator implements Model{
 		triggers= new LinkedList<Trigger>();
 		//setCOR(1);
 		//setGravity(0);
-		rendered.add(new view.Renderable(){
-			Image im;
-			public Image getImage() {
-				if(im==null){
-					im=new BufferedImage(1200,900,BufferedImage.TYPE_INT_ARGB);
-					Graphics g=im.getGraphics();
-					g.setColor(Color.BLACK);
-					g.fillRect(0, 0, 1200, 900);
-				}
-				return im;
-			}
-			public int getImageX() {return 0;}
-			public int getImageY() {return 0;}
-		});
+		rendered.add(new Background(width,height));
 	}
 
 	
@@ -209,13 +192,6 @@ public class Collision_Simulator implements Model{
 			view.updateScreen(rendered);
 		
 	}
-	public void setCOR(double parseDouble) {
-		this.COR=parseDouble;
-		for(Collidable m: collidable){
-			if(m instanceof Movable)((Movable)m).setCOR(parseDouble);
-		}
-		
-	}
 	public int getWidth() {
 
 		return this.width;
@@ -261,6 +237,15 @@ public class Collision_Simulator implements Model{
 	@Override
 	public int getBrickCount() {
 		return added.get(model.Brick.class);
+	}
+	
+	public void setGravity(double n){
+		gravity=new Vector(0,n*10);
+	}
+	public void setGravity(Vector gravity) {
+		this.gravity=gravity;
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

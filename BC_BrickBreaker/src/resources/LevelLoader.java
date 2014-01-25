@@ -22,7 +22,7 @@ import org.xml.sax.SAXException;
 
 public class LevelLoader {
 	//XXX hackish
-	public static Brick lastBrick;
+	/*public static Brick lastBrick;
 	private HashMap<String, Resource> resources = new HashMap<String, Resource>();
 	private HashMap<String, SpriteHolder> SpriteSheets = new HashMap<String, SpriteHolder>();
 	
@@ -254,5 +254,5 @@ public class LevelLoader {
 		}
 		
 	}
-	
+	/**/
 }

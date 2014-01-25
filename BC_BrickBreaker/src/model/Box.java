@@ -5,7 +5,9 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
+import resources.SpriteSet;
 import view.Renderable;
+import view.Sprite;
 
 /**
  * A box that can hold a ball inside of it
@@ -17,7 +19,7 @@ import view.Renderable;
 public class Box extends Collidable implements Renderable{
 	private int width,height;
 	private Line[] lines=new Line[4];
-	private BufferedImage image;
+	private SpriteSet spriteSet;
 	int x, y;
 	/**
 	 * creates a box
@@ -35,7 +37,6 @@ public class Box extends Collidable implements Renderable{
 		lines[1]=new Line(x+width,y,x+width,y+height);
 		lines[2]=new Line(x+width,y+height,x,y+height);
 		lines[3]=new Line(x,y+height,x,y);
-		image = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 		
 	}
 
@@ -54,12 +55,8 @@ public class Box extends Collidable implements Renderable{
 
 
 	@Override
-	public Image getImage() {
-		Graphics2D g= image.createGraphics();
-		g.setColor(Color.RED);
-		g.setColor(Color.RED);
-		g.drawRect(0, 0, width, height);
-		return image;
+	public Sprite getImage() {
+		return spriteSet.currentSprite();
 	}
 
 	@Override
@@ -134,6 +131,26 @@ public class Box extends Collidable implements Renderable{
 			if(tempTime<time)time=tempTime;
 		}
 		return time;
+	}
+
+
+
+	@Override
+	public int getImageWidth() {
+		// TODO Auto-generated method stub
+		return width;
+	}
+
+
+
+	@Override
+	public int getImageHeight() {
+		// TODO Auto-generated method stub
+		return height;
+	}
+	public void addSpriteSet(SpriteSet set) {
+		this.spriteSet=set;
+		
 	}
 
 }

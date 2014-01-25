@@ -7,6 +7,7 @@ import java.net.URLClassLoader;
 
 import model.*;
 import resources.LevelLoader;
+import resources.LevelReader;
 import trigger.*;
 
 import java.util.Arrays;
@@ -34,7 +35,8 @@ public class Tester {
 	}
 	
 	public void testCase(){
-		URL url;
+		loadTestLevel();
+		/*URL url;
 		try {
 			url = new File("/Users/prog/git/classes.jar").toURI().toURL();
 		// url= new URL("file://Users/prog/git/jar-file.jar");
@@ -48,7 +50,7 @@ public class Tester {
 			
 			System.out.println(Arrays.toString(cls.getConstructors()));
 			Movable toAdd=(Movable)o;
-			sim.addGameObject(toAdd);/**/
+			sim.addGameObject(toAdd);
 			//cl.lo
 			//Class cls=cl.loadClass();
 		}catch (Exception e1) {
@@ -56,17 +58,17 @@ public class Tester {
 			e1.printStackTrace();
 		}
 		Sphere s=new Sphere(200,570,new Vector(100,-100),30*30);
-		sim.addGameObject(s);
+		sim.addGameObject(s);/**/
 		
 	}
 	public void loadTestLevel(){
-		LevelLoader ll=new LevelLoader("TestLevel/", sim);
+		//LevelReader ll=new LevelReader("level/");
 		
 		
-		GeneralTrigger t= new GeneralTrigger();
-		t.addCondition(new trigger.conditions.BlocksRemaining(sim,310,Relation.LESS));
-		t.addAction(new trigger.actions.SpawnBox(sim, ll.lastBrick));
-		sim.addTrigger(t);
+		//GeneralTrigger t= new GeneralTrigger();
+		//t.addCondition(new trigger.conditions.BlocksRemaining(sim,310,Relation.LESS));
+		//t.addAction(new trigger.actions.SpawnBox(sim, ll.lastBrick));
+		//sim.addTrigger(t);
 		//lineCollisionTest();
 		//boxCollisionTest();
 		

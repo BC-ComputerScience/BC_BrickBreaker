@@ -6,16 +6,17 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 import resources.SpriteHolder;
+import resources.SpriteSet;
 import resources.SpriteSheet;
 import view.Renderable;
+import view.Sprite;
 
 public class Brick extends Collidable implements Renderable{
 	private int width,height;
 	private Line[] lines=new Line[4];
-	private BufferedImage image;
 	int hitPoints;
 	int x, y;
-	SpriteSheet s;
+	private SpriteSet spriteSet=new SpriteSet();
 	/**
 	 * creates a box
 	 * @param x top left x
@@ -26,11 +27,6 @@ public class Brick extends Collidable implements Renderable{
 	public Brick(double x, double y, int width,int height) {
 		this(x,y,width,height,1);
 		
-	}
-
-	public Brick(double x, double y, int width, int height, int health, SpriteSheet sheet) {
-		this(x,y,width,height,health);
-		s=sheet;
 	}
 
 
@@ -44,7 +40,6 @@ public class Brick extends Collidable implements Renderable{
 		lines[1]=new Line(x,y+height,x+width,y+height,true);
 		lines[2]=new Line(x+width,y+height,x+width,y,true);
 		lines[3]=new Line(x+width,y,x,y,true);
-		image = new BufferedImage(width+1,height+1,BufferedImage.TYPE_INT_ARGB);
 		this.hitPoints=health;
 	}
 
@@ -63,30 +58,8 @@ public class Brick extends Collidable implements Renderable{
 
 
 	@Override
-	public Image getImage() {
-		
-		if(s!=null){
-			return s.currentSprite();
-		}
-		Graphics2D g= image.createGraphics();
-		switch(this.hitPoints){
-		default://g.setColor(Color.WHITE);break;
-		case 5:g.setColor(Color.DARK_GRAY);break;
-		case 4:g.setColor(Color.GRAY);break;
-		case 3:g.setColor(Color.lightGray);break;
-		case 2:g.setColor(Color.YELLOW);break;
-		case 1:g.setColor(Color.RED);break;
-		
-		}
-		
-		
-		g.fillRect(0, 0, width, height);
-		//if(hitPoints<5){
-		g.setColor(Color.magenta);
-		g.drawString(this.x%100+","+(this.y%100), 2, 12);
-		g.drawRect(0, 0, width, height);
-		//}
-		return image;
+	public Sprite getImage() {
+		return spriteSet.currentSprite();
 	}
 
 	@Override
@@ -165,7 +138,6 @@ public class Brick extends Collidable implements Renderable{
 
 	@Override
 	public void advance(double seconds) {
-		s.advance();
 		
 	}
 
@@ -188,6 +160,23 @@ public class Brick extends Collidable implements Renderable{
 		return hitPoints>0;
 	}
 
+
+	@Override
+	public int getImageWidth() {
+		// TODO Auto-generated method stub
+		return width;
+	}
+
+
+	@Override
+	public int getImageHeight() {
+		// TODO Auto-generated method stub
+		return height;
+	}
+	public void addSpriteSet(SpriteSet set) {
+		this.spriteSet=set;
+		
+	}
 
 
 	

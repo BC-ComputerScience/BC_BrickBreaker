@@ -7,7 +7,9 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import resources.SpriteSet;
 import view.Renderable;
+import view.Sprite;
 import mathematics.Matrix;
 import mathematics.Vector;
 
@@ -21,7 +23,7 @@ public class Line extends Collidable implements Renderable {
 	private double x1, y1, x2, y2;
 	protected Vector normal, p1, p2;
 	private int x, y, width, height;
-	private BufferedImage image;
+	private SpriteSet spriteSet=new SpriteSet();
 	protected double length;
 	private boolean isOneWay;
 
@@ -49,8 +51,6 @@ public class Line extends Collidable implements Renderable {
 		y = (int) Math.min(y1, y2);
 		width = (int) Math.max(x1, x2) - x;
 		height = (int) Math.max(y1, y2) - y;
-		image = new BufferedImage(width + 1, height + 1,
-				BufferedImage.TYPE_INT_ARGB);
 		this.normal = new Vector(y1 - y2, -1 * (x1 - x2)).getUnitVector();
 	}
 
@@ -321,17 +321,8 @@ public class Line extends Collidable implements Renderable {
 	}
 
 	@Override
-	public Image getImage() {
-		Graphics2D g = image.createGraphics();
-		// g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC));
-		// g.setColor(new Color(255,0,255,0));
-		g.setColor(Color.RED);
-		// g.fillRect(0, 0, width, height);
-		g.setColor(new Color(0x700070));
-		//g.setStroke(new BasicStroke(10));
-		// System.out.println(x1+","+y1+","+x2+","+y2);
-		g.drawLine((int) x1 - x, (int) y1 - y, (int) x2 - x, (int) y2 - y);
-		return image;
+	public Sprite getImage() {
+		return spriteSet.currentSprite();
 	}
 
 	@Override
@@ -349,6 +340,19 @@ public class Line extends Collidable implements Renderable {
 	public String toString(){
 		return this.getClass().getName()+p1+p2;
 	}
-	
+	@Override
+	public int getImageWidth() {
+		// TODO Auto-generated method stub
+		return this.width;
+	}
+	@Override
+	public int getImageHeight() {
+		// TODO Auto-generated method stub
+		return this.height;
+	}
+	public void addSpriteSet(SpriteSet set) {
+		this.spriteSet=set;
+		
+	}
 
 }
