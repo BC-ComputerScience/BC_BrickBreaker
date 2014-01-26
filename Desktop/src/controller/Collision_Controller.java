@@ -71,14 +71,15 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 		try{
 			ll=new LevelReader("level/", new PC_ResourceLoader());
 		}catch(UnsupportedOperationException e){
-			
+			System.err.println("while trying to load level got"+e.getMessage());
 		}
+		/*
 		for(int i=0;i<width/64;i++){
 			for(int j=0; j<5; j++){
 				model.addGameObject(ll.createball(33+i*64,33+j*64));
 			}
 		}
-		;
+		;/**/
 		
 		tester.testCase();
 		

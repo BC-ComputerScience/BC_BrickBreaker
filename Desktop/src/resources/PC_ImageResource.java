@@ -8,24 +8,15 @@ import javax.imageio.ImageIO;
 
 import view.Sprite;
 
-public class PC_Resource implements resources.ImageResource{
-
-	private String type;
+public class PC_ImageResource implements resources.ImageResource{
 	
-	BufferedImage image;
+	private BufferedImage image;
 	
-	public PC_Resource(String type, String location) throws IOException{
-		this.type=type;
+	public PC_ImageResource(String location) throws IOException{
 		image=ImageIO.read(new File(location));
 	}
-	
 	public BufferedImage getAt(int x, int y, int width, int height){
-		System.out.println("getting image at: "+x+","+y+","+width+","+height);
-		System.out.println(image.getWidth()+","+image.getHeight());
 		return image.getSubimage(x, y, width, height);
-	}
-	public String getType(){
-		return type;
 	}
 	@Override
 	public Sprite createSprite(int x, int y, int width, int height) {

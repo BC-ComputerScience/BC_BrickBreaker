@@ -1,13 +1,19 @@
 package resources;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.lang.instrument.Instrumentation;
+import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.jar.JarInputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,7 +36,6 @@ public class LevelReader {
 	String dir;
 	
 	public LevelReader(String dir, ResourceLoader rl){
-		
 		if(dir.charAt(dir.length()-1)!='/'){
 			dir+='/';
 		}
@@ -93,6 +98,9 @@ public class LevelReader {
 		String file=node.getTextContent().trim();
 		String type=node.getAttributes().getNamedItem("type").getTextContent();
 		String name=node.getAttributes().getNamedItem("name").getTextContent();
+		
+		System.out.println("Loading Resource: "+dir+file);
+		
 		if(type.equals("image")){
 			try {
 				Resource res=rl.loadResource(type, dir+file);
@@ -101,21 +109,14 @@ public class LevelReader {
 				System.err.println("could not load resource:"+dir+file+"("+type+")");
 				e.printStackTrace();
 			}
-			
 		}else if(type.equals("jar")){
-			URL url;
-			try {
-				//TODO learn what this actually does.
-				url = new File("/Users/prog/git/classes.jar").toURI().toURL();
-				URLClassLoader loader = new URLClassLoader(new URL[]{url});
-				Class<?> cls =loader.loadClass("extensions."+name);
-				
-				//this.resources.put(name, new Resource(cls,name));
-				
-			} catch (MalformedURLException e) {
+			
+			try{
+				ClassResource res=rl.LoadClassResource(dir+file);
+				this.resources.put(name, res);
+			}catch (IOException e) {
 				System.err.println("could not load resource:"+dir+file+"("+type+")");
-			} catch (ClassNotFoundException e) {
-				System.err.println("could find specified class resource:"+dir+file+"("+type+")");
+				e.printStackTrace();
 			}
 			
 		}else{
@@ -161,7 +162,7 @@ public class LevelReader {
 		Resource res=this.resources.get(name);
 		
 		if(res instanceof ImageResource){
-			System.out.println("getting image at: "+x+","+y+","+width+","+height);
+			//System.out.println("getting image at: "+x+","+y+","+width+","+height);
 			return ((ImageResource)res).createSprite(x, y, width, height);
 		}
 		

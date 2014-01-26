@@ -2,7 +2,7 @@
 <bc:levelSet xmlns:bc="http://www.example.org/level" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/level level.xsd ">
   <bc:links>
   	<bc:link id="1" name="bricksheet" type="image">simpleSprites.png</bc:link>
-  	<bc:link name="Sphere3" type="jar">bc:link</bc:link>
+  	<bc:link name="Sphere3" type="jar">classes.jar</bc:link>
   	<bc:link name="ball" type="image">ui_ball.png</bc:link>
   	<bc:link name="brick_explode" type="image">Brick_Explode.png</bc:link>
   </bc:links>

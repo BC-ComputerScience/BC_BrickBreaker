@@ -11,9 +11,9 @@ public class Sphere2 extends Sphere {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Sphere2(int x, int y, Vector vel, int mass, SpriteSheet sheet) {
-		super(x, y, vel, mass, sheet);
+	/*public Sphere2(int x, int y, Vector vel, int mass, SpriteSheet sheet) {
+		//super(x, y, vel, mass, sheet);
 		// TODO Auto-generated constructor stub
-	}
+	}*/
 
 }

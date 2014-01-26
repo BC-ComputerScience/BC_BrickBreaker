@@ -20,6 +20,16 @@ import model.Sphere;
  */
 public class Main {
 
+	public static void main(String[] args) {
+		new controller.Collision_Controller(800,600);
+		//LevelReader ll=new LevelReader("level/", new PC_ResourceLoader());
+		
+		//new resources.LevelReader("/Users/prog/git/BC_BrickBreakerRepo/BC_BrickBreaker/level/");
+		//GenerateMap();
+		//test();
+		
+		
+	}
 	public static String[] bricks= new String[]{
 		"greyBrick1",
 		"greyBrick2",
@@ -48,16 +58,7 @@ public class Main {
 		"purpleBrick3",
 		};
 
-	public static void main(String[] args) {
-		new controller.Collision_Controller(800,600);
-		//LevelReader ll=new LevelReader("level/", new PC_ResourceLoader());
-		
-		//new resources.LevelReader("/Users/prog/git/BC_BrickBreakerRepo/BC_BrickBreaker/level/");
-		//GenerateMap();
-		//test();
-		
-		
-	}
+	
 	public static void test(){
 		//view.Collision_View view =new view.Collision_View(800, 600, null);
 		Sphere s=new Sphere(400,570,new Vector(0,-100),30*30);
