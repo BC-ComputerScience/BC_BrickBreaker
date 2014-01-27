@@ -2,8 +2,11 @@ package controller;
 
 import java.awt.AWTEvent;
 import java.awt.event.*;
+import java.io.File;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -15,6 +18,7 @@ import mathematics.Vector;
 import model.Collision_Simulator;
 import model.Paddle;
 import view.Collision_View;
+import view.Console;
 
 public class Collision_Controller implements Controller, ActionListener, MouseListener, MouseMotionListener, KeyListener{
 	
@@ -22,6 +26,7 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	private Collision_Simulator model;
 	private Tester tester;
 	
+	private Console console;
 	//A time set to proc every 20 millis
 	private Timer timer;
 	private int millisPerProc=50;
@@ -31,15 +36,14 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	private TimerTask gameloop;//points the timer at the gameloop
 	private boolean isPaused=true;
 	
-	
 	@SuppressWarnings("unused")
 	private int width, height;
-	
+	Paddle p;
 	private Queue<AWTEvent> queue=new LinkedList<AWTEvent>();
 	
 	
 	//TODO not really where it should be
-	Paddle p;
+	
 	/**
 	 * creates a Controller which then creates a model and view
 	 * 
@@ -49,9 +53,13 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	public Collision_Controller(int width, int height){
 		this.width=width;
 		this.height=height;
+		LevelReader ll=null;
+		
+		
 		
 		//create a view which can update the controller(this)
 		view = new Collision_View(width,height, this);
+		console = view.getConsole();
 		//create a model which can update to the view
 		model = new Collision_Simulator(width,height,view);
 		
@@ -67,12 +75,12 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 		view.addMouseMotionListener(this);
 		view.addActionListener(this);
 		view.addKeyListener(this);
-		LevelReader ll=null;
-		try{
-			ll=new LevelReader("level/", new PC_ResourceLoader());
-		}catch(UnsupportedOperationException e){
-			System.err.println("while trying to load level got"+e.getMessage());
-		}
+		
+		//String level=SelectLevel();
+		//level=level!=null?level:"first_campaign";
+		ll=new LevelReader("levels/"+"first_campaign", new PC_ResourceLoader());
+		
+		
 		/*
 		for(int i=0;i<width/64;i++){
 			for(int j=0; j<5; j++){
@@ -90,6 +98,37 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 		startTimer();
 		
 	}
+	
+	String SelectLevel(){
+		File[] files=this.avaliableLevels();
+		for(File f:files){
+			console.out.println("Avaliable Level: "+f.getName());
+		}
+		console.out.print("Select a level: ");
+		System.out.println("test1");
+		Scanner s=new Scanner(console.in);
+		while(s.hasNext()){
+			System.out.println("test2");
+			String next=s.next();
+			System.out.println("input: "+next);
+			for(File f:files){
+				System.out.println("test3");
+				if(next.equals(f.getName()))
+					return next;
+			}
+			console.out.println("sorry that is not Avaliable");
+		}
+		System.out.println("test4");
+//		System.out.println("");
+	return null;	
+	}
+	
+	File[] avaliableLevels(){
+		File f=new File("levels");
+		return f.listFiles();
+	}
+	
+	
 	
 	/**
 	 * gets a time task pointing at the start of the game logic
@@ -217,11 +256,6 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 		}
 		
 	}
-	
-	
-	
-	
-
 	@Override
 	public void actionPerformed(ActionEvent action) {
 		if(action.getActionCommand()=="Pause"){

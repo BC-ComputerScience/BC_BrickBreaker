@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.Date;
@@ -18,7 +20,7 @@ import javax.swing.JPanel;
 
 import resources.PC_Sprite;
 
-public class Drawing_Panel extends JPanel{
+public class Drawing_Panel extends JPanel implements MouseListener{
 	private int width,height;
 	
 	private BufferedImage[] image;
@@ -28,6 +30,7 @@ public class Drawing_Panel extends JPanel{
 	int barHeight=0;
 	//int x;int y;
 	public Drawing_Panel(int x, int y){
+		this.addMouseListener(this);
 		//this.x=x;
 		//this.y=y;
 		y+=barHeight;
@@ -135,6 +138,36 @@ int objectsRendered=0;
         super.paintComponent(g);       
         this.draw(g);
     }
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		this.requestFocus();
+		
+	}
 	
 
 }

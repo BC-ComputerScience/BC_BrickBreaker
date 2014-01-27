@@ -1,7 +1,7 @@
 package view;
 
-import java.awt.Component;
-import java.awt.MenuBar;
+import java.awt.BorderLayout;
+
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
@@ -15,7 +15,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import controller.Collision_Controller;
 
@@ -27,6 +26,7 @@ public class Collision_View implements view.View{
 	int width,height;
 	Collision_Controller controller=null;
 	private boolean isMade=false;
+	Console console;
 
 
     public Collision_View(int width, int height, Collision_Controller c) {
@@ -63,14 +63,17 @@ public class Collision_View implements view.View{
 			e.printStackTrace();
 		}
 
-		
-        System.out.println("Created GUI on EDT? "+
-        SwingUtilities.isEventDispatchThread());
+		if(!SwingUtilities.isEventDispatchThread()){
+			System.err.println("Warning: GUI not created on EDT");
+		}
         f = new JFrame("Collision Simulaton");
+        f.setLayout(new BorderLayout());
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         panel=new Drawing_Panel(width,height);
-        f.add(panel);
-       
+        console=new Console();
+        
+        f.add(console, BorderLayout.SOUTH);
+        f.add(panel, BorderLayout.CENTER);
         menuBar = new JMenuBar();
       //Build the first menu.
         fileMenu = new JMenu("File");
@@ -143,7 +146,11 @@ public class Collision_View implements view.View{
 		}
 	}
 	public void addKeyListener(KeyListener controller){
-		f.addKeyListener(controller);
+		panel.addKeyListener(controller);
+	}
+	
+	public Console getConsole(){
+		return this.console;
 	}
 
 
