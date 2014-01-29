@@ -200,7 +200,7 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 					}
 					timer.schedule(gameloop, millisPerProc, millisPerProc);
 				}else if(action.getActionCommand()=="Add Large Random"){
-					tester.addRandomCircles(200);
+					tester.addRandomCircles(2000);
 				}
 				System.out.println(action.getActionCommand());
 			}

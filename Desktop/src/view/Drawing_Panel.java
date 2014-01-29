@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.LinkedTransferQueue;
 
 import javax.swing.JPanel;
 
@@ -46,7 +47,7 @@ public class Drawing_Panel extends JPanel{
 		Graphics2D g=image[num%imageLength].createGraphics();
 		g.clearRect(0, 0, width+2*offset, height+2*offset);
 		boolean firstPass=true;
-		this.addTimeStamp(g, false);
+		//this.addTimeStamp(g, false);
 		for(Renderable r:toRender){
 			//XXX in the PC version, the sprites should all be pc sprites
 			PC_Sprite s=(PC_Sprite)r.getImage();
@@ -75,8 +76,8 @@ public class Drawing_Panel extends JPanel{
 	private int bs=21;
 	private long lastProc=System.currentTimeMillis();
 	*/
-	private Queue<Long> q=new LinkedList<Long>();
-	double frameAverage=20;
+	private Queue<Long> q=new LinkedTransferQueue<Long>();
+	double frameAverage=10;
 int objectsRendered=0;
 	private int run=0;
 	
@@ -99,13 +100,25 @@ int objectsRendered=0;
 		long time=System.currentTimeMillis();
 		q.add(time);
         Long lastTime=time;
-        if(q.size()>=frameAverage){
+        if(q.size()>frameAverage){
         	
         	lastTime=q.remove();
         }
 		//if(lastTime!=time){
         Date d=new Date(time);
-        String toDisplay=time+" ("+Math.round(1/(((time-lastTime)/frameAverage)/10000))/10.+" fps) objects rendered="+this.objectsRendered;   
+        String toDisplay;
+        try{
+        	//System.out.println("time:"+time+"\tlasttime"+lastTime+"\tdiff"+(time-lastTime)+"\tsize:"+q.size());
+        	
+            toDisplay=time+" ("+Math.round(1/(((time-lastTime)/frameAverage)/10000.))/10.+" fps) objects rendered="+this.objectsRendered;   
+        }catch (NullPointerException e){
+        	System.err.println("time "+time);
+        	System.err.println("lastTime "+lastTime);
+        	System.err.println("this.objectsRendered "+this.objectsRendered);
+        	System.err.println("frameAverage "+frameAverage);
+        	throw e;
+        }
+        
         if(resized){
         	toDisplay+=" (resized)";
         }
@@ -118,8 +131,9 @@ int objectsRendered=0;
 	}
 	
 	protected void paintComponent(Graphics g) {
+		//System.out.println(Thread.currentThread().getName());
         super.paintComponent(g);       
-       this.draw(g);
+        this.draw(g);
     }
 	
 
