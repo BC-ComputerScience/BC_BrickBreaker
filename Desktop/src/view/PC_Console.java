@@ -5,6 +5,7 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -29,23 +30,58 @@ import javax.swing.text.BadLocationException;
  *
  * @author prog
  */
-public class Console extends JScrollPane {
-    private innerConsole inner=new innerConsole();
+public class PC_Console extends JScrollPane implements Console{
+    private InnerConsole inner=new InnerConsole();
     public InputStream in;//text entry
     public PrintStream out;//textDidsplay
 	
-	public Console(){
+	public PC_Console(){
 		in=inner.in;
-		out=inner.out;
+		//out=inner.out;
 		this.setViewportView(inner);
+		
+		out=new PrintStream(new InnerConsoleStream(inner));
+		/*System.out.println("starting test");
+		temp.println("1234566");
+		temp.println("hello how are you");
+		temp.println("\\__\n\r-123#%&^*$%&");
+		temp.flush();
+		System.out.println("ending test");/**/
 	}
 	
 	
 	
+	private class InnerConsoleStream extends OutputStream{
+		private InnerConsole ic;
+		public InnerConsoleStream(InnerConsole ic){
+			this.ic=ic;
+		}
+		public void close()throws IOException{
+			//do nothing
+		}
+		public void flush()throws IOException{
+			//do nothing(as of yet)
+		}
+		public void write(byte[] b)throws IOException{
+			this.write(b,0,b.length);
+			
+		}
+		public void write(byte[] b, int off, int len)throws IOException{
+			byte[] temp=new byte[len];
+			System.arraycopy(b, off, temp, 0, len);
+			ic.append(new String(temp));
+			ic.resetCaret();
+		}
+		@Override
+		public void write(int arg) throws IOException {
+			this.write(new byte[]{(byte)(arg&(0xFF))},0,1);
+		}
+		
+	}
 	
 	
 	
-	private class innerConsole extends JTextArea implements KeyListener {
+	private class InnerConsole extends JTextArea implements KeyListener {
     private ArrayList<view.ConsoleListener> listeners=new ArrayList<view.ConsoleListener>();
     private ArrayBlockingQueue<ConsoleEvent> events=new ArrayBlockingQueue<ConsoleEvent>(10);
     
@@ -65,8 +101,9 @@ public class Console extends JScrollPane {
     
     private int lastIndex;
     
-    public innerConsole(){
-    	super(5,20);
+    public InnerConsole(){
+    	super(8,20);
+    	this.setFont(Font.getFont(Font.MONOSPACED));
     	this.setMargin(new Insets(5,5,5,5));
         //setColumns(20);
         //setRows(5);
@@ -92,12 +129,14 @@ public class Console extends JScrollPane {
         } catch (IOException ex) {
             System.err.println("COULD NOT Read from graphical console");
         }
-        ConsolePrintListener=new Thread(new Runnable(){
+       /* ConsolePrintListener=new Thread(new Runnable(){
             @Override
             public void run() {listen();}
             
         });
-        ConsolePrintListener.start();
+        ConsolePrintListener.start();/**/
+        this.setFont(new Font(Font.MONOSPACED,Font.PLAIN,12));
+        //System.out.println(Font.getFont("monospaced",Font.SANS_SERIF));
         ConsoleEventDispatcher=new Thread(new Runnable(){
             @Override
             public void run() {sendEvents();}
@@ -107,17 +146,40 @@ public class Console extends JScrollPane {
         ConsoleEventDispatcher.start();
     }
 
-    private void listen(){
+    /*private void listen(){
         System.out.println("started listening");
-        Scanner console=new Scanner(toDisplay);
-        while(console.hasNext()){
-            
-            String der=console.nextLine();
-            this.append(der+"\n");
-            resetCaret();
-        }
+        
+        BufferedReader reader=new BufferedReader(new InputStreamReader(toDisplay));
+        //Scanner console=new Scanner(toDisplay);
+        //System.out.println(toDisplay.)
+        String thisLine;
+        //Thread.currentThread().setDaemon(true);
+        
+        try {
+			while((thisLine = reader.readLine()) != null){
+			   /* if(reader.ready()){
+			    	
+			    }
+				Thread.sleep(Long.MAX_VALUE);
+			    
+				if(console.hasNext(".*\n")){
+			    	System.out.println("12312 here");
+			    	String der=console.nextLine();
+			    	this.append(der+"\n");
+			    	System.out.print(der+"\n");
+			    }else{
+			    	System.out.println("not here");
+			    }*//*
+				this.append(thisLine);
+			    resetCaret();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         System.out.println("stopped listening");
     }
+    /**/
     private void sendEvents() {
         while (true){
             try {
@@ -139,12 +201,7 @@ public class Console extends JScrollPane {
     
     
     
-    public void addConsoleListener(ConsoleListener cl){
-        listeners.add(cl);
-    }
-    public void removeConsoleListener(ConsoleListener cl){
-        listeners.remove(cl);
-    }
+   
 
     
     
@@ -217,5 +274,31 @@ public class Console extends JScrollPane {
         
     }
 	}
+
+
+
+	@Override
+	public PrintStream out() {
+		// TODO Auto-generated method stub
+		return out;
+	}
+
+
+
+	@Override
+	public InputStream in() {
+		// TODO Auto-generated method stub
+		return in;
+	}
+
+
+
+	 public void addConsoleListener(ConsoleListener cl){
+	    //    listeners.add(cl);
+	    }
+	    public void removeConsoleListener(ConsoleListener cl){
+	    //    listeners.remove(cl);
+	    }
+
 
 }

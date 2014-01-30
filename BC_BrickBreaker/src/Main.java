@@ -1,11 +1,9 @@
-import java.util.ArrayList;
-import java.util.Random;
+import java.io.InputStream;
+import java.io.PrintStream;
 
-import view.Renderable;
-import mathematics.Vector;
-import model.Brick;
-import model.Line;
-import model.Sphere;
+import consoletools.Shell;
+import view.Console;
+import view.ConsoleListener;
 
  /**
  * A starting point
@@ -48,6 +46,33 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Starting test program(console only)");
+		new Shell(new Console(){
+
+			@Override
+			public PrintStream out() {
+				// TODO Auto-generated method stub
+				return System.out;
+			}
+
+			@Override
+			public InputStream in() {
+				// TODO Auto-generated method stub
+				return System.in;
+			}
+
+			@Override
+			public void addConsoleListener(ConsoleListener cl) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void removeConsoleListener(ConsoleListener cl) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		//new controller.Collision_Controller(800,600);
 		
 		//new resources.LevelReader("/Users/prog/git/BC_BrickBreakerRepo/BC_BrickBreaker/level/");

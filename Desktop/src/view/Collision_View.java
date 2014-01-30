@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
@@ -13,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -26,7 +26,7 @@ public class Collision_View implements view.View{
 	int width,height;
 	Collision_Controller controller=null;
 	private boolean isMade=false;
-	Console console;
+	PC_Console console;
 
 
     public Collision_View(int width, int height, Collision_Controller c) {
@@ -62,20 +62,27 @@ public class Collision_View implements view.View{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
 		if(!SwingUtilities.isEventDispatchThread()){
 			System.err.println("Warning: GUI not created on EDT");
 		}
+		
         f = new JFrame("Collision Simulaton");
         f.setLayout(new BorderLayout());
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         panel=new Drawing_Panel(width,height);
-        console=new Console();
+        console=new PC_Console();
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+        		panel, console);
         
-        f.add(console, BorderLayout.SOUTH);
-        f.add(panel, BorderLayout.CENTER);
+        //f.add(console, BorderLayout.SOUTH);
+        //f.add(panel, BorderLayout.CENTER);
+        f.add(splitPane);
         menuBar = new JMenuBar();
       //Build the first menu.
+        
+        
         fileMenu = new JMenu("File");
         editMenu = new JMenu("Edit");
         JMenuItem temp;
@@ -149,7 +156,7 @@ public class Collision_View implements view.View{
 		panel.addKeyListener(controller);
 	}
 	
-	public Console getConsole(){
+	public PC_Console getConsole(){
 		return this.console;
 	}
 

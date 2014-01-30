@@ -12,13 +12,14 @@ import java.util.TimerTask;
 
 import javax.swing.JOptionPane;
 
+import consoletools.Shell;
 import resources.LevelReader;
 import resources.PC_ResourceLoader;
 import mathematics.Vector;
 import model.Collision_Simulator;
 import model.Paddle;
 import view.Collision_View;
-import view.Console;
+import view.PC_Console;
 
 public class Collision_Controller implements Controller, ActionListener, MouseListener, MouseMotionListener, KeyListener{
 	
@@ -26,7 +27,7 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	private Collision_Simulator model;
 	private Tester tester;
 	
-	private Console console;
+	private PC_Console console;
 	//A time set to proc every 20 millis
 	private Timer timer;
 	private int millisPerProc=50;
@@ -60,42 +61,43 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 		//create a view which can update the controller(this)
 		view = new Collision_View(width,height, this);
 		console = view.getConsole();
-		//create a model which can update to the view
-		model = new Collision_Simulator(width,height,view);
-		
-		p = new Paddle(width/2,height-20,150);
-		model.addGameObject(p);
-		tester=new Tester(model);
-		
-		
-		
-		
-		//make events in the view update this controller
-		view.addMouseListener(this);
-		view.addMouseMotionListener(this);
-		view.addActionListener(this);
-		view.addKeyListener(this);
-		
-		//String level=SelectLevel();
-		//level=level!=null?level:"first_campaign";
-		ll=new LevelReader("levels/"+"first_campaign", new PC_ResourceLoader());
-		
-		
-		/*
-		for(int i=0;i<width/64;i++){
-			for(int j=0; j<5; j++){
-				model.addGameObject(ll.createball(33+i*64,33+j*64));
-			}
-		}
-		;/**/
-		
-		tester.testCase();
-		
-		timer=new Timer();
-		
-		
-		gameloop=getLoopTask();
-		startTimer();
+		Shell s=new Shell(view.getConsole());
+//		//create a model which can update to the view
+//		model = new Collision_Simulator(width,height,view);
+//		
+//		p = new Paddle(width/2,height-20,150);
+//		model.addGameObject(p);
+//		tester=new Tester(model);
+//		
+//		
+//		
+//		
+//		//make events in the view update this controller
+//		view.addMouseListener(this);
+//		view.addMouseMotionListener(this);
+//		view.addActionListener(this);
+//		view.addKeyListener(this);
+//		
+//		//String level=SelectLevel();
+//		//level=level!=null?level:"first_campaign";
+//		//ll=new LevelReader("levels/"+"first_campaign", new PC_ResourceLoader());
+//		
+//		
+//		/*
+//		for(int i=0;i<width/64;i++){
+//			for(int j=0; j<5; j++){
+//				model.addGameObject(ll.createball(33+i*64,33+j*64));
+//			}
+//		}
+//		;/**/
+//		
+//		tester.testCase();
+//		
+//		timer=new Timer();
+//		
+//		
+//		gameloop=getLoopTask();
+//		startTimer();
 		
 	}
 	

@@ -22,6 +22,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		new controller.Collision_Controller(800,600);
+		//new view.Console();
 		//LevelReader ll=new LevelReader("level/", new PC_ResourceLoader());
 		
 		//new resources.LevelReader("/Users/prog/git/BC_BrickBreakerRepo/BC_BrickBreaker/level/");
