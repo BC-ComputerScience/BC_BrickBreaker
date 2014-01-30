@@ -6,7 +6,6 @@ import java.net.URL;
 import java.net.URLClassLoader;
 
 import model.*;
-import resources.LevelLoader;
 import resources.LevelReader;
 import trigger.*;
 

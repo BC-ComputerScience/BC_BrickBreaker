@@ -1,9 +1,5 @@
 package model;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 
 import resources.SpriteSet;
 import view.Renderable;

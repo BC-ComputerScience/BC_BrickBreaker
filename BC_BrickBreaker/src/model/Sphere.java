@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import resources.SpriteHolder;
@@ -14,7 +12,6 @@ import mathematics.Vector;
 
 public class Sphere extends Movable implements Renderable{
 	private double radius;
-	private BufferedImage image;
 	private int width,height;
 	public static int number=0;
 	private int thisnum;
@@ -34,7 +31,6 @@ public class Sphere extends Movable implements Renderable{
 		this.setPos(new Vector(x-radius,y-radius));
 		width=dimention;
 		height=dimention;
-		image = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 		
 	}
 	public Sprite getImage() {
@@ -61,11 +57,6 @@ public class Sphere extends Movable implements Renderable{
 		radius=Math.sqrt(m);
 		dimention=(int)radius*2;
 		
-		if(image.getWidth()<dimention){
-			width=dimention*2;
-			height=dimention*2;
-			image = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
-		}
 		
 	}
 	@Override

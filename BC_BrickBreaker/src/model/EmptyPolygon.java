@@ -1,11 +1,9 @@
 package model;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
+//TODO REMOVE dependancy on awt.polygon
 import java.awt.Polygon;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
+
 
 import resources.SpriteSet;
 import view.Renderable;

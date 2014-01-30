@@ -168,4 +168,18 @@ public class Collision_View implements view.View{
 		
 	}
 
+
+	@Override
+	public int getGameWith() {
+		// TODO Auto-generated method stub
+		return panel.getWidth();
+	}
+
+
+	@Override
+	public int getGameHeight() {
+		// TODO Auto-generated method stub
+		return panel.getHeight();
+	}
+
 }

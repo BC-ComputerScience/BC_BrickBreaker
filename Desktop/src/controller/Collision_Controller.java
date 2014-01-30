@@ -1,7 +1,8 @@
 package controller;
 
-import java.awt.AWTEvent;
-import java.awt.event.*;
+
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +22,7 @@ import model.Paddle;
 import view.Collision_View;
 import view.PC_Console;
 
-public class Collision_Controller implements Controller, ActionListener, MouseListener, MouseMotionListener, KeyListener{
+public class Collision_Controller implements Controller, ActionListener, MouseListener, java.awt.event.MouseMotionListener, java.awt.event.KeyListener{
 	
 	private Collision_View view;
 	private Collision_Simulator model;
@@ -40,7 +41,7 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	@SuppressWarnings("unused")
 	private int width, height;
 	Paddle p;
-	private Queue<AWTEvent> queue=new LinkedList<AWTEvent>();
+	private Queue<java.awt.AWTEvent> queue=new LinkedList<java.awt.AWTEvent>();
 	
 	
 	//TODO not really where it should be
@@ -63,20 +64,20 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 		console = view.getConsole();
 		Shell s=new Shell(view.getConsole());
 //		//create a model which can update to the view
-//		model = new Collision_Simulator(width,height,view);
+		model = new Collision_Simulator(width,height,view);
 //		
-//		p = new Paddle(width/2,height-20,150);
-//		model.addGameObject(p);
-//		tester=new Tester(model);
+		p = new Paddle(width/2,height-20,150);
+		model.addGameObject(p);
+		tester=new Tester(model);
 //		
 //		
 //		
 //		
 //		//make events in the view update this controller
-//		view.addMouseListener(this);
-//		view.addMouseMotionListener(this);
-//		view.addActionListener(this);
-//		view.addKeyListener(this);
+		view.addMouseListener(this);
+		view.addMouseMotionListener(this);
+		view.addActionListener(this);
+		view.addKeyListener(this);
 //		
 //		//String level=SelectLevel();
 //		//level=level!=null?level:"first_campaign";
@@ -91,13 +92,13 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 //		}
 //		;/**/
 //		
-//		tester.testCase();
-//		
-//		timer=new Timer();
-//		
-//		
-//		gameloop=getLoopTask();
-//		startTimer();
+		//tester.testCase();
+		
+		timer=new Timer();
+		
+		
+		gameloop=getLoopTask();
+		startTimer();
 		
 	}
 	
@@ -179,13 +180,13 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	 */
 	public void interpretCommands(){
 		p.move(Direction);
-		AWTEvent event=null;
+		java.awt.AWTEvent event=null;
 		while((event=queue.poll())!=null){
 			//TODO log time and operation
-			if(event instanceof MouseEvent){
+			if(event instanceof java.awt.event.MouseEvent){
 				
 				
-				MouseEvent mouse=(MouseEvent)event;
+				java.awt.event.MouseEvent mouse=(java.awt.event.MouseEvent)event;
 				if(mouse.isShiftDown()){
 					tester.placeSphere(startx, starty,endx-startx,endy-starty,mouse.isAltDown());
 					System.out.println(new mathematics.Vector(mouse.getX(),mouse.getY()));
@@ -195,8 +196,8 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 				}
 				
 				
-			}else if(event instanceof ActionEvent){
-				ActionEvent action=(ActionEvent)event;
+			}else if(event instanceof java.awt.event.ActionEvent){
+				java.awt.event.ActionEvent action=(java.awt.event.ActionEvent)event;
 				if(action.getActionCommand()=="Reset"){
 					model.reset();
 				}else if(action.getActionCommand()=="Add Cradle"){
@@ -259,7 +260,7 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 		
 	}
 	@Override
-	public void actionPerformed(ActionEvent action) {
+	public void actionPerformed(java.awt.event.ActionEvent action) {
 		if(action.getActionCommand()=="Pause"){
 			if(isPaused){
 				isPaused=false;
@@ -274,31 +275,31 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent event) {
+	public void mouseClicked(java.awt.event.MouseEvent event) {
 		//System.out.println("mouse clicked");
 		
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent event) {
+	public void mouseEntered(java.awt.event.MouseEvent event) {
 		//System.out.println("mouse entered");
 		
 	}
 
 	@Override
-	public void mouseExited(MouseEvent event) {
+	public void mouseExited(java.awt.event.MouseEvent event) {
 		//System.out.println("mouse exited");
 		
 	}
 
 	private int startx,starty,endx, endy;
 	@Override
-	public void mousePressed(MouseEvent event) {
+	public void mousePressed(java.awt.event.MouseEvent event) {
 		startx=event.getX();starty=event.getY();
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent event) {
+	public void mouseReleased(java.awt.event.MouseEvent event) {
 		endx=event.getX();endy=event.getY();
 		queue.add(event);
 		//System.out.println("mouse released");
@@ -306,23 +307,23 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent event) {
+	public void mouseDragged(java.awt.event.MouseEvent event) {
 		//System.out.println("mouse dragged ("+event.getX()+","+event.getY()+")");
 		
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent event) {
+	public void mouseMoved(java.awt.event.MouseEvent event) {
 		//System.out.println("mouse moved");
 		
 	}
    int Direction=0;
 	@Override
-	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode()==KeyEvent.VK_LEFT){
+	public void keyPressed(java.awt.event.KeyEvent e) {
+		if(e.getKeyCode()==java.awt.event.KeyEvent.VK_LEFT){
 			Direction=-15;
 			//p.move(-20);
-		}else if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+		}else if(e.getKeyCode()==java.awt.event.KeyEvent.VK_RIGHT){
 			Direction=15;
 			//p.move(20);
 			
@@ -334,11 +335,11 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		if(e.getKeyCode()==KeyEvent.VK_LEFT){
+	public void keyReleased(java.awt.event.KeyEvent e) {
+		if(e.getKeyCode()==java.awt.event.KeyEvent.VK_LEFT){
 			Direction=0;
 			//p.move(-20);
-		}else if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+		}else if(e.getKeyCode()==java.awt.event.KeyEvent.VK_RIGHT){
 			Direction=0;
 			//p.move(20);
 			
@@ -346,10 +347,12 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	}
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
+	public void keyTyped(java.awt.event.KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 
 	

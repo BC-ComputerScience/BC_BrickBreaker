@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface View {
 
-	void updateScreen(List<Renderable> rendered);
+	public void updateScreen(List<Renderable> rendered);
+	public int getGameWith();
+	public int getGameHeight();
 
 }

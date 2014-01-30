@@ -14,7 +14,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.LinkedTransferQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.swing.JPanel;
 
@@ -79,7 +80,7 @@ public class Drawing_Panel extends JPanel implements MouseListener{
 	private int bs=21;
 	private long lastProc=System.currentTimeMillis();
 	*/
-	private Queue<Long> q=new LinkedTransferQueue<Long>();
+	private Queue<Long> q=new LinkedBlockingQueue<Long>();
 	double frameAverage=10;
 int objectsRendered=0;
 	private int run=0;
