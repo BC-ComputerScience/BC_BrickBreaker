@@ -5,43 +5,60 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import view.Console;
 
 public class Shell {
+	
 	private HashMap<String,ShellProgram> commands=new HashMap<String,ShellProgram>();
     public PrintStream out;//textDidsplay
     private InputStream in;
     @SuppressWarnings("unused")
 	private Console c;
+    //regex:("[^"\\]*(?:\\.[^"\\]*)*")
+	private Pattern string=Pattern.compile("([\"])((?:\\\\\\1|.)*?)\\1|([^\\s\"]+)");
+	
+    //private Pattern delimeter=Pattern.compile("");
     
     private File loc;
+    public Shell(Console c, Object o) {
+    	this(c);
+    }
 	public Shell(Console c) {
+		List<String> list=null;
+
 		this.c=c;
 		this.out=c.out();
 		in=c.in();
 		loc=new File(".");//current directory
 		out.println("Starting shell...");
+		
 		ls ls=new ls();
-		commands.put("ls", ls);
-		commands.put("dir", ls);
-		commands.put("cd", new cd());
-		commands.put("load", new load());
-		commands.put("save", new save());
-		commands.put("pwd", new pwd());
-		commands.put("mkdir", new mkdir());
-		commands.put("quit", new quit());
-		commands.put("wget", new wget());
-		commands.put("echo", new echo());
+		
+		commands.put("ls", ls);//list files in dir
+		commands.put("dir", ls);//list files in dir
+		commands.put("cd", new cd());//change dir
+		commands.put("load", new load());//load a level
+		commands.put("save", new save());//save a level
+		commands.put("pwd", new pwd());//print present directory
+		commands.put("mkdir", new mkdir());//make a directory with name
+		commands.put("quit", new quit());//exit application
+		commands.put("wget", new wget());//download 
+		commands.put("echo", new echo());//echo to console.
 		new Thread(new Runnable(){public void run() {listen();}}).start();
 	}
 	
 	private void listen(){
 		Scanner console=new Scanner(in);
 		out.print("$: ");
+		
+		;
 		//c.out.flush();
-		while(console.hasNextLine()){
+		while(console.hasNextLine()&&console.hasNext()){
 			parseCommand(console.nextLine());
 			
 		}
@@ -54,13 +71,16 @@ public class Shell {
 			}
 		}
 		
+		Matcher parser=string.matcher(s);
 		
-		Scanner scanner=new Scanner(s);
+		//Scanner scanner=new Scanner(s);
+		//scanner.useDelimiter(pattern)
 		ArrayList<String> arglist= new ArrayList<String>();
-		if(scanner.hasNext()){
-			String command=scanner.next();
-			while(scanner.hasNext()){
-				arglist.add(scanner.next());
+		//System.err.println(scanner.delimiter());
+		if(parser.find()){
+			String command=parser.group();
+			while(parser.find()){
+				arglist.add(parser.group());
 			}
 			ShellProgram p=commands.get(command);
 			String[] args=new String[arglist.size()];

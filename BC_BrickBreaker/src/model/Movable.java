@@ -134,5 +134,19 @@ public abstract class Movable extends Collidable{
 	public void setImmovable(boolean isImmovable){immovable=isImmovable;}
 	public boolean isImovable(){return immovable;}
 	
+
+	@Override
+	public void translate(int deltaX, int deltaY) {
+		
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void transLate(Vector v) {
+		translate((int)v.getElement(0),(int)v.getElement(1));
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

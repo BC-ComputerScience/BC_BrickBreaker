@@ -1,15 +1,20 @@
 package model;
 
+import mathematics.Vector;
 import resources.SpriteSet;
 import view.Renderable;
 import view.Sprite;
 
 public class Background implements Renderable{
 	private SpriteSet spriteSet=new SpriteSet();
-	int width, height;
+	int width, height,x,y;
+	private Background(){}
+	
 	public Background(int width, int height) {
 		this.width=width;
 		this.height=height;
+		this.x=0;
+		this.y=0;
 	}
 
 	@Override
@@ -45,6 +50,37 @@ public class Background implements Renderable{
 	@Override
 	public void addSpriteSet(SpriteSet set) {
 		this.spriteSet=set;
+		
+	}
+
+	@Override
+	public GameObject cloneAt(int x, int y) {
+		Background ret=new Background();
+		ret.width=width;
+		ret.height=height;
+		ret.x=x;
+		ret.y=y;
+		ret.spriteSet=this.spriteSet.clone();
+		return ret;
+	}
+
+	@Override
+	public GameObject cloneAt(Vector v) {
+		return cloneAt((int)v.getElement(0),(int)v.getElement(1));
+	}
+
+	@Override
+	public void translate(int deltaX, int deltaY) {
+		this.x+=deltaX;
+		this.y+=deltaY;
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void transLate(Vector v) {
+		translate((int)v.getElement(0),(int)v.getElement(1));
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -9,6 +9,7 @@ public abstract class Collidable implements GameObject{
 	public abstract int getBoundingHeight();
 	public abstract double getX();
 	public abstract double getY();
+	
 	//getpos
 	//setpos(vector)
 	//setX

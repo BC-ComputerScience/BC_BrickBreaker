@@ -1,5 +1,5 @@
 package controller;
 
-public class KeyEvent {
+public abstract class KeyEvent extends Event{
 
 }

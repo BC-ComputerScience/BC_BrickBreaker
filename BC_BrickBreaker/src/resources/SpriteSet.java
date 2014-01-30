@@ -2,7 +2,7 @@ package resources;
 
 import view.Sprite;
 
-public class SpriteSet {
+public class SpriteSet implements Cloneable{
 	double maxprogression=100;
 	double progression=0;
 	double frames;
@@ -25,6 +25,11 @@ public class SpriteSet {
 	}
 	public void advance(double d){
 		progression+=d;
+	}
+	public SpriteSet clone(){
+		return null;
+		dsafjklhadsfhu
+		
 	}
 
 }
