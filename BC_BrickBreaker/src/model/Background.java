@@ -53,7 +53,6 @@ public class Background implements Renderable{
 		
 	}
 
-	@Override
 	public GameObject cloneAt(int x, int y) {
 		Background ret=new Background();
 		ret.width=width;
@@ -64,12 +63,10 @@ public class Background implements Renderable{
 		return ret;
 	}
 
-	@Override
 	public GameObject cloneAt(Vector v) {
 		return cloneAt((int)v.getElement(0),(int)v.getElement(1));
 	}
 
-	@Override
 	public void translate(int deltaX, int deltaY) {
 		this.x+=deltaX;
 		this.y+=deltaY;
@@ -77,8 +74,7 @@ public class Background implements Renderable{
 		
 	}
 
-	@Override
-	public void transLate(Vector v) {
+	public void translate(Vector v) {
 		translate((int)v.getElement(0),(int)v.getElement(1));
 		// TODO Auto-generated method stub
 		

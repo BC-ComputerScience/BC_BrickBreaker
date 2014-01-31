@@ -14,7 +14,6 @@ import mathematics.Vector;
  * 
  */
 public class Line extends Collidable implements Renderable {
-	private double x1, y1, x2, y2;
 	protected Vector normal, p1, p2;
 	private int x, y, width, height;
 	private SpriteSet spriteSet=new SpriteSet();
@@ -32,10 +31,6 @@ public class Line extends Collidable implements Renderable {
 		this(x1,y1,x2,y2,false);
 	}
 	public Line(double x1, double y1, double x2, double y2, boolean isOneWay) {
-		this.x1 = x1;
-		this.x2 = x2;
-		this.y1 = y1;
-		this.y2 = y2;
 		this.isOneWay=isOneWay;
 		p1 = new Vector(x1, y1);
 		p2 = new Vector(x2, y2);
@@ -347,6 +342,28 @@ public class Line extends Collidable implements Renderable {
 	public void addSpriteSet(SpriteSet set) {
 		this.spriteSet=set;
 		
+	}
+	@Override
+	public Line cloneAt(int x, int y) {
+		return cloneAt(new Vector(x,y));
+	}
+	@Override
+	public Line cloneAt(Vector v) {
+		Line ret=new Line(p1.add(v),p2.add(v),this.isOneWay);
+		ret.addSpriteSet(spriteSet.clone());
+		return ret;
+	}
+	@Override
+	public void translate(int deltaX, int deltaY) {
+		translate(new Vector(deltaX, deltaY));
+		
+	}
+	@Override
+	public void translate(Vector v) {
+		p1=p1.add(v);
+		p2=p2.add(v);
+		this.x=(int)Math.min(p1.getElement(0), p2.getElement(0));
+		this.y=(int)Math.min(p1.getElement(1), p2.getElement(1));		
 	}
 
 }

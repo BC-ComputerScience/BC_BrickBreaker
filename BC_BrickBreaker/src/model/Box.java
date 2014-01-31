@@ -1,6 +1,7 @@
 package model;
 
 
+import mathematics.Vector;
 import resources.SpriteSet;
 import view.Renderable;
 import view.Sprite;
@@ -147,6 +148,41 @@ public class Box extends Collidable implements Renderable{
 	public void addSpriteSet(SpriteSet set) {
 		this.spriteSet=set;
 		
+	}
+
+
+
+	@Override
+	public GameObject cloneAt(int x, int y) {
+		Box ret=new Box(x,y,width,height);
+		ret.addSpriteSet(this.spriteSet.clone());
+		return ret;
+	}
+
+
+
+	@Override
+	public GameObject cloneAt(Vector v) {
+		return cloneAt((int)v.getElement(0),(int)v.getElement(1));
+	}
+
+
+
+	@Override
+	public void translate(int deltaX, int deltaY) {
+		translate(new Vector(deltaX, deltaY));
+		
+	}
+
+
+
+	@Override
+	public void translate(Vector v) {
+		for(Line l:this.lines){
+			l.translate(v);
+		}
+		this.x+=v.getElement(0);
+		this.y+=v.getElement(1);
 	}
 
 }
