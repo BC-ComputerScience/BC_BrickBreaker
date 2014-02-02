@@ -55,15 +55,22 @@ public class Drawing_Panel extends JPanel implements MouseListener{
 		for(Renderable r:toRender){
 			//XXX in the PC version, the sprites should all be pc sprites
 			PC_Sprite s=(PC_Sprite)r.getImage();
-			if(s==null&&!(r instanceof model.Background)){
-				s=new PC_Sprite(0,0,r.getImageWidth(),r.getImageHeight());
+			
+			if(s==null&&!(r instanceof model.gameObjects.Background)){
+				g.setColor(Color.WHITE);
+				g.fillRect(r.getImageX()+offset, r.getImageY()+offset, r.getImageWidth(), r.getImageHeight());
+				g.setColor(Color.CYAN);
+				g.drawRect(r.getImageX()+offset, r.getImageY()+offset, r.getImageWidth(), r.getImageHeight());
+				
 			}
 			if(s!=null)
 			if(firstPass){
-				g.drawImage(s.getImage(), r.getImageX()+offset, r.getImageY()+offset,r.getImageWidth(),r.getImageHeight(),/**/ null);
+				//g.drawImage(s.getImage(), r.getImageX()+offset, r.getImageY()+offset,r.getImageWidth(),r.getImageHeight(),/**/ null);
+				s.getResource().draw(g, s, r.getImageX()+offset, r.getImageY()+offset, r.getImageWidth(), r.getImageHeight());
 				firstPass=false;
 			}else{
-				g.drawImage(s.getImage(), r.getImageX()+offset, r.getImageY()+offset+barHeight,r.getImageWidth(),r.getImageHeight(),/**/ null);
+				s.getResource().draw(g, s, r.getImageX(), r.getImageY(), r.getImageWidth(), r.getImageHeight());
+				//g.drawImage(s.getImage(), r.getImageX()+offset, r.getImageY()+offset+barHeight,r.getImageWidth(),r.getImageHeight(),/**/ null);
 			}
 			
 			

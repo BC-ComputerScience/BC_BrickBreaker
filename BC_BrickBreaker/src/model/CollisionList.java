@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 import mathematics.Vector;
+import model.gameObjects.Collidable;
+import model.gameObjects.Movable;
 /**
  * 
  * @author Anthony Klobas

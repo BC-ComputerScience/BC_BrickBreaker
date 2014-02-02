@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import controller.LogicalSystem;
 import view.Console;
 
 public class Shell {
@@ -22,11 +23,13 @@ public class Shell {
     //regex:("[^"\\]*(?:\\.[^"\\]*)*")
 	private Pattern string=Pattern.compile("([\"])((?:\\\\\\1|.)*?)\\1|([^\\s\"]+)");
 	
+	LogicalSystem system=null;
     //private Pattern delimeter=Pattern.compile("");
     
     private File loc;
-    public Shell(Console c, Object o) {
+    public Shell(Console c, LogicalSystem lc) {
     	this(c);
+    	system=lc;
     }
 	public Shell(Console c) {
 		List<String> list=null;
@@ -49,6 +52,7 @@ public class Shell {
 		commands.put("quit", new quit());//exit application
 		commands.put("wget", new wget());//download 
 		commands.put("echo", new echo());//echo to console.
+		commands.put("vTest", new VectorTest());
 		new Thread(new Runnable(){public void run() {listen();}}).start();
 	}
 	

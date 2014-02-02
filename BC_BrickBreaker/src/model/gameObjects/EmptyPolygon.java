@@ -1,4 +1,4 @@
-package model;
+package model.gameObjects;
 
 //TODO REMOVE dependancy on awt.polygon
 import java.awt.Polygon;

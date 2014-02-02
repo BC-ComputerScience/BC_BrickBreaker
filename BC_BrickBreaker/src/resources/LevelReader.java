@@ -19,7 +19,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import mathematics.Vector;
-import model.Sphere;
+import model.gameObjects.Sphere;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -140,7 +140,7 @@ public class LevelReader {
 				spritea.add(parseSprite(sprites.item(i)));
 			}
 		}
-		SpriteSheet sheet=new SpriteSheet(spritea);
+		SpriteSheet sheet=new SpriteSheet(spritea,"test");
 		this.SpriteSheets.put(spriteSheet.getAttributes().getNamedItem("name").getTextContent().trim(),sheet);
 	}
 	private Sprite parseSprite(Node sprite){

@@ -1,7 +1,7 @@
 package resources;
 
-public interface ClassResource extends Resource{
-	public Object CreateInstance(String className,Object... args);
-	public String[] getClassNames();
+public abstract class ClassResource extends Resource{
+	public abstract Object CreateInstance(String className,Object... args);
+	public abstract String[] getClassNames();
 
 }

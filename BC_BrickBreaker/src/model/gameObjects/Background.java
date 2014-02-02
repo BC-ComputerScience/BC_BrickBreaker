@@ -1,4 +1,4 @@
-package model;
+package model.gameObjects;
 
 import mathematics.Vector;
 import resources.SpriteSet;

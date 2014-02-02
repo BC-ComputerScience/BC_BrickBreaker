@@ -2,6 +2,10 @@ package resources;
 
 import view.Sprite;
 
-public interface ImageResource extends Resource {
-	public Sprite createSprite(int x, int y, int width, int height);
+public abstract class ImageResource extends Resource {
+	public abstract Sprite createSprite(int x, int y, int width, int height);
+	@Override
+	public String getType(){
+		return "image";
+	}
 }

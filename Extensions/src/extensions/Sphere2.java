@@ -2,7 +2,7 @@ package extensions;
 
 import resources.SpriteSheet;
 import mathematics.Vector;
-import model.Sphere;
+import model.gameObjects.Sphere;
 
 public class Sphere2 extends Sphere {
 

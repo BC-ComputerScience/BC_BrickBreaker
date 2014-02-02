@@ -131,6 +131,39 @@ public class Vector {
 		return new Vector(-vector[1],vector[0]); 
 	}
 	
+	public Vector getProjection(Vector onto){
+		return onto.scale(this.dotProduct(onto)/onto.dotProduct(onto));
+	}
+	
+	public Vector getProjection2(Vector onto){
+		onto=onto.getUnitVector();
+		return onto.scale(this.dotProduct(onto));
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Vector))
+			return false;
+		
+		Vector other = (Vector) obj;
+		if(other.vector.length!=this.vector.length){
+			return false;
+		}
+		
+		for(int i=0;i<this.vector.length;i++){
+			if(Math.round(this.vector[i]*1000)!=Math.round(other.vector[i]*1000)){
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	
 	
 	/*public Vector getPerpendicular(Vector v){

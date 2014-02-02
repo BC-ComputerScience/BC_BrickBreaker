@@ -3,7 +3,7 @@ package view;
 
 import resources.SpriteSet;
 
-public interface Renderable extends model.GameObject{
+public interface Renderable {
 	int getImageX();
 	int getImageY();
 	int getImageWidth();

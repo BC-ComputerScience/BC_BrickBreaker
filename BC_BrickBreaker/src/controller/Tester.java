@@ -13,9 +13,10 @@ import java.util.Arrays;
 import java.util.Random;
 
 import mathematics.Vector;
-import model.Brick;
 import model.Collision_Simulator;
-import model.Sphere;
+import model.gameObjects.Brick;
+import model.gameObjects.Line;
+import model.gameObjects.Sphere;
 /**
  * 
  * @author Anthony Klobas
@@ -139,12 +140,12 @@ public class Tester {
 	
 	public void placeSphere(int x, int y,boolean isImmovable){
 		Sphere s=new Sphere(x,y,new Vector(0,0),rand.nextInt(50)+50);
-		s.setImmovable(isImmovable);
+		//s.setImmovable(isImmovable);
 		sim.addGameObject(s);
 	}
 	public void placeSphere(int x, int y, int xvel, int yvel,boolean isImmovable){
 		Sphere s=new Sphere(x,y,new Vector(xvel,yvel),rand.nextInt(50)+50);
-		s.setImmovable(isImmovable);
+		//s.setImmovable(isImmovable);
 		sim.addGameObject(s);
 	}
 	

@@ -2,8 +2,8 @@ package resources;
 import java.util.ArrayList;
 
 import mathematics.Vector;
-import model.GameObject;
 import model.Model;
+import model.gameObjects.GameObject;
 public class Level {
 
 	ArrayList<GameObject> objects = new ArrayList<GameObject>();
@@ -30,8 +30,8 @@ public class Level {
 		this.addGameObject(o,true);
 	}
 	public void addGameObject(GameObject o, boolean defaultCOR){
-		if(defaultCOR&&(o instanceof model.Movable)){
-			((model.Movable)o).setCOR(this.COR);
+		if(defaultCOR&&(o instanceof model.gameObjects.Movable)){
+			((model.gameObjects.Movable)o).setCOR(this.COR);
 		}
 		objects.add(o);
 	}

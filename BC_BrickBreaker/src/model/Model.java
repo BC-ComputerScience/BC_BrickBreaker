@@ -2,6 +2,9 @@ package model;
 
 import java.util.List;
 
+import model.gameObjects.Collidable;
+import model.gameObjects.GameObject;
+
 public interface Model {
 	public Collidable selectAtPoint(int x, int y);
 	public List<Collidable> selectInRect(int x, int y, int width, int height);

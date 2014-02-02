@@ -18,7 +18,7 @@ import resources.LevelReader;
 import resources.PC_ResourceLoader;
 import mathematics.Vector;
 import model.Collision_Simulator;
-import model.Paddle;
+import model.gameObjects.Paddle;
 import view.Collision_View;
 import view.PC_Console;
 
@@ -66,8 +66,8 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 //		//create a model which can update to the view
 		model = new Collision_Simulator(width,height,view);
 //		
-		p = new Paddle(width/2,height-20,150);
-		model.addGameObject(p);
+		//p = new Paddle(width/2,height-20,150);
+		//model.addGameObject(p);
 		tester=new Tester(model);
 //		
 //		
@@ -179,7 +179,7 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 	 * in gameloop thread as this is not thread safe
 	 */
 	public void interpretCommands(){
-		p.move(Direction);
+		//p.move(Direction);
 		java.awt.AWTEvent event=null;
 		while((event=queue.poll())!=null){
 			//TODO log time and operation

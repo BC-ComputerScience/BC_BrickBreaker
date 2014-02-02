@@ -27,8 +27,7 @@ public class SpriteSet implements Cloneable{
 		progression+=d;
 	}
 	public SpriteSet clone(){
-		return null;
-		dsafjklhadsfhu
+		return new SpriteSet(this.sprites);
 		
 	}
 

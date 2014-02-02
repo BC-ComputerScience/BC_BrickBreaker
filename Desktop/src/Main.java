@@ -5,9 +5,9 @@ import resources.LevelReader;
 import resources.PC_ResourceLoader;
 import view.Renderable;
 import mathematics.Vector;
-import model.Brick;
-import model.Line;
-import model.Sphere;
+import model.gameObjects.Brick;
+import model.gameObjects.Line;
+import model.gameObjects.Sphere;
 
  /**
  * A starting point

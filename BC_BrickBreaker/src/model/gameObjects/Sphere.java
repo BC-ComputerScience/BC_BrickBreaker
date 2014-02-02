@@ -1,8 +1,7 @@
-package model;
+package model.gameObjects;
 
 import java.util.Random;
 
-import resources.SpriteHolder;
 import resources.SpriteSet;
 import resources.SpriteSheet;
 import view.Renderable;
@@ -11,6 +10,7 @@ import mathematics.Matrix;
 import mathematics.Vector;
 
 public class Sphere extends Movable implements Renderable{
+	
 	private double radius;
 	private int width,height;
 	public static int number=0;
@@ -22,7 +22,8 @@ public class Sphere extends Movable implements Renderable{
 	
 	
 	public Sphere(double x, double y, Vector trajectory,double mass){
-		super(x,y,trajectory,mass);
+		
+		super(new Vector(x,y),(int)(2*Math.sqrt(mass)),(int)(2*Math.sqrt(mass)),trajectory,mass);
 		System.out.println("new Sphere("+x+","+y+", new Vector("+trajectory.coordinateList()+"),"+mass+");");
 		color=(new Random()).nextInt();
 		thisnum=number++;
@@ -117,7 +118,7 @@ public class Sphere extends Movable implements Renderable{
 	public boolean collide(Collidable C) {
 		return collide(C, false);
 	}
-	@Override
+	//@Override
 	public boolean collide(Collidable C, boolean ignorePosition) {
 		if(C instanceof Sphere){//never trust, always check
 			Sphere other=(Sphere)C;
@@ -199,6 +200,11 @@ public class Sphere extends Movable implements Renderable{
 	public void addSpriteSet(SpriteSet set) {
 		this.spriteSet=set;
 		
+	}
+	@Override
+	public GameObject cloneAt(Vector v) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

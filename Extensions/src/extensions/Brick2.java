@@ -1,6 +1,6 @@
 package extensions;
 
-import model.Brick;
+import model.gameObjects.Brick;
 
 public class Brick2 extends Brick {
 

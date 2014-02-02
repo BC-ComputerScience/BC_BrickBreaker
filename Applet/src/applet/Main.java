@@ -36,7 +36,7 @@ public class Main extends JApplet implements view.View{
 		//img =new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 		Random rand= new Random();
 		for(int i=rand.nextInt(20)+20;i>0;i--){
-			m.addGameObject(new model.Sphere(25+rand.nextInt(width-25), 25+rand.nextInt(height-25), new Vector(rand.nextInt(200)-100,rand.nextInt(200)-100), 100));
+			m.addGameObject(new model.gameObjects.Sphere(25+rand.nextInt(width-25), 25+rand.nextInt(height-25), new Vector(rand.nextInt(200)-100,rand.nextInt(200)-100), 100));
 		}
 		
 		

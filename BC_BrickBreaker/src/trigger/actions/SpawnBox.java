@@ -2,6 +2,7 @@ package trigger.actions;
 
 import trigger.Action;
 import model.*;
+import model.gameObjects.Brick;
 public class SpawnBox implements Action {
 	private Model model;
 	private Brick b;

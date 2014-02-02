@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.jar.JarInputStream;
 import java.util.zip.ZipEntry;
 
-public class PC_ClassResource implements ClassResource {
+public class PC_ClassResource extends ClassResource {
 	HashMap <String, Class<?>> classes=new HashMap<String, Class<?>>();
 	
 	public PC_ClassResource(String loc) throws IOException{
@@ -101,6 +101,31 @@ public class PC_ClassResource implements ClassResource {
 	public String[] getClassNames() {
 		String[] ret=new String[this.classes.size()];
 		return this.classes.keySet().toArray(ret);
+	}
+
+	
+	@Override
+	public String getLocation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getID() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

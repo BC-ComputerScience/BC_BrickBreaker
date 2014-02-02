@@ -1,4 +1,4 @@
-package model;
+package model.gameObjects;
 
 
 import resources.SpriteSet;
@@ -7,46 +7,56 @@ import view.Sprite;
 import mathematics.Matrix;
 import mathematics.Vector;
 
-/**
- * A line that spheres can bounce off of
- * 
- * @author Anthony Klobas
- * 
- */
-public class Line extends Collidable implements Renderable {
+public class Paddle extends Movable implements Renderable{
+	private double x1, y1, x2, y2;
 	protected Vector normal, p1, p2;
 	private int x, y, width, height;
 	private SpriteSet spriteSet=new SpriteSet();
 	protected double length;
-	private boolean isOneWay;
+	private boolean isOneWay=true;
 
-	public Line(Vector p1, Vector p2,boolean isOneWay){
-		this(p1.getElement(0), p1.getElement(1), p2.getElement(0), p2
-				.getElement(1), isOneWay);
-	}
-	public Line(Vector p1, Vector p2) {
-		this(p1,p2,false);
-	}
-	public Line(double x1, double y1, double x2, double y2){
-		this(x1,y1,x2,y2,false);
-	}
-	public Line(double x1, double y1, double x2, double y2, boolean isOneWay) {
-		this.isOneWay=isOneWay;
+	public Paddle(int x, int y, int width){
+		super(new Vector(x,y),width,10,Integer.MAX_VALUE);
+		synchronized(this){
+		this.x1=x+width;
+		this.y1=y;
+		this.x2=x;
+		this.y2=y;
+		this.isOneWay=true;
 		p1 = new Vector(x1, y1);
 		p2 = new Vector(x2, y2);
-		length = p1.distance(p2);
+		length = width;
 
-		x = (int) Math.min(x1, x2);
-		y = (int) Math.min(y1, y2);
-		width = (int) Math.max(x1, x2) - x;
-		height = (int) Math.max(y1, y2) - y;
+		this.x = (int) Math.min(x1, x2);
+		this.y = (int) Math.min(y1, y2);
+		this.width = (int) Math.max(x1, x2) - x+1;
+		//System.out.println(width);
+		height = (int) Math.max(y1, y2) - y+1;
 		this.normal = new Vector(y1 - y2, -1 * (x1 - x2)).getUnitVector();
+		}
+	}
+	
+	public void move(double delta){
+		synchronized(this){
+			//System.out.println("x"+x+"x1"+x1+"x2"+x2+"width"+width);
+		this.x+=delta;
+		this.x1+=delta;
+		this.y1=y;
+		this.x2+=delta;
+		this.y2=y;
+		p1 = new Vector(x1, y1);
+		p2 = new Vector(x2, y2);
+		}
 	}
 
 	@Override
 	public void advance(double seconds) {
 		// TODO add code for updating graphics
 
+	}
+	@Override
+	public int getCollisionPrecedence() {
+		return 2;
 	}
 
 	@Override
@@ -60,7 +70,45 @@ public class Line extends Collidable implements Renderable {
 		return collide(c, false);
 
 	}
+
 	@Override
+	public double getX() {
+		return x;
+	}
+
+	@Override
+	public double getY() {
+		return y;
+	}
+
+	@Override
+	public int getBoundingHeight() {
+
+		return height+1;
+	}
+
+	@Override
+	public int getBoundingWidth() {
+		return width+1;
+	}
+
+	@Override
+	public Sprite getImage() {
+		return spriteSet.currentSprite();
+	}
+
+	@Override
+	public int getImageX() {
+		return (int) this.x;
+	}
+
+	@Override
+	public int getImageY() {
+		return (int) this.y;
+	}
+	public boolean stillExists() {
+		return true;
+	}
 	public double collideTime(Collidable c) {
 		if (c instanceof Sphere) {
 			Sphere s= (Sphere)c;
@@ -140,7 +188,6 @@ public class Line extends Collidable implements Renderable {
 	public double kp(double d){
 		return d<0?d:-655;
 	}
-	@Override
 	public boolean collide(Collidable c, boolean ignorePosition) {
 		if (c instanceof Sphere) {
 			Sphere s = (Sphere) c;
@@ -263,10 +310,12 @@ public class Line extends Collidable implements Renderable {
 	private void lineBounce(Sphere s, double traj, double time){
 		//System.out.println("Line Collision");
 		s.advance(time);
+		Vector n =new Vector((this.x+(length/2.)-s.getCenter().getElement(0))/length,0).negate().add(normal);
+		
 		if (traj > 0) {
-			if(!this.isOneWay)s.reflect(normal.negate());
+			if(!this.isOneWay)s.reflect(n.negate());
 		} else {
-			s.reflect(normal);
+			s.reflect(n);
 		}
 		s.advance(-time);
 	}
@@ -278,92 +327,23 @@ public class Line extends Collidable implements Renderable {
 		s.advance(-time);
 		
 	}
-	
-	
-	
-	
-
-	@Override
-	public int getCollisionPrecedence() {
-		return 2;
-	}
-
-	@Override
-	public double getX() {
-		return x;
-	}
-
-	@Override
-	public double getY() {
-		return y;
-	}
-
-	@Override
-	public int getBoundingHeight() {
-
-		return height;
-	}
-
-	@Override
-	public int getBoundingWidth() {
-		return width;
-	}
-
-	@Override
-	public Sprite getImage() {
-		return spriteSet.currentSprite();
-	}
-
-	@Override
-	public int getImageX() {
-		return (int) this.x;
-	}
-
-	@Override
-	public int getImageY() {
-		return (int) this.y;
-	}
-	public boolean stillExists() {
-		return true;
-	}
-	public String toString(){
-		return this.getClass().getName()+p1+p2;
-	}
 	@Override
 	public int getImageWidth() {
 		// TODO Auto-generated method stub
-		return this.width;
+		return width;
 	}
 	@Override
 	public int getImageHeight() {
 		// TODO Auto-generated method stub
-		return this.height;
+		return height;
 	}
 	public void addSpriteSet(SpriteSet set) {
 		this.spriteSet=set;
 		
 	}
 	@Override
-	public Line cloneAt(int x, int y) {
-		return cloneAt(new Vector(x,y));
+	public GameObject cloneAt(Vector v) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	@Override
-	public Line cloneAt(Vector v) {
-		Line ret=new Line(p1.add(v),p2.add(v),this.isOneWay);
-		ret.addSpriteSet(spriteSet.clone());
-		return ret;
-	}
-	@Override
-	public void translate(int deltaX, int deltaY) {
-		translate(new Vector(deltaX, deltaY));
-		
-	}
-	@Override
-	public void translate(Vector v) {
-		p1=p1.add(v);
-		p2=p2.add(v);
-		this.x=(int)Math.min(p1.getElement(0), p2.getElement(0));
-		this.y=(int)Math.min(p1.getElement(1), p2.getElement(1));		
-	}
-
 }

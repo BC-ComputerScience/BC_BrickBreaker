@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Random;
 
 import mathematics.Vector;
+import model.gameObjects.Background;
+import model.gameObjects.Collidable;
+import model.gameObjects.GameObject;
+import model.gameObjects.Movable;
 import view.Renderable;
 import view.View;
 import trigger.Trigger;
@@ -232,7 +236,7 @@ public class Collision_Simulator implements Model{
 	}
 	@Override
 	public int getBrickCount() {
-		return added.get(model.Brick.class);
+		return added.get(model.gameObjects.Brick.class);
 	}
 	
 	public void setGravity(double n){

@@ -1,27 +1,37 @@
-package model;
+package model.gameObjects;
 
 import mathematics.Vector;
 
 
-public abstract class Collidable implements GameObject{
+public abstract class Collidable extends GameObject{
+	private int width;
+	private int height;
 	
-	public abstract int getBoundingWidth(); 
-	public abstract int getBoundingHeight();
-	public abstract double getX();
-	public abstract double getY();
+	public Collidable(Vector v, int width, int height) {
+		super(v);
+		this.width=width;
+		this.height=height;
+	}
+	public int getBoundingWidth(){
+		return this.width;
+	}
+	public int getBoundingHeight(){
+		return this.height;
+	}
+	public double getX(){
+		return this.getPos().getElement(0);
+	}
+	public double getY(){
+		return this.getPos().getElement(1);
+	}
 	
-	//getpos
-	//setpos(vector)
-	//setX
-	//setY
-	//translate(vector)
 	
 	public abstract boolean canCollideWith(Collidable C);
-	public abstract boolean collide(Collidable C);
-	public abstract boolean collide(Collidable C, boolean ignorePosition);
 	public abstract double collideTime(Collidable C);
-	
+	public abstract boolean collide(Collidable C);
 	public abstract int getCollisionPrecedence();
+	
+	
 	public abstract boolean stillExists();
 	public abstract void advance(double seconds);
 	
