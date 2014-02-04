@@ -71,6 +71,12 @@ public class Main {
 				// TODO Auto-generated method stub
 				
 			}
+
+			@Override
+			public PrintStream err() {
+				// TODO Auto-generated method stub
+				return System.err;
+			}
 			
 		});
 		//new controller.Collision_Controller(800,600);

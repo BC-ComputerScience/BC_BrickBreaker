@@ -7,11 +7,13 @@ import view.Sprite;
 
 public class PC_Sprite extends Sprite{
 	int x,y,width,height;
-	Image image;
+//	Image image;
 	PC_ImageResource resource;
 	
 
 	public PC_Sprite(int x, int y, int width, int height, PC_ImageResource resource) {
+		
+		super(x,y,width,height);
 		this.x=x;
 		this.y=y;
 		this.width=width;
@@ -39,24 +41,42 @@ public class PC_Sprite extends Sprite{
 		return resource.getID();
 	}
 
-	@Override
+	
 	public int SheetX() {
 		return x;
 	}
 
-	@Override
+	
 	public int SheetY() {
 		return y;
 	}
 
-	@Override
+	
 	public int SheetWidth() {
 		return width;
 	}
 
-	@Override
+	
 	public int SheetHeight() {
 		return height;
+	}
+	public int offsetX(){
+		return 0;
+	}
+	public int offsetY(){
+		return 0;
+	}
+
+	@Override
+	public double getDuration() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
+
+	@Override
+	public void setDuration(double dur) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

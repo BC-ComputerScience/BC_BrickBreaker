@@ -1,5 +1,7 @@
 package resources;
 
+import java.awt.image.BufferedImage;
+
 import view.Sprite;
 
 public abstract class ImageResource extends Resource {
@@ -8,4 +10,5 @@ public abstract class ImageResource extends Resource {
 	public String getType(){
 		return "image";
 	}
+	
 }

@@ -1,9 +1,19 @@
+import java.io.File;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.SwingUtilities;
+
+import consoletools.Shell;
+import consoletools.ShellProgram;
 import resources.LevelReader;
 import resources.PC_ResourceLoader;
+import view.Console;
+import view.ConsoleListener;
 import view.Renderable;
+import view.spriteEditor.SpriteEditorFrame;
 import mathematics.Vector;
 import model.gameObjects.Brick;
 import model.gameObjects.Line;
@@ -21,7 +31,8 @@ import model.gameObjects.Sphere;
 public class Main {
 
 	public static void main(String[] args) {
-		new controller.Collision_Controller(800,600);
+		//new controller.Collision_Controller(800,600);
+		editorTest();
 		//new view.Console();
 		//LevelReader ll=new LevelReader("level/", new PC_ResourceLoader());
 		
@@ -31,93 +42,78 @@ public class Main {
 		
 		
 	}
-	public static String[] bricks= new String[]{
-		"greyBrick1",
-		"greyBrick2",
-		"greyBrick3",
-		"greyBrick4",
-		"greyBrick5",
-		"greyBrick6",
-		"greyBrick7",
-		"greyBrick8",
-		"greyBrick9",
-		//"greyBrick10",
-		//"tealBrick1",
-		"tealBrick2",
-		"tealBrick3",
-		//"greenBrick1",
-		"greenBrick2",
-		"greenBrick3",
-		//"brownBrick1",
-		"brownBrick2",
-		"brownBrick3",
-		//"blueBrick1",
-		"blueBrick2",
-		"blueBrick3",
-		//"purpleBrick1",
-		"purpleBrick2",
-		"purpleBrick3",
-		};
+	public static void editorTest(){
+		SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+            	Shell s=new Shell(new LittleConsole());
+        		SpriteEditorFrame frame=new SpriteEditorFrame();
+        		s.addCommand("load", new LoadImage(frame));
+        		s.addCommand("xml", new dumpXML(frame));
+            }
+        });
+		
+		
+		
+	}
+	
+	
+	
+	private static class LoadImage implements ShellProgram{
+		SpriteEditorFrame f;
+		public LoadImage(SpriteEditorFrame f){
+			this.f=f;
+		}
+		@Override
+		public int Execute(Shell s, String... args) {
+			if(args.length>0){
+				File file=new File(s.currentDirectory().getAbsolutePath()+"/"+args[0]);
+				s.out.println("loading"+file.getAbsolutePath());
+				f.loadImage(file);
+				return 0;
+			}
+			s.out.println("no file specified");
+			return 1;
+		}
+	}
+	private static class dumpXML implements ShellProgram{
+		SpriteEditorFrame f;
+		public dumpXML(SpriteEditorFrame f){
+			this.f=f;
+		}
+		@Override
+		public int Execute(Shell s, String... args) {
+			f.dumpXML();
+			return 0;
+		}
 
+	}
 	
-	public static void test(){
-		//view.Collision_View view =new view.Collision_View(800, 600, null);
-		Sphere s=new Sphere(400,570,new Vector(0,-100),30*30);
-		//s.advance(-0.7085421901205575);
-		//Line l=new Line(400,300,400,400);
-		Brick l=new Brick(350,250,100,100,5);
-		Brick b=new Brick(0,0,800,600);
-		s=new Sphere(200,570,new Vector(100,-100),30*30);
+	private static class LittleConsole implements Console{
+		@Override
+		public PrintStream out() {
+			return System.out;
+		}
+
+		@Override
+		public InputStream in() {
+			return System.in;
+		}
+		public PrintStream err(){
+			return System.err;
+		}
 		
-		ArrayList<Renderable>torender= new ArrayList<Renderable>();
-		torender.add(b);
-		
-		torender.add(l);
-		torender.add(s);
-		//view.updateScreen(torender);
-		boolean hasCollided=false;
-		while(true){
-			wait(50);
+
+		@Override
+		public void addConsoleListener(ConsoleListener cl) {
+			// TODO Auto-generated method stub
 			
-			s.advance(.04);
-			double d=l.collideTime(s);
-			if(d<0){
-				if(!hasCollided){
-					hasCollided=l.collide(s);
-				}else{
-					l.collide(s);
-			}
-			}
-			//view.updateScreen(torender);
-		//break;
 		}
-	}
-	
-	
-	public static void wait(int millis){
-		try {
-			Thread.sleep(millis);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		@Override
+		public void removeConsoleListener(ConsoleListener cl) {
+			// TODO Auto-generated method stub
+			
 		}
-	}
-	public static void GenerateMap(){
-		Random rand=new Random();
-		int width=32;int height=16;
-		int topOffset=50;
-		int bottomOffset=300;
-		int leftOffset=50;
-		int rightOffset=50;
-		int screenWidth=800;
-		int screenHeight=600;
-		
-		for(int x=rightOffset;x<screenWidth-leftOffset-width;x+=width){
-			for(int y=topOffset;y<screenHeight-bottomOffset-height;y+=height){
-				System.out.println("<Brick> <spriteset health=\"0\">" +bricks[rand.nextInt(bricks.length)]+"</spriteset><health>1</health><y>"+y+"</y><x>"+x+"</x><width>32</width><height>16</height></Brick>");	
-			}
-		}
-		
 		
 	}
 

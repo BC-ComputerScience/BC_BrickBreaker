@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
@@ -34,6 +35,7 @@ public class PC_Console extends JScrollPane implements Console{
     private InnerConsole inner=new InnerConsole();
     public InputStream in;//text entry
     public PrintStream out;//textDidsplay
+    public PrintStream err;
 	
 	public PC_Console(){
 		in=inner.in;
@@ -41,6 +43,7 @@ public class PC_Console extends JScrollPane implements Console{
 		this.setViewportView(inner);
 		
 		out=new PrintStream(new InnerConsoleStream(inner));
+		err=new PrintStream(new InnerConsoleStream(inner, Color.RED));
 		/*System.out.println("starting test");
 		temp.println("1234566");
 		temp.println("hello how are you");
@@ -53,8 +56,12 @@ public class PC_Console extends JScrollPane implements Console{
 	
 	private class InnerConsoleStream extends OutputStream{
 		private InnerConsole ic;
+		
 		public InnerConsoleStream(InnerConsole ic){
 			this.ic=ic;
+		}
+		public InnerConsoleStream(InnerConsole inner, Color red) {
+			this(inner);
 		}
 		public void close()throws IOException{
 			//do nothing
@@ -82,7 +89,8 @@ public class PC_Console extends JScrollPane implements Console{
 	
 	
 	private class InnerConsole extends JTextArea implements KeyListener {
-    private ArrayList<view.ConsoleListener> listeners=new ArrayList<view.ConsoleListener>();
+    
+		private ArrayList<view.ConsoleListener> listeners=new ArrayList<view.ConsoleListener>();
     private ArrayBlockingQueue<ConsoleEvent> events=new ArrayBlockingQueue<ConsoleEvent>(10);
     
     private Thread ConsolePrintListener;//thread to display text printed to console to user;
@@ -282,7 +290,9 @@ public class PC_Console extends JScrollPane implements Console{
 		// TODO Auto-generated method stub
 		return out;
 	}
-
+	public PrintStream err(){
+		return this.err;
+	}
 
 
 	@Override

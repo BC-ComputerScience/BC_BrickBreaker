@@ -8,4 +8,5 @@ public interface Console {
 	public InputStream in();
 	public void addConsoleListener(ConsoleListener cl);
     public void removeConsoleListener(ConsoleListener cl);
+	public PrintStream err();
 }

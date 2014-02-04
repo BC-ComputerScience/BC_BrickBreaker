@@ -55,6 +55,9 @@ public class PC_ImageResource extends resources.ImageResource{
 	public void draw(Graphics g, PC_Sprite s,int x, int y) {
 		draw(g,s,x,y,s.width,s.height);
 	}
+	public BufferedImage getImage() {
+		return image;
+	}
 
 
 
