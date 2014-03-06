@@ -100,6 +100,7 @@ public class Shell {
 					p.Execute(this, arglist.toArray(args));
 				}catch(Exception e){
 					out.println("Error while executing command: "+e.getMessage());
+					e.printStackTrace(out);
 				}
 				prompt();
 				//c.out.flush();

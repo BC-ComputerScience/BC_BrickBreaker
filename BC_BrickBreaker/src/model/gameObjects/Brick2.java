@@ -1,13 +1,12 @@
 package model.gameObjects;
 
 
-import resources.SpriteHolder;
 import resources.SpriteSet;
 import resources.SpriteSheet;
 import view.Renderable;
 import view.Sprite;
 
-public class Brick extends Collidable implements Renderable{
+public class Brick2 extends Collidable implements Renderable{
 	private int width,height;
 	private Line[] lines=new Line[4];
 	int hitPoints;
@@ -20,13 +19,13 @@ public class Brick extends Collidable implements Renderable{
 	 * @param width width of box
 	 * @param height height of box
 	 */
-	public Brick(double x, double y, int width,int height) {
+	public Brick2(double x, double y, int width,int height) {
 		this(x,y,width,height,1);
 		
 	}
 
 
-	public Brick(double x, double y, int width, int height, int health) {
+	public Brick2(double x, double y, int width, int height, int health) {
 		//System.out.println("x:"+x+"y:"+y+"width:"+width+"height:"+height+"health:"+health);
 		this.x=(int)x;
 		this.y=(int)y;

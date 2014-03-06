@@ -19,11 +19,14 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.swing.JPanel;
 
+import model.gameObjects.Movable;
+import model.gameObjects.Sphere;
 import resources.PC_Sprite;
 
 public class Drawing_Panel extends JPanel implements MouseListener{
 	private int width,height;
 	
+	private BufferedImage defaultBackground;
 	private BufferedImage[] image;
 	private int imageLength=10;
 	private int currentImage=1;
@@ -42,14 +45,52 @@ public class Drawing_Panel extends JPanel implements MouseListener{
 		for(int i=0;i<imageLength;i++){
 			image[i]=new BufferedImage(x+2*offset,y+2*offset,BufferedImage.TYPE_INT_ARGB);
 		}
+		defaultBackground=new BufferedImage(x+2*offset,y+2*offset,BufferedImage.TYPE_INT_ARGB);
+		drawPretty(defaultBackground.createGraphics());
 		
 	}
 	
-	public void drawComponents(List<Renderable> toRender){
+	private Color massColor(double mass){
+		int minColor=255;
+		double offset=.1;
+		double roundScaling=.3;
+		double base=Math.E+Math.PI;
+		//double base=Math.PI;
+		//int val=(int)(minColor*Math.pow(base, (-roundScaling/(mass+offset))));
+		int val=(int)(255/(mass+1));
 		
+		//System.out.println(mass+ " = "+val);
+		//if(Math.pow(100, (-1/mass))>.99)System.exit(0);;
+		return new Color(255-val,(int)(255*(Math.sin(mass)+1)/2),val);
+		//return new Color(minColor-val,minColor-val,minColor-val);
+		
+	}
+	private void drawPretty(Graphics2D g) {
+		int size=1;
+		double dim=(double)width/(double)size*(double)height/(double)size;
+		
+		for(int i=0;i<width/size;i++){
+			for(int j=0;j<height/size;j++){
+				double mass=((i+1)*(j+1))/((double)dim/10);
+				g.setColor(massColor(mass));
+				g.fillRect(i*size+offset, j*size+offset, size, size);
+				//g.setColor(Color.CYAN);
+				//g.drawString(""+mass, i*size+offset+size/20, j*size+offset+8+size/2);
+				
+			}
+		}
+		
+	}
+	
+	boolean hashappend=false;
+	public void drawComponents(List<Renderable> toRender){
+		//if(hashappend)return;
+		hashappend=true;
 		int num=currentImage+1;
 		Graphics2D g=image[num%imageLength].createGraphics();
 		g.clearRect(0, 0, width+2*offset, height+2*offset);
+		//drawPretty(g);
+		g.drawImage(this.defaultBackground, 0, 0, this);
 		boolean firstPass=true;
 		//this.addTimeStamp(g, false);
 		for(Renderable r:toRender){
@@ -57,10 +98,21 @@ public class Drawing_Panel extends JPanel implements MouseListener{
 			PC_Sprite s=(PC_Sprite)r.getImage();
 			
 			if(s==null&&!(r instanceof model.gameObjects.Background)){
-				g.setColor(Color.WHITE);
-				g.fillRect(r.getImageX()+offset, r.getImageY()+offset, r.getImageWidth(), r.getImageHeight());
-				g.setColor(Color.CYAN);
-				g.drawRect(r.getImageX()+offset, r.getImageY()+offset, r.getImageWidth(), r.getImageHeight());
+				if(r instanceof Movable){
+					g.setColor(massColor(((Movable)r).getMass()/((Movable)r).getArea()));
+					//System.out.println(((Movable)r).getMass()/((Movable)r).getArea()+","+((Movable)r).getMass()+","+((Movable)r).getArea());
+				}else{
+					g.setColor(Color.WHITE);
+				}
+				if(r instanceof Sphere){
+					g.fillOval(r.getImageX()+offset, r.getImageY()+offset, r.getImageWidth(), r.getImageHeight());
+					g.setColor(Color.CYAN);
+					g.drawOval(r.getImageX()+offset, r.getImageY()+offset, r.getImageWidth(), r.getImageHeight());
+				}else{
+					g.fillRect(r.getImageX()+offset, r.getImageY()+offset, r.getImageWidth(), r.getImageHeight());
+					g.setColor(Color.CYAN);
+					g.drawRect(r.getImageX()+offset, r.getImageY()+offset, r.getImageWidth(), r.getImageHeight());
+				}
 				
 			}
 			if(s!=null)
@@ -82,6 +134,10 @@ public class Drawing_Panel extends JPanel implements MouseListener{
 	
 	
 	
+	
+
+
+
 	/*private double x,y;
 	private double xv=100,yv=150;
 	private int bs=21;

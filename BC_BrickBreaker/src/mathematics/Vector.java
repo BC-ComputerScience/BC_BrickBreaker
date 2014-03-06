@@ -163,6 +163,9 @@ public class Vector {
 		}
 		return true;
 	}
+	public Vector getZero(){
+		return new Vector(vector.length);
+	}
 	
 	
 	

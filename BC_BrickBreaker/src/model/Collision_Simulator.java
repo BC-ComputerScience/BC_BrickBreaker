@@ -124,7 +124,28 @@ public class Collision_Simulator implements Model{
 	}
 	public void advance(double seconds){
 		/**/
-		
+		//int length=this.collidable.size();
+		/*for(int i=0;i<collidable.size();i++){
+			
+			Collidable c1=collidable.get(i);
+			c1.advance(seconds);
+			for(int j=i+1;j<collidable.size();j++){
+				Collidable c2=collidable.get(j);
+				if(c1 instanceof Movable && c2 instanceof Movable){
+					double time=c1.collideTime(c2);
+					if(time!=Double.MAX_VALUE){
+						c1.advance(time);
+						c2.advance(time);
+						collidable.remove(c1);
+						collidable.remove(c2);
+					}
+					
+					//movable.get(i).bounce(movable.get(j));
+				}
+			}
+		}
+		if(true)return;
+		/**/
 		collisionList=new CollisionList(width,height,10);
 		
 		
@@ -236,7 +257,7 @@ public class Collision_Simulator implements Model{
 	}
 	@Override
 	public int getBrickCount() {
-		return added.get(model.gameObjects.Brick.class);
+		return added.get(model.gameObjects.Brick2.class);
 	}
 	
 	public void setGravity(double n){

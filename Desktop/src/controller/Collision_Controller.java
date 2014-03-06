@@ -18,7 +18,9 @@ import resources.LevelReader;
 import resources.PC_ResourceLoader;
 import mathematics.Vector;
 import model.Collision_Simulator;
+import model.ObjectLoader;
 import model.gameObjects.Paddle;
+import model.gameObjects.Sphere;
 import view.Collision_View;
 import view.PC_Console;
 
@@ -62,10 +64,14 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 		//create a view which can update the controller(this)
 		view = new Collision_View(width,height, this);
 		console = view.getConsole();
-		Shell s=new Shell(view.getConsole());
+		//Shell s=new Shell(view.getConsole());
 //		//create a model which can update to the view
-		model = new Collision_Simulator(width,height,view);
-//		
+		LogicalSystem s=new LogicalSystem(view,this,console);
+		
+		//model = new Collision_Simulator(width,height,view);
+		model=(Collision_Simulator) s.getModel();
+		ObjectLoader.LOADER.addTemplate("sphere", new Sphere(new Vector(2),new Vector(10,15),100));
+		
 		//p = new Paddle(width/2,height-20,150);
 		//model.addGameObject(p);
 		tester=new Tester(model);
@@ -92,7 +98,7 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 //		}
 //		;/**/
 //		
-		//tester.testCase();
+		tester.testCase();
 		
 		timer=new Timer();
 		
@@ -242,7 +248,7 @@ public class Collision_Controller implements Controller, ActionListener, MouseLi
 					}
 					timer.schedule(gameloop, millisPerProc, millisPerProc);
 				}else if(action.getActionCommand()=="Add Large Random"){
-					tester.addRandomCircles(2000);
+					tester.addRandomCircles(100);
 				}
 				System.out.println(action.getActionCommand());
 			}

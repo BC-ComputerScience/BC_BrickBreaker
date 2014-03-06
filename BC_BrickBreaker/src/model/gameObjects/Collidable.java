@@ -33,7 +33,6 @@ public abstract class Collidable extends GameObject{
 	
 	
 	public abstract boolean stillExists();
-	public abstract void advance(double seconds);
 	
 	
 	public boolean checkBoundingCollision(Collidable c){
@@ -65,5 +64,7 @@ public abstract class Collidable extends GameObject{
 	public String toString(){
 		return this.getClass().getName()+" at: ("+((int)getX())+","+((int)getY())+")";
 	}
+	
+	
 
 }

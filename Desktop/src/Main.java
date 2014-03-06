@@ -15,7 +15,7 @@ import view.ConsoleListener;
 import view.Renderable;
 import view.spriteEditor.SpriteEditorFrame;
 import mathematics.Vector;
-import model.gameObjects.Brick;
+import model.gameObjects.Brick2;
 import model.gameObjects.Line;
 import model.gameObjects.Sphere;
 
@@ -31,8 +31,8 @@ import model.gameObjects.Sphere;
 public class Main {
 
 	public static void main(String[] args) {
-		//new controller.Collision_Controller(800,600);
-		editorTest();
+		new controller.Collision_Controller(800,600);
+		//editorTest();
 		//new view.Console();
 		//LevelReader ll=new LevelReader("level/", new PC_ResourceLoader());
 		

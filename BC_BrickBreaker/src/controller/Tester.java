@@ -14,8 +14,9 @@ import java.util.Random;
 
 import mathematics.Vector;
 import model.Collision_Simulator;
-import model.gameObjects.Brick;
+import model.gameObjects.Brick2;
 import model.gameObjects.Line;
+import model.gameObjects.Rectangle;
 import model.gameObjects.Sphere;
 /**
  * 
@@ -35,7 +36,21 @@ public class Tester {
 	}
 	
 	public void testCase(){
-		loadTestLevel();
+		
+		Rectangle r=new Rectangle(new Vector(50,50),50,50,new Vector(100,10),2000);
+		sim.addGameObject(r);
+		r=new Rectangle(new Vector(500,50),50,50,new Vector(100,10),1000);
+		sim.addGameObject(r);
+		r=new Rectangle(new Vector(50,500),50,50,new Vector(100,10),500);
+		sim.addGameObject(r);
+		r=new Rectangle(new Vector(200,50),50,50,new Vector(100,10),4000);
+		sim.addGameObject(r);
+		r=new Rectangle(new Vector(500,200),50,50,new Vector(100,10),8000);
+		sim.addGameObject(r);
+		r=new Rectangle(new Vector(200,500),50,50,new Vector(100,10),16000);
+		sim.addGameObject(r);
+		return;
+		//loadTestLevel();
 		/*URL url;
 		try {
 			url = new File("/Users/prog/git/classes.jar").toURI().toURL();
@@ -76,10 +91,10 @@ public class Tester {
 	
 	
 	public void boxCollisionTest(){
-		Sphere s=new Sphere(200,570,new Vector(100,-100),30*30);
+		Sphere s=new Sphere(new Vector(200,570),new Vector(100,-100),30*30);
 		//s.advance(-0.7085421901205575);
 		//Line l=new Line(400,300,400,400);
-		Brick l=new Brick(350,250,100,100,5);
+		Brick2 l=new Brick2(350,250,100,100,5);
 		sim.addGameObject(s);
 		sim.addGameObject(l);
 	}
@@ -139,12 +154,12 @@ public class Tester {
 	
 	
 	public void placeSphere(int x, int y,boolean isImmovable){
-		Sphere s=new Sphere(x,y,new Vector(0,0),rand.nextInt(50)+50);
+		Sphere s=new Sphere(new Vector(x,y),new Vector(0,0),rand.nextInt(50)+50);
 		//s.setImmovable(isImmovable);
 		sim.addGameObject(s);
 	}
 	public void placeSphere(int x, int y, int xvel, int yvel,boolean isImmovable){
-		Sphere s=new Sphere(x,y,new Vector(xvel,yvel),rand.nextInt(50)+50);
+		Sphere s=new Sphere(new Vector(x,y),new Vector(xvel,yvel),rand.nextInt(50)+500);
 		//s.setImmovable(isImmovable);
 		sim.addGameObject(s);
 	}
@@ -154,19 +169,22 @@ public class Tester {
 		this.addRandomCircles(1);
 	}
 	public void addNewtonsCradle(){
-		Sphere s=new Sphere(50,100,new Vector(500,0),900);
+		Sphere s=new Sphere(new Vector(50,100),new Vector(500,0),900);
 		sim.addGameObject(s);
 		
 		
 		for(int i=0;i<4;i++){
-			s=new Sphere(200+120*i,100,new Vector(0,0),900);
+			
+			s=new Sphere(new Vector(200+120*i,100),new Vector(0,0),900);
 			sim.addGameObject(s);
 		}
+		//s=new Sphere(720,100,new Vector(0,0),50);
+		//sim.addGameObject(s);
 	}
 	
 	public void addRandomCircles(int n){
 		for(int i=0;i<n;i++){
-			Sphere s=new Sphere(0,0,new Vector(rand.nextInt(200)-100,rand.nextInt(200)-100),rand.nextInt(200)+50 );
+			Sphere s=new Sphere(new Vector(2),new Vector(rand.nextInt(200)-100,rand.nextInt(200)-100),rand.nextInt(200)+50 );
 			int width=s.getBoundingWidth();
 			int height=s.getBoundingHeight();
 			s.setPos(new Vector(rand.nextInt(sim.getWidth()-width),rand.nextInt(sim.getHeight()-height)));

@@ -17,10 +17,11 @@ public abstract class Movable extends Collidable{
 	Vector force=new Vector(2);
 	
 	public Movable(Vector pos,int width, int height,double mass){
-		this(pos,width,height,new Vector(pos.getDimension()),mass);
+		this(pos,width,height,pos.getZero(),mass);
 	}
 	public Movable(Vector pos,int width, int height, Vector trajectory,double mass){
 		super(pos,width,height);
+		force=pos.getZero();
 		this.trajectory=trajectory;
 		this.mass=mass;
 		this.inverseMass=1/mass;
@@ -36,12 +37,14 @@ public abstract class Movable extends Collidable{
 	
 	public void advance(double seconds){
 		trajectory=trajectory.add(force.scale(seconds*inverseMass));// (kg*m/s^2)*(s/kg)=(m/s)
-		force=new Vector(2);
+		force=trajectory.getZero();
 		this.translate(trajectory.scale(seconds));
 	}
 	
 	
-	public Vector getTrajectory() {return trajectory;}
+	public Vector getTrajectory() {
+		return trajectory;
+	}
 	
 	public void setTrajectory(Vector trajectory) {
 		
@@ -64,14 +67,19 @@ public abstract class Movable extends Collidable{
 		temp= new Vector(Math.abs(temp.getElement(0))*COR,temp.getElement(1));
 		this.setTrajectory(fromBase.apply(temp));
 	}
-	
+	public void reflect(Vector vector, double time) {
+		advance(-time);
+		reflect(vector);
+		advance(time);
+		
+	}
 	/**
 	 * 
 	 * @param m1
 	 * @param m2
 	 * @param normal the normal vector pointing off of 1 and onto 2
 	 */
-	public static void centerOfMassBounce(Movable m1,Movable m2, Vector normal){
+	private static void centerOfMassBounce(Movable m1,Movable m2, Vector normal){
 		if(normal.getLength()==0){
 			return;//if its length is 0, it has no direction and bouncing is undefined
 		}
@@ -89,22 +97,20 @@ public abstract class Movable extends Collidable{
 		
 		
 	}
-	public void bounceX(Movable m, Vector Normal){
-		{
-		
-		double x1=this.trajectory.getElement(0);
-		double x2=m.trajectory.getElement(0);
-		
-		}
-		
+
+	/**
+	 * Not currently Implemented, Will just do a cm bounce
+	 * 
+	 * @param m1 one of the colliding objects
+	 * @param m2 the other colliding object
+	 * @param normal a vector pointing perpendicular to a line going between the objects where they collide
+	 * @param point the point in space(in the same coordinate system) where the objects collide
+	 */
+	public static void bounce(Movable m1, Movable m2,Vector normal, Vector point){
+		centerOfMassBounce(m1,m2,normal);
 	}
 	
-	public void reflect(Vector vector, double time) {
-		advance(-time);
-		reflect(vector);
-		advance(time);
-		
-	}
+	
 	
 	
 	
@@ -121,6 +127,10 @@ public abstract class Movable extends Collidable{
 	
 	public double getVelX(){return trajectory.getElement(0);}
 	public double getVelY(){return trajectory.getElement(1);}
+	
+	public abstract Vector getCenterOfMass();
+	public abstract double getArea();
+	public abstract Vector getMomentOfInteria();
 	
 	//public void setImmovable(boolean isImmovable){immovable=isImmovable;}
 	//public boolean isImovable(){return immovable;}

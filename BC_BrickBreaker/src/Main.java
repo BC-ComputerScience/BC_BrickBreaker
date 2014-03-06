@@ -15,6 +15,8 @@ import view.ConsoleListener;
  *
  */
 public class Main {
+	
+	/*
 
 	public static String[] bricks= new String[]{
 		"greyBrick1",
@@ -87,5 +89,5 @@ public class Main {
 		
 		
 	}
-
+/**/
 }

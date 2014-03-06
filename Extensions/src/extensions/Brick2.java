@@ -1,8 +1,8 @@
 package extensions;
 
-import model.gameObjects.Brick;
+import model.gameObjects.Brick2;
 
-public class Brick2 extends Brick {
+public class Brick2 extends Brick2 {
 
 	public Brick2(double x, double y, int width, int height) {
 		super(x, y, width, height);

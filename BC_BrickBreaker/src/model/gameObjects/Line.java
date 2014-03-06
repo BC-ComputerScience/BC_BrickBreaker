@@ -31,6 +31,8 @@ public class Line extends Collidable implements Renderable {
 		this(x1,y1,x2,y2,false);
 	}
 	public Line(double x1, double y1, double x2, double y2, boolean isOneWay) {
+		//super(null,null,null,null);
+		super(null, 1,1);
 		this.isOneWay=isOneWay;
 		p1 = new Vector(x1, y1);
 		p2 = new Vector(x2, y2);
@@ -140,9 +142,10 @@ public class Line extends Collidable implements Renderable {
 	public double kp(double d){
 		return d<0?d:-655;
 	}
-	@Override
+	//@Override
 	public boolean collide(Collidable c, boolean ignorePosition) {
 		if (c instanceof Sphere) {
+			
 			Sphere s = (Sphere) c;
 
 			Matrix toBase = Matrix.createOrthonormal(normal);
@@ -196,14 +199,6 @@ public class Line extends Collidable implements Renderable {
 				
 				
 				double time=Math.min((p1time), (p2time));
-//				System.out.println("selected:"+time+"\tp1: "+p1time+"\tp2: "+p2time+"\tline: "+linetime);
-//				System.out.println("height"+height+",\t"+p1+""+p2);
-//				
-//				System.out.println("#########################");
-//				System.out.println("p1: "+p1time+"\tp2: "+p2time+"\tline: "+linetime);
-//				System.out.println("#########################");
-//				
-				//&&linetime>=p1time&&linetime>=p2time
 				
 				if(linetime<Integer.MAX_VALUE&&linetime>Integer.MIN_VALUE){
 					s.advance(linetime);
@@ -220,17 +215,9 @@ public class Line extends Collidable implements Renderable {
 				}
 				
 				
-				/*if((x <= 0 && -length <= x)&&linetime<=time) {
-					time=linetime;
-					this.lineBounce(s, traj, time);
-					return true;
-					
-				} */
-				
 				if(time<=0||ignorePosition){
 					
 					if (p2time==time&&time!=Integer.MAX_VALUE) {
-//						System.out.println("p2");
 						this.pointBounce(s, p2, time);
 						return true;
 					}else if (p1time==time&&time!=Integer.MAX_VALUE) {
